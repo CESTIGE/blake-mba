@@ -1729,6 +1729,12 @@ a.credential-card:focus-visible {
   letter-spacing: 0.18em;
 }
 
+.contact-orbit {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
 .contact-orbit span {
   position: absolute;
   border: 1px solid rgba(255, 255, 255, 0.06);
