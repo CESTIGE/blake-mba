@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">OGSM compass visual</title>
+  <desc id="desc">A strategy compass with four connected quadrants and measurable progress.</desc>
+  <rect width="1200" height="760" fill="#ffffff"/>
+  <rect x="128" y="110" width="944" height="540" rx="32" fill="#f7fbff" stroke="#dce8f2" stroke-width="3"/>
+  <line x1="600" y1="172" x2="600" y2="588" stroke="#dce8f2" stroke-width="4"/>
+  <line x1="188" y1="380" x2="1012" y2="380" stroke="#dce8f2" stroke-width="4"/>
+  <circle cx="600" cy="380" r="94" fill="#071521"/>
+  <path d="M600 282l32 86 86 12-72 50 18 86-64-44-64 44 18-86-72-50 86-12z" fill="#13bfd0"/>
+  <rect x="234" y="208" width="230" height="88" rx="20" fill="#ffffff"/>
+  <rect x="736" y="208" width="230" height="88" rx="20" fill="#ffffff"/>
+  <rect x="234" y="466" width="230" height="88" rx="20" fill="#ffffff"/>
+  <rect x="736" y="466" width="230" height="88" rx="20" fill="#ffffff"/>
+  <rect x="268" y="240" width="118" height="14" rx="7" fill="#1769e8"/>
+  <rect x="770" y="240" width="138" height="14" rx="7" fill="#18a77d"/>
+  <rect x="268" y="498" width="154" height="14" rx="7" fill="#f0a429"/>
+  <rect x="770" y="498" width="114" height="14" rx="7" fill="#13bfd0"/>
+  <circle cx="600" cy="380" r="142" fill="none" stroke="#1769e8" stroke-width="8" stroke-dasharray="18 18"/>
+</svg>

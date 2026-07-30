@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Career choice map visual</title>
+  <desc id="desc">Four intersecting decision circles connected to a career path and action plan.</desc>
+  <rect width="1200" height="760" fill="#f8fbff"/>
+  <circle cx="444" cy="318" r="136" fill="#1769e8" opacity=".18"/>
+  <circle cx="598" cy="318" r="136" fill="#13bfd0" opacity=".2"/>
+  <circle cx="520" cy="444" r="136" fill="#18a77d" opacity=".2"/>
+  <circle cx="676" cy="444" r="136" fill="#f0a429" opacity=".2"/>
+  <circle cx="558" cy="380" r="56" fill="#ffffff" stroke="#1769e8" stroke-width="6"/>
+  <rect x="126" y="130" width="264" height="430" rx="26" fill="#ffffff" stroke="#dce8f2" stroke-width="3"/>
+  <rect x="168" y="184" width="150" height="18" rx="9" fill="#071521"/>
+  <rect x="168" y="236" width="168" height="14" rx="7" fill="#607083"/>
+  <rect x="168" y="276" width="128" height="14" rx="7" fill="#9fb2c4"/>
+  <rect x="812" y="164" width="260" height="356" rx="26" fill="#071521"/>
+  <rect x="856" y="220" width="150" height="18" rx="9" fill="#13bfd0"/>
+  <rect x="856" y="270" width="172" height="14" rx="7" fill="#dbe8f4"/>
+  <rect x="856" y="314" width="124" height="14" rx="7" fill="#9fb2c4"/>
+  <rect x="856" y="402" width="86" height="58" rx="14" fill="#1769e8"/>
+  <path d="M390 380h90" stroke="#1769e8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M704 380h108" stroke="#1769e8" stroke-width="8" stroke-linecap="round"/>
+</svg>

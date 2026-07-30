@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">AI workshop lab visual</title>
+  <desc id="desc">A hands-on workshop table with laptops, prompt cards, and prototype blocks.</desc>
+  <rect width="1200" height="760" fill="#ffffff"/>
+  <rect x="110" y="104" width="980" height="552" rx="30" fill="#f7fbff" stroke="#dce8f2" stroke-width="3"/>
+  <rect x="210" y="238" width="780" height="298" rx="32" fill="#eaf3ff"/>
+  <rect x="260" y="286" width="214" height="138" rx="22" fill="#071521"/>
+  <rect x="526" y="286" width="214" height="138" rx="22" fill="#071521"/>
+  <rect x="792" y="286" width="150" height="138" rx="22" fill="#071521"/>
+  <rect x="294" y="320" width="112" height="14" rx="7" fill="#13bfd0"/>
+  <rect x="560" y="320" width="112" height="14" rx="7" fill="#18a77d"/>
+  <rect x="826" y="320" width="72" height="14" rx="7" fill="#f0a429"/>
+  <rect x="294" y="362" width="136" height="12" rx="6" fill="#9fb2c4"/>
+  <rect x="560" y="362" width="136" height="12" rx="6" fill="#9fb2c4"/>
+  <rect x="826" y="362" width="82" height="12" rx="6" fill="#9fb2c4"/>
+  <circle cx="320" cy="194" r="48" fill="#1769e8"/>
+  <circle cx="600" cy="194" r="48" fill="#13bfd0"/>
+  <circle cx="880" cy="194" r="48" fill="#18a77d"/>
+  <path d="M320 540v58M600 540v58M880 540v58" stroke="#1769e8" stroke-width="8" stroke-linecap="round"/>
+</svg>

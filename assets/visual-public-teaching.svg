@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Public teaching visual</title>
+  <desc id="desc">A lecture room with a screen, audience seats, and AI practice modules.</desc>
+  <rect width="1200" height="760" fill="#f7fbff"/>
+  <rect x="112" y="106" width="976" height="548" rx="30" fill="#ffffff" stroke="#dce8f2" stroke-width="3"/>
+  <rect x="210" y="168" width="520" height="294" rx="22" fill="#071521"/>
+  <rect x="250" y="212" width="172" height="20" rx="10" fill="#13bfd0"/>
+  <rect x="250" y="268" width="402" height="14" rx="7" fill="#9fb2c4"/>
+  <rect x="250" y="314" width="300" height="14" rx="7" fill="#607083"/>
+  <rect x="250" y="368" width="104" height="54" rx="14" fill="#1769e8"/>
+  <rect x="376" y="368" width="104" height="54" rx="14" fill="#18a77d"/>
+  <rect x="502" y="368" width="104" height="54" rx="14" fill="#f0a429"/>
+  <circle cx="828" cy="244" r="58" fill="#eaf3ff" stroke="#1769e8" stroke-width="6"/>
+  <rect x="786" y="318" width="84" height="150" rx="42" fill="#1769e8"/>
+  <rect x="238" y="532" width="116" height="42" rx="21" fill="#dce8f2"/>
+  <rect x="396" y="532" width="116" height="42" rx="21" fill="#dce8f2"/>
+  <rect x="554" y="532" width="116" height="42" rx="21" fill="#dce8f2"/>
+  <rect x="712" y="532" width="116" height="42" rx="21" fill="#dce8f2"/>
+  <rect x="870" y="532" width="116" height="42" rx="21" fill="#dce8f2"/>
+</svg>

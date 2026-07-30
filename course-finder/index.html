@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>找到適合我的課程｜課程導航</title>
+    <meta name="description" content="用三個問題判斷你現在應該先走職涯轉換或軟體新創路徑。AI 是兩條路徑的共同應用能力。">
+    <link rel="stylesheet" href="/assets/styles.css?v=20260720courses">
+      <link rel="canonical" href="https://blake.mba/course-finder">
+      <meta property="og:title" content="找到適合我的課程｜課程導航">
+      <meta property="og:description" content="用三個問題判斷你現在應該先走職涯轉換或軟體新創路徑。AI 是兩條路徑的共同應用能力。">
+      <meta property="og:url" content="https://blake.mba/course-finder">
+      <meta property="og:image" content="https://blake.mba/og.png">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="https://blake.mba/og.png">
+  </head>
+  <body data-page="finder">
+    <a class="skip-link" href="#main">跳到主要內容</a>
+    <header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="William Blake Huang 黃大成首頁"><span class="brand-mark">WBH</span><span class="brand-text"><span>William Blake Huang</span><span>AI 實踐教育</span></span></a><nav class="site-nav" data-site-nav aria-label="主要導覽"><a href="/" data-nav-page="home">首頁</a><a href="/courses/" data-nav-page="courses career startup finder">課程</a><a href="/ai-action-lab/" data-nav-page="lab">AI Action Lab</a><a href="/results/" data-nav-page="results cases">成果</a><a href="/resources/" data-nav-page="resources articles book">文章與資源</a><a href="/about/" data-nav-page="about">關於</a></nav><div class="header-actions"><a class="button primary small" href="/courses/">查看所有課程</a><button class="nav-toggle" type="button" aria-label="開啟導覽" aria-expanded="false" data-nav-toggle><span></span></button></div></div></header>
+    <main id="main">
+      <section class="page-hero finder-hero"><div class="narrow"><div class="breadcrumbs"><a href="/">首頁</a><span>/</span><a href="/courses/">課程</a><span>/</span><span>課程導航</span></div><span class="eyebrow">COURSE FINDER</span><h1>你現在最需要完成哪一個任務？</h1><p class="lead">回答三個問題，我們會依你目前的主要任務推薦一條起點。這不是人格測驗，也不替你做人生決定。</p></div></section>
+
+      <section class="section finder-section">
+        <div class="narrow">
+          <form class="finder-form" data-course-finder>
+            <fieldset><legend><span>01</span>過去一個月，哪件事最困擾你？</legend><label class="finder-option"><input type="radio" name="q1" value="career" required><span><strong>工作方向不清楚</strong><small>包含失業、待業、轉職、定位或求職問題</small></span></label><label class="finder-option"><input type="radio" name="q1" value="startup"><span><strong>有想法但做不成產品</strong><small>包含選題、驗證、原型或找不到使用者</small></span></label></fieldset>
+            <fieldset><legend><span>02</span>八週後，你最希望手上多出什麼？</legend><label class="finder-option"><input type="radio" name="q2" value="career" required><span><strong>新的職涯定位與行動計畫</strong><small>知道目標方向、差距、作品與每週行動</small></span></label><label class="finder-option"><input type="radio" name="q2" value="startup"><span><strong>一個可測試的軟體原型</strong><small>有訪談證據、價值主張與使用者回饋</small></span></label></fieldset>
+            <fieldset><legend><span>03</span>你現在最需要 AI 協助哪一類任務？</legend><label class="finder-option"><input type="radio" name="q3" value="career" required><span><strong>整理經驗、研究職缺、準備求職</strong><small>讓自己的能力與市場需求接得起來</small></span></label><label class="finder-option"><input type="radio" name="q3" value="startup"><span><strong>研究市場、分析訪談、製作原型</strong><small>降低產品與市場的不確定性</small></span></label><label class="finder-option"><input type="radio" name="q3" value="balanced"><span><strong>兩邊都需要，還不能確定</strong><small>先依時間壓力與八週內最重要的成果判斷</small></span></label></fieldset>
+            <button class="button primary full finder-submit" type="submit">查看建議起點</button>
+          </form>
+
+          <div class="finder-result" data-finder-result hidden aria-live="polite">
+            <div class="finder-result-career" data-finder-career hidden><span class="result-kicker">建議先走</span><h2>職涯轉換路徑</h2><p>你目前最需要的是重新整理職涯方向、能力證據與可執行的下一步。AI 會放在職缺研究、經驗訪談、履歷與面試演練中。</p><a class="button career-button" href="/courses/career-transition/">查看 AI 職涯重設計實戰班</a></div>
+            <div class="finder-result-startup" data-finder-startup hidden><span class="result-kicker">建議先走</span><h2>軟體新創路徑</h2><p>你目前最需要的是驗證問題、整理市場證據並做出可測試的 MVP。AI 會放在研究、訪談分析、原型與迭代中。</p><a class="button startup-button" href="/courses/software-startup/">查看 AI 軟體新創驗證實戰班</a></div>
+            <div class="finder-result-balanced" data-finder-balanced hidden><span class="result-kicker">兩條都符合</span><h2>先選擇未來八週最重要的成果</h2><p>如果收入與求職時程有壓力，建議先完成職涯轉換；如果目前已有穩定工作且持續訪談使用者，則可以先走軟體新創。另一條不會消失，AI 能力也會在兩邊持續累積。</p><div class="page-actions"><a class="button career-button" href="/courses/career-transition/">先處理職涯</a><a class="button startup-button" href="/courses/software-startup/">先驗證產品</a></div></div>
+            <button class="text-button" type="button" data-finder-reset>重新回答</button>
+          </div>
+
+          <div class="finder-note"><strong>提醒：</strong><span>如果你正面臨急迫的收入、債務、居住或身心安全問題，請先使用所在地的就業、社福或專業協助資源；課程導航不能取代這些支持。</span></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><div class="container footer-inner"><div><a class="brand" href="/"><span class="brand-mark">WBH</span><span class="brand-text"><span>William Blake Huang</span><span>AI 實踐教育</span></span></a><p>用 AI 重新設計職涯與軟體新創的下一步。</p></div><nav class="footer-nav" aria-label="頁尾導覽"><a href="/courses/">課程</a><a href="/ai-action-lab/">AI Action Lab</a><a href="/results/">成果</a><a href="/resources/">文章與資源</a><a href="/about/">關於</a><a href="/contact/">演講與合作</a></nav></div></footer>
+    <script src="/assets/site.js?v=20260720courses"></script>
+  </body>
+</html>

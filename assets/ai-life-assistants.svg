@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">AI assistants helping people with everyday life tasks</title>
+  <desc id="desc">A clean illustration of ChatGPT, Claude, Gemini and AI cards helping people with schedules, learning, budget, health, meals and career planning.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7fbff"/>
+      <stop offset="0.55" stop-color="#eef8fb"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#2476ff"/>
+      <stop offset="1" stop-color="#11c3d6"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#21b7a7"/>
+      <stop offset="1" stop-color="#5ed39a"/>
+    </linearGradient>
+    <linearGradient id="warm" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff4cf"/>
+      <stop offset="1" stop-color="#dff8f7"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#18354c" flood-opacity="0.16"/>
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1100" fill="url(#bg)"/>
+  <circle cx="1320" cy="210" r="220" fill="#d8f5f4" opacity="0.55" filter="url(#soft)"/>
+  <circle cx="250" cy="840" r="260" fill="#dbeafe" opacity="0.55" filter="url(#soft)"/>
+
+  <g opacity="0.38" stroke="#bdd6e9" stroke-width="2">
+    <path d="M185 218 C420 130 554 245 760 181 S1114 122 1390 250" fill="none"/>
+    <path d="M150 877 C387 760 582 925 820 815 S1170 705 1435 850" fill="none"/>
+    <path d="M292 160 L1250 916" fill="none"/>
+    <path d="M1330 136 L365 930" fill="none"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="190" y="170" width="1220" height="760" rx="42" fill="#ffffff"/>
+    <rect x="222" y="204" width="1156" height="692" rx="28" fill="#fbfdff" stroke="#d9e8f4" stroke-width="2"/>
+  </g>
+
+  <g transform="translate(305 624)">
+    <ellipse cx="0" cy="238" rx="155" ry="27" fill="#d5e4ee"/>
+    <rect x="-88" y="-8" width="176" height="244" rx="34" fill="#173047"/>
+    <rect x="-68" y="21" width="136" height="178" rx="20" fill="#eef9fb"/>
+    <circle cx="0" cy="218" r="10" fill="#8bb4cb"/>
+    <rect x="-47" y="52" width="94" height="14" rx="7" fill="#2476ff" opacity="0.82"/>
+    <rect x="-47" y="84" width="72" height="10" rx="5" fill="#9bb8ce"/>
+    <rect x="-47" y="112" width="96" height="10" rx="5" fill="#c5d7e4"/>
+    <rect x="-47" y="140" width="60" height="10" rx="5" fill="#c5d7e4"/>
+    <circle cx="-122" cy="98" r="50" fill="#f6c89a"/>
+    <path d="M-170 235 C-158 155 -89 150 -72 235 Z" fill="#1e6edb"/>
+    <path d="M-163 75 C-131 23 -70 48 -75 100 C-112 79 -135 83 -163 75 Z" fill="#26364a"/>
+  </g>
+
+  <g transform="translate(610 520)">
+    <ellipse cx="210" cy="334" rx="280" ry="34" fill="#d5e4ee"/>
+    <rect x="8" y="55" width="420" height="260" rx="24" fill="#eff7fb" stroke="#c9dceb" stroke-width="3"/>
+    <rect x="44" y="92" width="348" height="166" rx="16" fill="#ffffff"/>
+    <rect x="71" y="121" width="142" height="18" rx="9" fill="#2476ff"/>
+    <rect x="71" y="162" width="260" height="12" rx="6" fill="#c4d6e4"/>
+    <rect x="71" y="196" width="226" height="12" rx="6" fill="#c4d6e4"/>
+    <rect x="71" y="230" width="185" height="12" rx="6" fill="#c4d6e4"/>
+    <rect x="-28" y="315" width="498" height="28" rx="14" fill="#173047"/>
+    <circle cx="122" cy="-2" r="58" fill="#f4c18d"/>
+    <path d="M65 52 C73 -19 166 -22 181 52 C143 31 105 31 65 52 Z" fill="#24344a"/>
+    <path d="M35 315 C60 204 187 202 214 315 Z" fill="#24a99a"/>
+  </g>
+
+  <g transform="translate(1170 650)">
+    <ellipse cx="0" cy="224" rx="150" ry="28" fill="#d5e4ee"/>
+    <rect x="-108" y="-40" width="216" height="265" rx="25" fill="#26364a"/>
+    <rect x="-84" y="-8" width="168" height="202" rx="16" fill="#fbfdff"/>
+    <rect x="-55" y="25" width="110" height="16" rx="8" fill="#18b6c8"/>
+    <rect x="-58" y="67" width="116" height="42" rx="13" fill="#e7f7f8"/>
+    <rect x="-58" y="124" width="116" height="42" rx="13" fill="#f1f6ff"/>
+    <circle cx="-123" cy="82" r="48" fill="#edbd91"/>
+    <path d="M-165 222 C-154 148 -87 145 -76 222 Z" fill="#374e7d"/>
+    <path d="M-164 61 C-146 14 -82 25 -77 72 C-111 54 -134 59 -164 61 Z" fill="#26364a"/>
+  </g>
+
+  <g fill="none" stroke-linecap="round" stroke-width="5" opacity="0.78">
+    <path d="M448 520 C565 400 677 373 795 384" stroke="#2476ff"/>
+    <path d="M1030 450 C929 382 836 369 746 390" stroke="#11c3d6"/>
+    <path d="M520 742 C658 687 837 676 1020 725" stroke="#20bca9"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <g transform="translate(350 310)">
+      <rect width="248" height="116" rx="28" fill="#ffffff" stroke="#d8e8f2" stroke-width="2"/>
+      <circle cx="52" cy="58" r="28" fill="url(#blue)"/>
+      <path d="M39 58 h26 M52 45 v26" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+      <text x="95" y="52" fill="#0a1a28" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">ChatGPT</text>
+      <text x="95" y="84" fill="#687889" font-family="Inter, Arial, sans-serif" font-size="18">Schedule</text>
+    </g>
+
+    <g transform="translate(675 245)">
+      <rect width="238" height="116" rx="28" fill="#ffffff" stroke="#d8e8f2" stroke-width="2"/>
+      <circle cx="52" cy="58" r="28" fill="#1f2937"/>
+      <path d="M43 70 C48 45 70 45 75 70" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <text x="95" y="52" fill="#0a1a28" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">Claude</text>
+      <text x="95" y="84" fill="#687889" font-family="Inter, Arial, sans-serif" font-size="18">Learning</text>
+    </g>
+
+    <g transform="translate(1000 310)">
+      <rect width="238" height="116" rx="28" fill="#ffffff" stroke="#d8e8f2" stroke-width="2"/>
+      <circle cx="52" cy="58" r="28" fill="url(#green)"/>
+      <path d="M52 37 L59 54 L78 57 L63 69 L68 87 L52 77 L36 87 L41 69 L26 57 L45 54 Z" fill="#fff"/>
+      <text x="95" y="52" fill="#0a1a28" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">Gemini</text>
+      <text x="95" y="84" fill="#687889" font-family="Inter, Arial, sans-serif" font-size="18">Ideas</text>
+    </g>
+
+    <g transform="translate(260 488)">
+      <rect width="205" height="92" rx="24" fill="#ecfbf9" stroke="#cfeee9" stroke-width="2"/>
+      <text x="30" y="42" fill="#0e8d7f" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Meals</text>
+      <text x="30" y="69" fill="#5f7485" font-family="Inter, Arial, sans-serif" font-size="17">Plan dinner</text>
+    </g>
+
+    <g transform="translate(1050 490)">
+      <rect width="210" height="92" rx="24" fill="#eef5ff" stroke="#d9e8ff" stroke-width="2"/>
+      <text x="30" y="42" fill="#2164ce" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Budget</text>
+      <text x="30" y="69" fill="#5f7485" font-family="Inter, Arial, sans-serif" font-size="17">Bills first</text>
+    </g>
+
+    <g transform="translate(450 788)">
+      <rect width="210" height="92" rx="24" fill="#fff7dc" stroke="#f0e3ba" stroke-width="2"/>
+      <text x="30" y="42" fill="#9a6a08" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Health</text>
+      <text x="30" y="69" fill="#6b7480" font-family="Inter, Arial, sans-serif" font-size="17">Daily habits</text>
+    </g>
+
+    <g transform="translate(900 788)">
+      <rect width="210" height="92" rx="24" fill="#f4efff" stroke="#e4d9ff" stroke-width="2"/>
+      <text x="30" y="42" fill="#6c3bcf" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Career</text>
+      <text x="30" y="69" fill="#6b7480" font-family="Inter, Arial, sans-serif" font-size="17">Next step</text>
+    </g>
+  </g>
+
+  <g transform="translate(640 420)" filter="url(#shadow)">
+    <rect width="324" height="118" rx="34" fill="url(#warm)" stroke="#d8e8f2" stroke-width="2"/>
+    <circle cx="58" cy="59" r="34" fill="#ffffff" opacity="0.9"/>
+    <path d="M44 60 C44 44 55 35 68 38 C82 41 89 55 84 70 C78 88 51 87 44 60 Z" fill="url(#blue)" opacity="0.9"/>
+    <text x="112" y="53" fill="#071521" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="900">AI</text>
+    <text x="112" y="85" fill="#5e7384" font-family="Inter, Arial, sans-serif" font-size="18">turns questions into action</text>
+  </g>
+</svg>

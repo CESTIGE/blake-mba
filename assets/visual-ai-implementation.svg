@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">AI implementation visual</title>
+  <desc id="desc">A data platform implementation map connecting stores, members, and AI operations.</desc>
+  <rect width="1200" height="760" fill="#f8fbff"/>
+  <rect x="116" y="110" width="968" height="540" rx="30" fill="#ffffff" stroke="#dce8f2" stroke-width="3"/>
+  <rect x="462" y="248" width="276" height="214" rx="26" fill="#071521"/>
+  <circle cx="600" cy="354" r="56" fill="#13bfd0"/>
+  <path d="M360 228h-92c-32 0-58 26-58 58v32" fill="none" stroke="#1769e8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M840 228h92c32 0 58 26 58 58v32" fill="none" stroke="#18a77d" stroke-width="8" stroke-linecap="round"/>
+  <path d="M360 486h-92c-32 0-58-26-58-58v-32" fill="none" stroke="#f0a429" stroke-width="8" stroke-linecap="round"/>
+  <path d="M840 486h92c32 0 58-26 58-58v-32" fill="none" stroke="#13bfd0" stroke-width="8" stroke-linecap="round"/>
+  <rect x="214" y="186" width="170" height="92" rx="20" fill="#eef5fb"/>
+  <rect x="816" y="186" width="170" height="92" rx="20" fill="#eef5fb"/>
+  <rect x="214" y="482" width="170" height="92" rx="20" fill="#eef5fb"/>
+  <rect x="816" y="482" width="170" height="92" rx="20" fill="#eef5fb"/>
+  <rect x="248" y="222" width="94" height="14" rx="7" fill="#102233"/>
+  <rect x="850" y="222" width="94" height="14" rx="7" fill="#102233"/>
+  <rect x="248" y="518" width="94" height="14" rx="7" fill="#102233"/>
+  <rect x="850" y="518" width="94" height="14" rx="7" fill="#102233"/>
+  <rect x="502" y="494" width="196" height="20" rx="10" fill="#1769e8"/>
+  <rect x="540" y="532" width="120" height="14" rx="7" fill="#607083"/>
+</svg>

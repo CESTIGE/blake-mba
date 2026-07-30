@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Startup proof visual</title>
+  <desc id="desc">A startup timeline with team, accelerator, and growth milestones.</desc>
+  <rect width="1200" height="760" fill="#f8fbff"/>
+  <rect x="120" y="124" width="960" height="512" rx="30" fill="#ffffff" stroke="#dce8f2" stroke-width="3"/>
+  <path d="M230 492c96-168 222-218 360-148 112 56 210 14 324-108" fill="none" stroke="#1769e8" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="230" cy="492" r="28" fill="#13bfd0"/>
+  <circle cx="452" cy="348" r="28" fill="#18a77d"/>
+  <circle cx="672" cy="370" r="28" fill="#f0a429"/>
+  <circle cx="914" cy="236" r="28" fill="#1769e8"/>
+  <rect x="204" y="222" width="230" height="94" rx="22" fill="#071521"/>
+  <rect x="238" y="256" width="128" height="16" rx="8" fill="#13bfd0"/>
+  <rect x="238" y="286" width="154" height="12" rx="6" fill="#9fb2c4"/>
+  <rect x="510" y="482" width="230" height="94" rx="22" fill="#eef5fb"/>
+  <rect x="544" y="516" width="132" height="16" rx="8" fill="#071521"/>
+  <rect x="544" y="546" width="150" height="12" rx="6" fill="#607083"/>
+  <rect x="776" y="398" width="230" height="94" rx="22" fill="#eef5fb"/>
+  <rect x="810" y="432" width="126" height="16" rx="8" fill="#071521"/>
+  <rect x="810" y="462" width="144" height="12" rx="6" fill="#607083"/>
+</svg>

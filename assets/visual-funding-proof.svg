@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Funding proof visual</title>
+  <desc id="desc">Investment proof with funding bars, verification marks, and growth signal.</desc>
+  <rect width="1200" height="760" fill="#071521"/>
+  <rect x="116" y="102" width="968" height="556" rx="30" fill="#102233" stroke="#294256" stroke-width="3"/>
+  <rect x="188" y="198" width="156" height="304" rx="22" fill="#1769e8"/>
+  <rect x="386" y="286" width="156" height="216" rx="22" fill="#13bfd0"/>
+  <rect x="584" y="236" width="156" height="266" rx="22" fill="#18a77d"/>
+  <rect x="782" y="160" width="156" height="342" rx="22" fill="#f0a429"/>
+  <path d="M196 560h746" stroke="#dbe8f4" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="266" cy="170" r="38" fill="#ffffff"/>
+  <path d="M248 170l14 14 30-34" fill="none" stroke="#18a77d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="858" cy="118" r="38" fill="#ffffff"/>
+  <path d="M840 118l14 14 30-34" fill="none" stroke="#18a77d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="188" y="586" width="286" height="18" rx="9" fill="#dbe8f4"/>
+  <rect x="188" y="618" width="206" height="12" rx="6" fill="#9fb2c4"/>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Public source map visual</title>
+  <desc id="desc">Verified public sources arranged as evidence cards connected to a central archive.</desc>
+  <rect width="1200" height="760" fill="#ffffff"/>
+  <rect x="130" y="120" width="940" height="520" rx="30" fill="#f7fbff" stroke="#dce8f2" stroke-width="3"/>
+  <rect x="448" y="248" width="304" height="264" rx="26" fill="#071521"/>
+  <rect x="496" y="304" width="208" height="18" rx="9" fill="#13bfd0"/>
+  <rect x="496" y="354" width="166" height="14" rx="7" fill="#dbe8f4"/>
+  <rect x="496" y="394" width="128" height="14" rx="7" fill="#9fb2c4"/>
+  <rect x="216" y="184" width="206" height="102" rx="22" fill="#ffffff" stroke="#dce8f2" stroke-width="3"/>
+  <rect x="778" y="184" width="206" height="102" rx="22" fill="#ffffff" stroke="#dce8f2" stroke-width="3"/>
+  <rect x="216" y="474" width="206" height="102" rx="22" fill="#ffffff" stroke="#dce8f2" stroke-width="3"/>
+  <rect x="778" y="474" width="206" height="102" rx="22" fill="#ffffff" stroke="#dce8f2" stroke-width="3"/>
+  <path d="M422 236h26M752 236h26M422 526h26M752 526h26" stroke="#1769e8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M278 236l18 18 42-50M840 236l18 18 42-50M278 526l18 18 42-50M840 526l18 18 42-50" fill="none" stroke="#18a77d" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="318" y="224" width="54" height="12" rx="6" fill="#607083"/>
+  <rect x="880" y="224" width="54" height="12" rx="6" fill="#607083"/>
+  <rect x="318" y="514" width="54" height="12" rx="6" fill="#607083"/>
+  <rect x="880" y="514" width="54" height="12" rx="6" fill="#607083"/>
+</svg>
