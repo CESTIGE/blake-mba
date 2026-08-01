@@ -80,6 +80,22 @@ if (articleSidebarList && articleCards.length) {
 
 const contactForm = document.querySelector("[data-contact-form]");
 const contactStatus = document.querySelector("[data-form-status]");
+const inquirySelect = contactForm?.querySelector("[data-inquiry-select]");
+
+document.querySelectorAll("[data-inquiry-type]").forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    const inquiryType = trigger.dataset.inquiryType;
+
+    if (
+      inquirySelect &&
+      Array.from(inquirySelect.options).some(
+        (option) => option.value === inquiryType,
+      )
+    ) {
+      inquirySelect.value = inquiryType;
+    }
+  });
+});
 
 if (contactForm && contactStatus) {
   contactForm.addEventListener("submit", (event) => {
@@ -87,22 +103,24 @@ if (contactForm && contactStatus) {
     const formData = new FormData(contactForm);
     const fields = Array.from(formData.entries())
       .map(([key, value]) => `${key}: ${value}`)
-      .join("%0D%0A");
-    const source = formData.get("名單來源");
-    const subjectText = source
-      ? `William Blake Huang 黃大成｜${source}`
-      : "William Blake Huang 黃大成｜演講／顧問／合作邀約";
+      .join("\r\n");
+    const inquiryType = formData.get("需求類型");
+    const subjectText = inquiryType
+      ? `BLAKE 官網｜${inquiryType}`
+      : "BLAKE 官網｜聯絡需求";
     const subject = encodeURIComponent(subjectText);
-    const body = `您好，以下是網站表單送出的需求：%0D%0A%0D%0A${fields}`;
-    const recipient = "tmarsbase@gmail.com";
+    const body = encodeURIComponent(
+      `您好，以下是從 BLAKE 官網整理的聯絡需求：\r\n\r\n${fields}`,
+    );
+    const recipient = contactForm.dataset.recipient?.trim() || "cestig@gmail.com";
 
     if (recipient) {
       window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-      contactStatus.textContent = "已開啟郵件草稿，請確認內容後寄出。";
+      contactStatus.textContent = "已建立寄給 BLAKE 的郵件草稿，請在郵件程式中確認並按下寄出。";
       return;
     }
 
-    contactStatus.textContent = "已收到表單內容。正式上線前，請在 assets/site.js 補上收件信箱或串接表單服務。";
+    contactStatus.textContent = "目前無法建立郵件，請稍後再試。";
   });
 }
 
