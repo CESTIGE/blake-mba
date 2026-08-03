@@ -200,6 +200,36 @@ img {
   transform: scaleX(1);
 }
 
+.site-nav-group { position: relative; }
+.main-nav .site-nav-parent { display: inline-flex; align-items: center; gap: 6px; }
+.site-nav-chevron { font-size: 11px; line-height: 1; transition: transform 180ms ease; }
+.site-nav-submenu {
+  position: absolute;
+  z-index: 30;
+  top: 100%;
+  left: 50%;
+  display: grid;
+  width: 238px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  background: #071720;
+  box-shadow: 0 24px 60px rgba(2, 14, 22, 0.38);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 8px);
+  transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+  visibility: hidden;
+}
+.main-nav .site-nav-submenu a { width: 100%; padding: 11px 12px; border-radius: 10px; color: rgba(255, 255, 255, 0.76); }
+.main-nav .site-nav-submenu a::after { display: none; }
+.main-nav .site-nav-submenu a:hover,
+.main-nav .site-nav-submenu a:focus-visible { color: var(--white); background: rgba(255, 255, 255, 0.08); }
+.site-nav-group:hover .site-nav-submenu,
+.site-nav-group:focus-within .site-nav-submenu { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); visibility: visible; }
+.site-nav-group:hover .site-nav-chevron,
+.site-nav-group:focus-within .site-nav-chevron { transform: rotate(180deg); }
+
 .header-cta {
   justify-self: end;
   padding: 11px 15px;
@@ -265,6 +295,9 @@ img {
   color: var(--white);
   background: rgba(255, 255, 255, 0.08);
 }
+
+.mobile-course-links { display: grid; margin: 2px 0 8px 12px; padding: 4px 0 4px 10px; border-left: 2px solid rgba(255, 101, 52, 0.7); }
+.mobile-menu nav .mobile-course-links a { padding-block: 9px; color: rgba(255, 255, 255, 0.66); font-size: 12px; }
 
 .mobile-menu nav .mobile-menu-cta {
   margin-top: 8px;

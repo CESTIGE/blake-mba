@@ -3,18 +3,37 @@ const nav = document.querySelector("[data-site-nav]");
 
 const universalNavigation = [
   { href: "/", label: "首頁", pages: "home" },
-  { href: "/courses/", label: "課程", pages: "courses career startup finder" },
-  { href: "/ai-action-lab/", label: "AI Action Lab", pages: "lab" },
-  { href: "/results/", label: "成果", pages: "results cases" },
-  { href: "/resources/", label: "文章與資源", pages: "resources articles book" },
-  { href: "/about/", label: "關於", pages: "about" },
+  {
+    href: "/courses",
+    label: "課程",
+    pages: "courses",
+    children: [
+      { href: "/courses/career-transition", label: "AI 職涯重設計", pages: "career" },
+      { href: "/courses/choice-over-effort", label: "選擇重於努力", pages: "choice-over-effort" },
+      { href: "/courses/software-startup", label: "AI 軟體新創", pages: "startup" },
+      { href: "/course-finder", label: "課程導航", pages: "finder" },
+    ],
+  },
+  { href: "/ai-action-lab", label: "AI Action Lab", pages: "lab" },
+  { href: "/results", label: "成果", pages: "results cases" },
+  { href: "/resources", label: "文章與資源", pages: "resources articles book" },
+  { href: "/about", label: "關於", pages: "about" },
 ];
 
 if (nav) {
   nav.innerHTML = universalNavigation
     .map(
-      ({ href, label, pages }) =>
-        `<a href="${href}" data-nav-page="${pages}">${label}</a>`,
+      ({ href, label, pages, children }) => {
+        const primaryLink = `<a${children ? ' class="site-nav-parent"' : ""} href="${href}" data-nav-page="${pages}">${label}${children ? '<span class="site-nav-chevron" aria-hidden="true">⌄</span>' : ""}</a>`;
+
+        if (!children) return primaryLink;
+
+        const childLinks = children
+          .map((child) => `<a href="${child.href}" data-nav-page="${child.pages}">${child.label}</a>`)
+          .join("");
+
+        return `<div class="site-nav-group">${primaryLink}<div class="site-nav-submenu" aria-label="課程子選單">${childLinks}</div></div>`;
+      },
     )
     .join("");
 }
@@ -50,6 +69,10 @@ if (currentPage) {
   document.querySelectorAll("[data-nav-page]").forEach((link) => {
     if ((link.dataset.navPage || "").split(" ").includes(currentPage)) {
       link.setAttribute("aria-current", "page");
+      link
+        .closest(".site-nav-group")
+        ?.querySelector(".site-nav-parent")
+        ?.classList.add("is-active");
     }
   });
 }
