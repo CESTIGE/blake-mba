@@ -1,0 +1,116 @@
+.analytics-consent[hidden] {
+  display: none;
+}
+
+.analytics-consent {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 20px;
+  width: min(760px, calc(100vw - 40px));
+  padding: 20px;
+  color: #ffffff;
+  background: rgba(11, 29, 42, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  box-shadow: 0 26px 80px rgba(11, 29, 42, 0.28);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+
+.analytics-consent__copy strong {
+  display: block;
+  margin-bottom: 6px;
+  font-family: "Noto Serif TC", "Songti TC", Georgia, serif;
+  font-size: 1.08rem;
+}
+
+.analytics-consent__copy p {
+  max-width: 62ch;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.analytics-consent__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.analytics-consent__button,
+.analytics-settings {
+  min-height: 44px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font: 700 0.88rem/1 "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  cursor: pointer;
+}
+
+.analytics-consent__button {
+  padding: 0 16px;
+  white-space: nowrap;
+}
+
+.analytics-consent__button--primary {
+  color: #0b1d2a;
+  background: #ff6534;
+}
+
+.analytics-consent__button--secondary {
+  color: #ffffff;
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.42);
+}
+
+.analytics-settings {
+  position: fixed;
+  left: 12px;
+  bottom: 12px;
+  z-index: 9998;
+  padding: 0 14px;
+  color: #0b1d2a;
+  background: rgba(250, 247, 241, 0.96);
+  border-color: rgba(11, 29, 42, 0.2);
+  box-shadow: 0 10px 28px rgba(11, 29, 42, 0.14);
+}
+
+.analytics-consent__button:hover,
+.analytics-settings:hover {
+  transform: translateY(-1px);
+}
+
+.analytics-consent__button:focus-visible,
+.analytics-settings:focus-visible {
+  outline: 3px solid #a8d9cf;
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .analytics-consent {
+    right: 12px;
+    bottom: 12px;
+    grid-template-columns: 1fr;
+    width: calc(100vw - 24px);
+    padding: 18px;
+  }
+
+  .analytics-consent__actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+
+  .analytics-consent__button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .analytics-consent__button,
+  .analytics-settings {
+    transition: none;
+  }
+}
