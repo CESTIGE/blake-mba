@@ -2637,6 +2637,25 @@ a.credential-card:focus-visible {
     display: block;
   }
 
+  .mobile-menu nav {
+    max-height: calc(100svh - 118px);
+    overflow-y: auto;
+  }
+
+  .mobile-menu nav .mobile-nav-section {
+    display: none;
+  }
+
+  .mobile-menu nav .mobile-nav-parent {
+    min-height: 48px;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .mobile-menu nav .mobile-nav-parent span {
+    color: #9db0ff;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr 0.8fr;
     gap: 38px;

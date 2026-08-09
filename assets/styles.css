@@ -1681,8 +1681,11 @@ h3 {
     inset: 74px 0 auto 0;
     display: none;
     padding: 18px;
-    background: #ffffff;
-    border-bottom: 1px solid var(--line);
+    max-height: calc(100svh - 74px);
+    overflow-y: auto;
+    background: var(--ink);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 0 0 18px 18px;
     box-shadow: 0 24px 40px rgba(16, 34, 51, 0.12);
   }
 
@@ -1693,6 +1696,15 @@ h3 {
   .site-nav a {
     min-height: 48px;
     justify-content: center;
+    color: var(--white);
+  }
+
+  .site-nav a:hover,
+  .site-nav a:focus-visible,
+  .site-nav a[aria-current="page"],
+  .site-nav a.is-active {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.08);
   }
 
   .site-nav-copy {
@@ -1701,36 +1713,24 @@ h3 {
     gap: 8px;
   }
 
+  .site-nav-copy small {
+    color: #9db0ff;
+  }
+
   .site-nav .site-nav-talk {
     display: inline-flex;
   }
 
   .site-nav-group {
-    display: grid;
+    display: block;
   }
 
   .site-nav-submenu {
-    position: static;
-    width: auto;
-    margin: 0 10px 8px;
-    padding: 6px;
-    border: 0;
-    background: var(--soft);
-    box-shadow: none;
-    opacity: 1;
-    pointer-events: auto;
-    transform: none;
-    visibility: visible;
-  }
-
-  .site-nav-submenu a {
-    min-height: 44px;
-    justify-content: center;
-    font-size: 13px;
+    display: none;
   }
 
   .site-nav-chevron {
-    transform: rotate(180deg);
+    display: none;
   }
 
   .header-actions .button {
