@@ -2,37 +2,108 @@ const navToggle = document.querySelector("[data-nav-toggle]");
 const nav = document.querySelector("[data-site-nav]");
 
 const universalNavigation = [
-  { href: "/", label: "首頁", pages: "home" },
+  {
+    href: "/about",
+    label: "認識我",
+    eyebrow: "MY STORY",
+    pages: "about",
+    sectionPages: "home about results cases",
+    submenuLabel: "認識我子選單",
+    children: [
+      { href: "/", label: "人物首頁", pages: "home" },
+      { href: "/about", label: "關於 BLAKE", pages: "about" },
+      { href: "/results", label: "經歷與成果", pages: "results" },
+      { href: "/cases", label: "公開案例", pages: "cases" },
+    ],
+  },
   {
     href: "/courses",
-    label: "課程",
+    label: "選課程",
+    eyebrow: "ACADEMY",
     pages: "courses",
+    sectionPages: "courses career choice-over-effort startup finder",
+    submenuLabel: "選課程子選單",
     children: [
-      { href: "/courses/career-transition", label: "AI 職涯重設計", pages: "career" },
-      { href: "/courses/choice-over-effort", label: "選擇重於努力", pages: "choice-over-effort" },
-      { href: "/courses/software-startup", label: "AI 軟體新創", pages: "startup" },
+      { href: "/courses", label: "課程總覽", pages: "courses" },
+      {
+        href: "/courses/career-transition",
+        label: "AI 職涯重設計",
+        pages: "career",
+      },
+      {
+        href: "/courses/software-startup",
+        label: "AI 軟體新創",
+        pages: "startup",
+      },
+      {
+        href: "/courses/choice-over-effort",
+        label: "選擇重於努力",
+        pages: "choice-over-effort",
+      },
       { href: "/course-finder", label: "課程導航", pages: "finder" },
     ],
   },
-  { href: "/ai-action-lab", label: "AI Action Lab", pages: "lab" },
-  { href: "/results", label: "成果", pages: "results cases" },
-  { href: "/resources", label: "文章與資源", pages: "resources articles book" },
-  { href: "/about", label: "關於", pages: "about" },
+  {
+    href: "/resources",
+    label: "看觀點",
+    eyebrow: "INSIGHTS",
+    pages: "resources",
+    sectionPages: "resources articles lab book",
+    submenuLabel: "看觀點子選單",
+    children: [
+      { href: "/articles", label: "文章總覽", pages: "articles" },
+      { href: "/ai-action-lab", label: "AI Action Lab", pages: "lab" },
+      { href: "/resources", label: "免費資源", pages: "resources" },
+      { href: "/book", label: "新書計畫", pages: "book" },
+    ],
+  },
+  {
+    href: "/contact?inquiry=ai-advisory#contact-form",
+    label: "找顧問",
+    eyebrow: "AI ADVISORY",
+    pages: "",
+  },
+  {
+    href: "/contact",
+    label: "聊更多",
+    eyebrow: "LET'S TALK",
+    pages: "contact",
+    className: "site-nav-talk",
+  },
 ];
 
 if (nav) {
   nav.innerHTML = universalNavigation
     .map(
-      ({ href, label, pages, children }) => {
-        const primaryLink = `<a${children ? ' class="site-nav-parent"' : ""} href="${href}" data-nav-page="${pages}">${label}${children ? '<span class="site-nav-chevron" aria-hidden="true">⌄</span>' : ""}</a>`;
+      ({
+        href,
+        label,
+        eyebrow,
+        pages,
+        sectionPages,
+        submenuLabel,
+        className,
+        children,
+      }) => {
+        const linkClasses = [
+          children ? "site-nav-parent" : "",
+          className || "",
+        ]
+          .filter(Boolean)
+          .join(" ");
+        const classAttribute = linkClasses ? ` class="${linkClasses}"` : "";
+        const primaryLink = `<a${classAttribute} href="${href}" data-nav-page="${pages}" data-nav-section="${sectionPages || pages}"><span class="site-nav-copy"><small>${eyebrow}</small><span>${label}</span></span>${children ? '<span class="site-nav-chevron" aria-hidden="true">⌄</span>' : ""}</a>`;
 
         if (!children) return primaryLink;
 
         const childLinks = children
-          .map((child) => `<a href="${child.href}" data-nav-page="${child.pages}">${child.label}</a>`)
+          .map(
+            (child) =>
+              `<a href="${child.href}" data-nav-page="${child.pages}">${child.label}</a>`,
+          )
           .join("");
 
-        return `<div class="site-nav-group">${primaryLink}<div class="site-nav-submenu" aria-label="課程子選單">${childLinks}</div></div>`;
+        return `<div class="site-nav-group">${primaryLink}<div class="site-nav-submenu" aria-label="${submenuLabel}">${childLinks}</div></div>`;
       },
     )
     .join("");
@@ -40,12 +111,11 @@ if (nav) {
 
 document.querySelectorAll(".footer-nav").forEach((footerNav) => {
   footerNav.innerHTML = [
-    '<a href="/courses/">課程</a>',
-    '<a href="/ai-action-lab/">AI Action Lab</a>',
-    '<a href="/results/">成果</a>',
-    '<a href="/resources/">文章與資源</a>',
-    '<a href="/about/">關於</a>',
-    '<a href="/contact/">演講與合作</a>',
+    '<a href="/about">認識我</a>',
+    '<a href="/courses">選課程</a>',
+    '<a href="/resources">看觀點</a>',
+    '<a href="/contact?inquiry=ai-advisory#contact-form">找顧問</a>',
+    '<a href="/contact">聊更多</a>',
   ].join("");
 });
 
@@ -66,13 +136,15 @@ if (navToggle && nav) {
 const currentPage = document.body.dataset.page;
 
 if (currentPage) {
+  document.querySelectorAll("[data-nav-section]").forEach((link) => {
+    if ((link.dataset.navSection || "").split(" ").includes(currentPage)) {
+      link.classList.add("is-active");
+    }
+  });
+
   document.querySelectorAll("[data-nav-page]").forEach((link) => {
     if ((link.dataset.navPage || "").split(" ").includes(currentPage)) {
       link.setAttribute("aria-current", "page");
-      link
-        .closest(".site-nav-group")
-        ?.querySelector(".site-nav-parent")
-        ?.classList.add("is-active");
     }
   });
 }
@@ -104,6 +176,25 @@ if (articleSidebarList && articleCards.length) {
 const contactForm = document.querySelector("[data-contact-form]");
 const contactStatus = document.querySelector("[data-form-status]");
 const inquirySelect = contactForm?.querySelector("[data-inquiry-select]");
+
+if (inquirySelect) {
+  const inquiryPreset = new URLSearchParams(window.location.search).get(
+    "inquiry",
+  );
+  const inquiryPresetValues = {
+    "ai-advisory": "AI 應用或創業顧問",
+  };
+  const inquiryValue = inquiryPresetValues[inquiryPreset];
+
+  if (
+    inquiryValue &&
+    Array.from(inquirySelect.options).some(
+      (option) => option.value === inquiryValue,
+    )
+  ) {
+    inquirySelect.value = inquiryValue;
+  }
+}
 
 document.querySelectorAll("[data-inquiry-type]").forEach((trigger) => {
   trigger.addEventListener("click", () => {
