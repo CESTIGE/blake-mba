@@ -5,6 +5,15 @@
   const STORAGE_KEY = "blake_analytics_consent_v1";
   const GRANTED = "granted";
   const DENIED = "denied";
+  const EVENT_NAME_PATTERN = /^[a-z][a-z0-9_]{0,39}$/;
+  const ALLOWED_EVENT_PARAMETERS = new Set([
+    "content_type",
+    "item_id",
+    "link_text",
+    "form_name",
+    "inquiry_type",
+  ]);
+  const MAX_PARAMETER_LENGTH = 100;
 
   window.dataLayer = window.dataLayer || [];
   window.gtag =
@@ -72,9 +81,26 @@
     });
   }
 
+  function sanitizeParameters(parameters) {
+    return Object.fromEntries(
+      Object.entries(parameters || {}).flatMap(([key, value]) => {
+        if (!ALLOWED_EVENT_PARAMETERS.has(key)) return [];
+        if (typeof value === "number" && Number.isFinite(value)) {
+          return [[key, value]];
+        }
+        if (typeof value !== "string") return [];
+        const normalizedValue = value.trim().slice(0, MAX_PARAMETER_LENGTH);
+        return normalizedValue ? [[key, normalizedValue]] : [];
+      }),
+    );
+  }
+
   function trackEvent(name, parameters) {
-    if (currentChoice !== GRANTED) return;
-    window.gtag("event", name, parameters || {});
+    if (currentChoice !== GRANTED || !EVENT_NAME_PATTERN.test(name)) return;
+    window.dataLayer.push({
+      event: name,
+      ...sanitizeParameters(parameters),
+    });
   }
 
   window.blakeAnalytics = { trackEvent };

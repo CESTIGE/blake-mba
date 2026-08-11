@@ -212,29 +212,128 @@ document.querySelectorAll("[data-inquiry-type]").forEach((trigger) => {
 });
 
 if (contactForm && contactStatus) {
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const formData = new FormData(contactForm);
-    const fields = Array.from(formData.entries())
-      .map(([key, value]) => `${key}: ${value}`)
-      .join("\r\n");
-    const inquiryType = formData.get("需求類型");
-    const subjectText = inquiryType
-      ? `BLAKE 官網｜${inquiryType}`
-      : "BLAKE 官網｜聯絡需求";
-    const subject = encodeURIComponent(subjectText);
-    const body = encodeURIComponent(
-      `您好，以下是從 BLAKE 官網整理的聯絡需求：\r\n\r\n${fields}`,
-    );
-    const recipient = contactForm.dataset.recipient?.trim() || "cestig@gmail.com";
+  const submitButton = contactForm.querySelector('[type="submit"]');
+  const submitText = submitButton?.querySelector("[data-submit-text]");
+  const contactFrame = contactForm.querySelector("[data-contact-frame]");
+  const requestIdField = contactForm.querySelector("[data-request-id]");
+  const defaultSubmitText = submitText?.textContent || "送出需求";
+  let pendingRequestId = "";
+  let submissionTimeout = 0;
 
-    if (recipient) {
-      window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-      contactStatus.textContent = "已建立寄給 BLAKE 的郵件草稿，請在郵件程式中確認並按下寄出。";
+  const setContactStatus = (message, state) => {
+    contactStatus.className = "form-status";
+    contactStatus.setAttribute("role", state === "error" ? "alert" : "status");
+
+    if (state) {
+      contactStatus.classList.add(`is-${state}`);
+    }
+
+    contactStatus.textContent = message;
+  };
+
+  const finishSubmission = () => {
+    window.clearTimeout(submissionTimeout);
+    submissionTimeout = 0;
+    pendingRequestId = "";
+    submitButton?.removeAttribute("disabled");
+    contactForm.removeAttribute("aria-busy");
+
+    if (submitText) {
+      submitText.textContent = defaultSubmitText;
+    }
+  };
+
+  window.addEventListener("message", (event) => {
+    const message = event.data;
+    const isGoogleScriptOrigin =
+      /^https:\/\/(?:script\.google\.com|(?:[a-z0-9-]+\.)*googleusercontent\.com)$/i.test(
+        event.origin,
+      );
+
+    if (
+      !pendingRequestId ||
+      !contactFrame ||
+      event.source !== contactFrame.contentWindow ||
+      !isGoogleScriptOrigin ||
+      !message ||
+      message.source !== "blake-google-contact" ||
+      message.requestId !== pendingRequestId
+    ) {
       return;
     }
 
-    contactStatus.textContent = "目前無法建立郵件，請稍後再試。";
+    if (message.success) {
+      const inquiryType = inquirySelect?.value || "unspecified";
+      contactForm.reset();
+      window.blakeAnalytics?.trackEvent("generate_lead", {
+        form_name: "contact",
+        inquiry_type: inquiryType,
+      });
+      setContactStatus(
+        message.notificationSent === false
+          ? "需求已送出並安全保存；Email 通知可能稍有延遲。"
+          : "需求已送出，謝謝你的來訊。我收到後會儘快回覆。",
+        "success",
+      );
+    } else {
+      setContactStatus(
+        "這次沒有送出成功，你填寫的內容仍保留在頁面上，請稍後再試。",
+        "error",
+      );
+    }
+
+    finishSubmission();
+  });
+
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const endpoint = contactForm.dataset.appsScriptEndpoint?.trim();
+
+    if (
+      !endpoint ||
+      !/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/i.test(
+        endpoint,
+      ) ||
+      !contactFrame ||
+      !requestIdField
+    ) {
+      setContactStatus(
+        "此預覽版尚未連結 Google 表單服務；完成設定後即可直接送出。",
+        "error",
+      );
+      return;
+    }
+
+    if (pendingRequestId) {
+      return;
+    }
+
+    pendingRequestId =
+      typeof crypto.randomUUID === "function"
+        ? crypto.randomUUID()
+        : `contact-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    requestIdField.value = pendingRequestId;
+
+    submitButton?.setAttribute("disabled", "");
+    contactForm.setAttribute("aria-busy", "true");
+
+    if (submitText) {
+      submitText.textContent = "送出中…";
+    }
+
+    setContactStatus("正在安全送出你的需求，請稍候…", "loading");
+
+    submissionTimeout = window.setTimeout(() => {
+      setContactStatus(
+        "送出等候時間較長，你填寫的內容仍保留在頁面上，請稍後再試。",
+        "error",
+      );
+      finishSubmission();
+    }, 30000);
+
+    contactForm.action = endpoint;
+    contactForm.target = contactFrame.name;
+    HTMLFormElement.prototype.submit.call(contactForm);
   });
 }
 
@@ -264,6 +363,15 @@ if (courseFinder && finderResult) {
     balancedResult.hidden = careerScore !== startupScore;
     finderResult.hidden = false;
     courseFinder.hidden = true;
+    window.blakeAnalytics?.trackEvent("select_content", {
+      content_type: "course_recommendation",
+      item_id:
+        careerScore > startupScore
+          ? "career-transition"
+          : startupScore > careerScore
+            ? "software-startup"
+            : "balanced",
+    });
     finderResult.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
