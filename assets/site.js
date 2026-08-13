@@ -3,18 +3,11 @@ const nav = document.querySelector("[data-site-nav]");
 
 const universalNavigation = [
   {
-    href: "/about",
+    href: "/",
     label: "認識我",
     eyebrow: "MY STORY",
-    pages: "about",
-    sectionPages: "home about results cases",
-    submenuLabel: "認識我子選單",
-    children: [
-      { href: "/", label: "人物首頁", pages: "home" },
-      { href: "/about", label: "關於 BLAKE", pages: "about" },
-      { href: "/results", label: "經歷與成果", pages: "results" },
-      { href: "/cases", label: "公開案例", pages: "cases" },
-    ],
+    pages: "home",
+    sectionPages: "home",
   },
   {
     href: "/courses",
@@ -111,7 +104,7 @@ if (nav) {
 
 document.querySelectorAll(".footer-nav").forEach((footerNav) => {
   footerNav.innerHTML = [
-    '<a href="/about">認識我</a>',
+    '<a href="/">認識我</a>',
     '<a href="/courses">選課程</a>',
     '<a href="/resources">看觀點</a>',
     '<a href="/contact?inquiry=ai-advisory#contact-form">找顧問</a>',

@@ -323,8 +323,8 @@ img {
   top: calc(100% + 12px);
   right: 0;
   display: grid;
-  width: min(286px, calc(100vw - 36px));
-  padding: 14px;
+  width: min(320px, calc(100vw - 32px));
+  padding: 10px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 18px;
   background: #071720;
@@ -332,7 +332,8 @@ img {
 }
 
 .mobile-menu nav a {
-  padding: 10px 12px;
+  min-height: 48px;
+  padding: 11px 13px;
   border-radius: 10px;
   color: rgba(255, 255, 255, 0.78);
   font-size: 13px;
@@ -348,16 +349,17 @@ img {
 }
 
 .mobile-nav-parent {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: minmax(88px, auto) 1fr;
+  gap: 14px;
+  align-items: center;
 }
 
 .mobile-nav-parent span {
   color: var(--blue);
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 0.12em;
+  white-space: nowrap;
 }
 
 .mobile-nav-section {
@@ -374,9 +376,19 @@ img {
 }
 
 .mobile-menu nav .mobile-menu-cta {
+  display: grid;
+  grid-template-columns: minmax(88px, auto) 1fr;
+  gap: 14px;
+  align-items: center;
   margin-top: 8px;
   color: var(--ink);
   background: var(--orange);
+}
+
+.mobile-menu nav .mobile-menu-cta span {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
 }
 
 .mobile-menu nav .mobile-menu-cta:hover,
@@ -2648,7 +2660,6 @@ a.credential-card:focus-visible {
 
   .mobile-menu nav .mobile-nav-parent {
     min-height: 48px;
-    align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
