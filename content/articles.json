@@ -1,0 +1,54 @@
+[
+  {
+    "title": "白痴指數：第一性原理不是口號，是把問題拆回材料成本",
+    "slug": "first-principles-idiot-index",
+    "url": "/articles/first-principles-idiot-index",
+    "category": "創業與產品",
+    "date": "2026-06-21",
+    "readingTime": "8 分鐘",
+    "excerpt": "拆開產品售價、材料成本與流程限制，找出真正值得重新設計的地方。",
+    "image": "https://blake.mba/assets/visual-source-map.svg",
+    "alt": "第一性原理與成本拆解文章封面",
+    "featured": true,
+    "status": "published"
+  },
+  {
+    "title": "執行力驅動的團隊建構：重新定義選、用、育、留",
+    "slug": "execution-driven-team-building",
+    "url": "/articles/execution-driven-team-building",
+    "category": "團隊與管理",
+    "date": "2026-06-20",
+    "readingTime": "7 分鐘",
+    "excerpt": "從人才選擇、任務設計、回饋節奏到留才，建立真正能交付的團隊。",
+    "image": "https://blake.mba/assets/gamma-team-leadership.png",
+    "alt": "團隊建構與人才管理文章封面",
+    "featured": false,
+    "status": "published"
+  },
+  {
+    "title": "為什麼老闆三秒做的決定，比你分析三天還準？",
+    "slug": "pattern-recognition-decision-making",
+    "url": "/articles/pattern-recognition-decision-making",
+    "category": "團隊與管理",
+    "date": "2026-06-19",
+    "readingTime": "10 分鐘",
+    "excerpt": "理解經驗如何形成模式識別，並把直覺轉成可以檢查與傳承的判斷方法。",
+    "image": "https://blake.mba/assets/gamma-business-growth.png",
+    "alt": "模式識別與營運決策文章封面",
+    "featured": false,
+    "status": "published"
+  },
+  {
+    "title": "你不是不努力，你只是還沒用 AI 把選擇變成實驗",
+    "slug": "ai-career-positioning",
+    "url": "/articles/ai-career-positioning",
+    "category": "職涯與選擇",
+    "date": "2026-06-19",
+    "readingTime": "6 分鐘",
+    "excerpt": "先建立自己的判斷資料，再讓 AI 協助比較路徑、提出反證並設計下一個實驗。",
+    "image": "https://blake.mba/assets/gamma-ai-strategy.png",
+    "alt": "AI 職涯定位文章封面",
+    "featured": false,
+    "status": "published"
+  }
+]
