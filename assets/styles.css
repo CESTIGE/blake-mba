@@ -1691,12 +1691,19 @@ h3 {
 
   body.nav-open .site-nav {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+    justify-items: stretch;
+    gap: 4px;
   }
 
   .site-nav a {
+    width: 100%;
     min-height: 48px;
-    justify-content: center;
+    justify-content: flex-start;
+    padding: 10px 14px;
     color: var(--white);
+    text-align: left;
   }
 
   .site-nav a:hover,
@@ -1719,10 +1726,13 @@ h3 {
 
   .site-nav .site-nav-talk {
     display: inline-flex;
+    margin-top: 6px;
+    background: rgba(255, 255, 255, 0.08);
   }
 
   .site-nav-group {
     display: block;
+    width: 100%;
   }
 
   .site-nav-submenu {
