@@ -281,53 +281,211 @@ body[data-page="startup"] .nav-toggle {
   border-color: rgba(255, 255, 255, 0.36);
 }
 
-.course-hero-proof {
+.course-path-visual {
   position: relative;
-  margin: 0;
+  padding: 28px;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.045)),
+    rgba(7, 23, 32, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 32px;
+  box-shadow: var(--shadow-hard);
+  backdrop-filter: blur(18px);
 }
 
-.course-hero-proof::after {
+.course-path-visual::before {
   position: absolute;
-  right: -24px;
-  bottom: 42px;
+  top: -110px;
+  right: -92px;
+  width: 270px;
+  height: 270px;
+  border: 1px solid rgba(168, 217, 207, 0.25);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 42px rgba(49, 83, 216, 0.055),
+    0 0 0 84px rgba(49, 83, 216, 0.035);
+  content: "";
+}
+
+.course-path-visual-head {
+  position: relative;
+  z-index: 1;
   display: grid;
-  width: 118px;
-  height: 118px;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.course-path-visual-head > span {
+  padding: 6px 9px;
+  color: var(--ink);
+  background: var(--mint);
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.course-path-visual-head > strong {
+  color: #fff;
+  font-family: "Noto Serif TC", "Songti TC", Georgia, serif;
+  font-size: clamp(24px, 2.4vw, 34px);
+  line-height: 1.25;
+}
+
+.course-path-map {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 12px;
+  padding: 22px 0;
+}
+
+.course-path-route {
+  position: relative;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 3px 14px;
+  min-height: 132px;
+  padding: 20px;
+  overflow: hidden;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.075);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.course-path-route::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 74px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06));
+  content: "↗";
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 22px;
+}
+
+.course-path-route:hover,
+.course-path-route:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateX(4px);
+}
+
+.course-path-route.is-career {
+  border-left: 4px solid var(--blue);
+}
+
+.course-path-route.is-startup {
+  border-left: 4px solid var(--coral);
+}
+
+.course-path-number {
+  grid-row: 1 / span 3;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  color: var(--ink);
+  background: #fff;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.course-path-label {
+  color: var(--mint);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+}
+
+.course-path-route > strong {
+  max-width: calc(100% - 56px);
+  font-family: "Noto Serif TC", "Songti TC", Georgia, serif;
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.course-path-route > small {
+  max-width: calc(100% - 56px);
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.course-path-axis {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 0 18px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.course-path-axis::before,
+.course-path-axis::after {
+  display: none;
+}
+
+.course-path-axis > span {
+  display: grid;
+  width: 34px;
+  height: 34px;
   place-items: center;
   color: var(--ink);
   background: var(--coral);
-  border: 2px solid rgba(11, 29, 42, 0.4);
   border-radius: 50%;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
-  content: "實作 · 驗證\A帶走成果";
+  font-size: 11px;
   font-weight: 900;
-  line-height: 1.4;
-  text-align: center;
-  white-space: pre;
-  transform: rotate(-7deg);
 }
 
-.course-hero-proof img {
-  width: 100%;
-  aspect-ratio: 0.96;
-  object-fit: cover;
-  object-position: center 20%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 220px 220px 28px 28px;
-  box-shadow: var(--shadow-hard);
+.course-path-axis > strong {
+  font-size: 11px;
+  letter-spacing: 0.08em;
 }
 
-.course-hero-proof figcaption {
-  position: absolute;
-  left: 24px;
-  bottom: 18px;
-  padding: 10px 13px;
-  color: #fff;
-  background: rgba(11, 29, 42, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: 750;
+.course-path-help {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 3px 16px;
+  align-items: center;
+  padding: 18px 20px;
+  color: var(--ink);
+  background: var(--paper);
+  border-radius: 16px;
+}
+
+.course-path-help span,
+.course-path-help strong {
+  display: block;
+}
+
+.course-path-help span {
+  color: var(--blue-dark);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+}
+
+.course-path-help strong {
+  font-size: 14px;
+}
+
+.course-path-help b {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  font-size: 22px;
 }
 
 /* Choice cards and proof */
@@ -717,7 +875,7 @@ body[data-page="startup"] :focus-visible {
     gap: 50px;
   }
 
-  .course-hero-proof {
+  .course-path-visual {
     max-width: 620px;
   }
 
@@ -782,11 +940,22 @@ body[data-page="startup"] :focus-visible {
     width: 100%;
   }
 
-  .course-hero-proof::after {
-    right: -8px;
-    width: 92px;
-    height: 92px;
-    font-size: 12px;
+  .course-path-visual {
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .course-path-visual-head {
+    grid-template-columns: 1fr;
+  }
+
+  .course-path-route {
+    min-height: 0;
+  }
+
+  .course-path-route > strong,
+  .course-path-route > small {
+    max-width: calc(100% - 30px);
   }
 
   .route-choice-grid,
