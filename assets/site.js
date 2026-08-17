@@ -37,18 +37,11 @@ const universalNavigation = [
     ],
   },
   {
-    href: "/resources",
+    href: "/insights",
     label: "看觀點",
     eyebrow: "INSIGHTS",
-    pages: "resources",
-    sectionPages: "resources articles lab book",
-    submenuLabel: "看觀點子選單",
-    children: [
-      { href: "/articles", label: "文章總覽", pages: "articles" },
-      { href: "/ai-action-lab", label: "AI Action Lab", pages: "lab" },
-      { href: "/resources", label: "免費資源", pages: "resources" },
-      { href: "/book", label: "新書計畫", pages: "book" },
-    ],
+    pages: "insights",
+    sectionPages: "insights resources articles lab book",
   },
   {
     href: "/ai-transform",
@@ -106,7 +99,7 @@ document.querySelectorAll(".footer-nav").forEach((footerNav) => {
   footerNav.innerHTML = [
     '<a href="/">認識我</a>',
     '<a href="/courses">選課程</a>',
-    '<a href="/resources">看觀點</a>',
+    '<a href="/insights">看觀點</a>',
     '<a href="/ai-transform">找顧問</a>',
     '<a href="/contact">聊更多</a>',
   ].join("");
