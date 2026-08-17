@@ -14,26 +14,25 @@ const universalNavigation = [
     label: "選課程",
     eyebrow: "ACADEMY",
     pages: "courses",
-    sectionPages: "courses career choice-over-effort startup finder",
+    sectionPages: "courses career choice-over-effort startup finder entrepreneurship ai-course",
     submenuLabel: "選課程子選單",
     children: [
-      { href: "/courses", label: "課程總覽", pages: "courses" },
-      {
-        href: "/courses/career-transition",
-        label: "AI 職涯重設計",
-        pages: "career",
-      },
-      {
-        href: "/courses/software-startup",
-        label: "AI 軟體新創",
-        pages: "startup",
-      },
+      { href: "/courses", label: "最新課程", pages: "courses" },
       {
         href: "/courses/choice-over-effort",
         label: "選擇重於努力",
         pages: "choice-over-effort",
       },
-      { href: "/course-finder", label: "課程導航", pages: "finder" },
+      {
+        href: "/courses/entrepreneurship",
+        label: "創業課程",
+        pages: "entrepreneurship",
+      },
+      {
+        href: "/courses/ai",
+        label: "AI 課程",
+        pages: "ai-course",
+      },
     ],
   },
   {
@@ -119,7 +118,7 @@ if (navToggle && nav) {
   });
 }
 
-const currentPage = document.body.dataset.page;
+const currentPage = document.body.dataset.navPage || document.body.dataset.page;
 
 if (currentPage) {
   document.querySelectorAll("[data-nav-section]").forEach((link) => {
