@@ -51,10 +51,10 @@ const universalNavigation = [
     ],
   },
   {
-    href: "/contact?inquiry=ai-advisory#contact-form",
+    href: "/ai-transform",
     label: "找顧問",
     eyebrow: "AI ADVISORY",
-    pages: "",
+    pages: "ai-transform",
   },
   {
     href: "/contact",
@@ -107,7 +107,7 @@ document.querySelectorAll(".footer-nav").forEach((footerNav) => {
     '<a href="/">認識我</a>',
     '<a href="/courses">選課程</a>',
     '<a href="/resources">看觀點</a>',
-    '<a href="/contact?inquiry=ai-advisory#contact-form">找顧問</a>',
+    '<a href="/ai-transform">找顧問</a>',
     '<a href="/contact">聊更多</a>',
   ].join("");
 });
