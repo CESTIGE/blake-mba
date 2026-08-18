@@ -1,5 +1,18 @@
 [
   {
+    "title": "學會 AI，打開新世界：台灣軟體創業的三到五年關鍵窗口",
+    "slug": "taiwan-software-startup-ai-window",
+    "url": "/articles/taiwan-software-startup-ai-window",
+    "category": "創業與產品",
+    "date": "2026-08-18",
+    "readingTime": "8 分鐘",
+    "excerpt": "AI 正在降低軟體開發門檻，但真正的護城河會回到客戶、價值、信任與執行。",
+    "image": "https://blake.mba/assets/metabiz-ndf-team.jpg",
+    "alt": "BLAKE 黃大成與 metabiz 團隊在 LITEON+ 新創空間合影",
+    "featured": true,
+    "status": "published"
+  },
+  {
     "title": "白痴指數：第一性原理不是口號，是把問題拆回材料成本",
     "slug": "first-principles-idiot-index",
     "url": "/articles/first-principles-idiot-index",
@@ -9,7 +22,7 @@
     "excerpt": "拆開產品售價、材料成本與流程限制，找出真正值得重新設計的地方。",
     "image": "https://blake.mba/assets/visual-source-map.svg",
     "alt": "第一性原理與成本拆解文章封面",
-    "featured": true,
+    "featured": false,
     "status": "published"
   },
   {
