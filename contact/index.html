@@ -76,10 +76,10 @@
               <p><i aria-hidden="true">*</i> 必填</p>
             </div>
 
-            <form class="contact-form" method="post" data-contact-form data-apps-script-endpoint="https://script.google.com/macros/s/AKfycbxDVMkBr0zjyzLYfSOkUVncvGIwKxjv9mnEXjcvm7YrfURPaqYsz5awKy1JVtCkBaJmIw/exec">
+            <form class="contact-form" method="post" data-contact-form data-form-name="contact" data-success-message="需求已送出，謝謝你的來訊。我收到後會儘快回覆。" data-apps-script-endpoint="https://script.google.com/macros/s/AKfycbxDVMkBr0zjyzLYfSOkUVncvGIwKxjv9mnEXjcvm7YrfURPaqYsz5awKy1JVtCkBaJmIw/exec">
               <input type="hidden" name="名單來源" value="BLAKE 官網聯絡頁">
               <input type="hidden" name="送單識別碼" value="" data-request-id>
-              <div class="contact-honeypot" aria-hidden="true">
+              <div class="contact-honeypot" aria-hidden="true" hidden>
                 <label for="contact-website">請勿填寫此欄位</label>
                 <input id="contact-website" name="_gotcha" tabindex="-1" autocomplete="off">
               </div>
@@ -120,7 +120,7 @@
               </button>
               <p class="form-note">你的資料不會公開，也不會用於未經同意的行銷用途。</p>
               <div class="form-status" data-form-status role="status" aria-live="polite" tabindex="-1"></div>
-              <iframe class="contact-submit-frame" name="blake-contact-submission" title="聯絡表單送出結果" data-contact-frame></iframe>
+              <iframe class="contact-submit-frame" name="blake-contact-submission" title="聯絡表單送出結果" data-contact-frame hidden></iframe>
               <noscript><p class="form-status is-error">此表單需要啟用 JavaScript 才能送出。</p></noscript>
             </form>
           </div>

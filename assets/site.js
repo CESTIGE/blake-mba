@@ -139,9 +139,8 @@ if (articleSidebarList && articleCards.length) {
   });
 }
 
-const contactForm = document.querySelector("[data-contact-form]");
-const contactStatus = document.querySelector("[data-form-status]");
-const inquirySelect = contactForm?.querySelector("[data-inquiry-select]");
+const contactForms = document.querySelectorAll("[data-contact-form]");
+const inquirySelect = document.querySelector("[data-inquiry-select]");
 
 if (inquirySelect) {
   const inquiryPreset = new URLSearchParams(window.location.search).get(
@@ -176,12 +175,21 @@ document.querySelectorAll("[data-inquiry-type]").forEach((trigger) => {
   });
 });
 
-if (contactForm && contactStatus) {
+function initializeContactForm(contactForm) {
+  const contactStatus = contactForm.querySelector("[data-form-status]");
+
+  if (!contactStatus) return;
+
+  const formInquirySelect = contactForm.querySelector("[data-inquiry-select]");
   const submitButton = contactForm.querySelector('[type="submit"]');
   const submitText = submitButton?.querySelector("[data-submit-text]");
   const contactFrame = contactForm.querySelector("[data-contact-frame]");
   const requestIdField = contactForm.querySelector("[data-request-id]");
   const defaultSubmitText = submitText?.textContent || "送出需求";
+  const successMessage =
+    contactForm.dataset.successMessage ||
+    "資料已送出，謝謝你的來訊。我收到後會儘快回覆。";
+  const formName = contactForm.dataset.formName || "contact";
   let pendingRequestId = "";
   let submissionTimeout = 0;
 
@@ -228,16 +236,23 @@ if (contactForm && contactStatus) {
     }
 
     if (message.success) {
-      const inquiryType = inquirySelect?.value || "unspecified";
+      const inquiryType =
+        formInquirySelect?.value ||
+        contactForm.querySelector('[name="需求類型"]')?.value ||
+        "unspecified";
+      const leadSource =
+        contactForm.querySelector('[name="名單來源"]')?.value ||
+        "unspecified";
       contactForm.reset();
       window.blakeAnalytics?.trackEvent("generate_lead", {
-        form_name: "contact",
+        form_name: formName,
         inquiry_type: inquiryType,
+        lead_source: leadSource,
       });
       setContactStatus(
         message.notificationSent === false
-          ? "需求已送出並安全保存；Email 通知可能稍有延遲。"
-          : "需求已送出，謝謝你的來訊。我收到後會儘快回覆。",
+          ? "資料已安全保存；Email 通知可能稍有延遲。"
+          : successMessage,
         "success",
       );
     } else {
@@ -263,7 +278,7 @@ if (contactForm && contactStatus) {
       !requestIdField
     ) {
       setContactStatus(
-        "此預覽版尚未連結 Google 表單服務；完成設定後即可直接送出。",
+        "表單設定不完整，暫時無法送出，請稍後再試。",
         "error",
       );
       return;
@@ -301,6 +316,8 @@ if (contactForm && contactStatus) {
     HTMLFormElement.prototype.submit.call(contactForm);
   });
 }
+
+contactForms.forEach(initializeContactForm);
 
 const printPageButton = document.querySelector("[data-print-page]");
 
