@@ -14,16 +14,7 @@ const universalNavigation = [
     label: "選課程",
     eyebrow: "ACADEMY",
     pages: "courses",
-    sectionPages: "courses career choice-over-effort startup finder entrepreneurship ai-course",
-    submenuLabel: "選課程子選單",
-    children: [
-      { href: "/courses", label: "課程總覽", pages: "courses" },
-      {
-        href: "/course-finder",
-        label: "幫我選課",
-        pages: "finder",
-      },
-    ],
+    sectionPages: "courses career choice-over-effort startup entrepreneurship ai-course",
   },
   {
     href: "/insights",
@@ -170,7 +161,6 @@ if (inquirySelect) {
     inquirySelect.value = inquiryValue;
   }
 }
-
 document.querySelectorAll("[data-inquiry-type]").forEach((trigger) => {
   trigger.addEventListener("click", () => {
     const inquiryType = trigger.dataset.inquiryType;
@@ -316,44 +306,4 @@ const printPageButton = document.querySelector("[data-print-page]");
 
 if (printPageButton) {
   printPageButton.addEventListener("click", () => window.print());
-}
-
-const courseFinder = document.querySelector("[data-course-finder]");
-const finderResult = document.querySelector("[data-finder-result]");
-
-if (courseFinder && finderResult) {
-  const careerResult = finderResult.querySelector("[data-finder-career]");
-  const startupResult = finderResult.querySelector("[data-finder-startup]");
-  const balancedResult = finderResult.querySelector("[data-finder-balanced]");
-  const resetButton = finderResult.querySelector("[data-finder-reset]");
-
-  courseFinder.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const answers = Array.from(new FormData(courseFinder).values());
-    const careerScore = answers.filter((answer) => answer === "career").length;
-    const startupScore = answers.filter((answer) => answer === "startup").length;
-
-    careerResult.hidden = careerScore <= startupScore;
-    startupResult.hidden = startupScore <= careerScore;
-    balancedResult.hidden = careerScore !== startupScore;
-    finderResult.hidden = false;
-    courseFinder.hidden = true;
-    window.blakeAnalytics?.trackEvent("select_content", {
-      content_type: "course_recommendation",
-      item_id:
-        careerScore > startupScore
-          ? "career-transition"
-          : startupScore > careerScore
-            ? "software-startup"
-            : "balanced",
-    });
-    finderResult.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-
-  resetButton?.addEventListener("click", () => {
-    courseFinder.reset();
-    courseFinder.hidden = false;
-    finderResult.hidden = true;
-    courseFinder.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
 }
