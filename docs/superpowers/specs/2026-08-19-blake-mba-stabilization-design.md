@@ -184,4 +184,3 @@ Analytics 的 `generate_lead` 事件使用表單的 `data-form-name`，並記錄
 - 尾斜線改動範圍廣，必須由自動測試覆蓋 sitemap、head、JSON-LD、HTML、JS 與 JSON 連結，避免只修部分來源。
 - lazy loading 可能讓使用者首次展開證明卡時看到短暫解碼延遲；既有尺寸與 async decoding 可降低跳動，若仍不理想再於第二階段增加小尺寸 WebP。
 - 所有修改都位於單一功能分支；若回歸失敗，可逐項 revert 對應 commit，不需要重寫歷史或 force push。
-
