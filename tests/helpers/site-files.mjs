@@ -4,6 +4,10 @@ import { fileURLToPath } from "node:url";
 
 export const projectRoot = join(dirname(fileURLToPath(import.meta.url)), "../..");
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 export function read(relativePath) {
   return readFileSync(join(projectRoot, relativePath), "utf8");
 }
@@ -23,7 +27,7 @@ export function htmlFiles(directory = projectRoot) {
 
 export function tagWithAttribute(source, tagName, attributeName) {
   const expression = new RegExp(
-    `<${tagName}\\b(?=[^>]*\\b${attributeName}(?:=|\\s|>))[^>]*>`,
+    `<${escapeRegExp(tagName)}\\b(?=[^>]*\\s+${escapeRegExp(attributeName)}(?:\\s|=|>))[^>]*>`,
     "i",
   );
   return source.match(expression)?.[0] ?? "";
@@ -31,7 +35,7 @@ export function tagWithAttribute(source, tagName, attributeName) {
 
 export function attribute(tag, name) {
   const match = tag.match(
-    new RegExp(`\\b${name}=(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, "i"),
+    new RegExp(`(?:^|\\s)${escapeRegExp(name)}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, "i"),
   );
   return match ? match[1] ?? match[2] ?? match[3] : null;
 }

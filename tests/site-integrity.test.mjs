@@ -32,19 +32,33 @@ const indexedPages = new Map([
   ["https://blake.mba/articles/taiwan-software-startup-ai-window/", "articles/taiwan-software-startup-ai-window/index.html"],
 ]);
 
+function formBlock(html, page) {
+  const form = tagWithAttribute(html, "form", "data-contact-form");
+  assert.ok(form, `${page}: missing contact form`);
+
+  const start = html.indexOf(form);
+  assert.ok(start >= 0, `${page}: missing contact form start`);
+
+  const end = html.indexOf("</form>", start);
+  assert.ok(end >= 0, `${page}: missing contact form end`);
+
+  return html.slice(start, end + "</form>".length);
+}
+
 test("all lead forms expose the complete Apps Script contract", () => {
   for (const page of formPages) {
     const html = read(page);
     const form = tagWithAttribute(html, "form", "data-contact-form");
+    const block = formBlock(html, page);
     assert.equal(attribute(form, "method"), "post", page);
     assert.match(attribute(form, "data-apps-script-endpoint") ?? "", endpointPattern, page);
     assert.ok(attribute(form, "data-form-name"), page);
     assert.ok(attribute(form, "data-success-message"), page);
-    assert.match(html, /data-request-id/, page);
-    assert.match(html, /name="_gotcha"/, page);
-    assert.match(html, /<iframe[^>]*data-contact-frame[^>]*hidden/, page);
-    assert.match(html, /data-form-status/, page);
-    assert.match(html, /data-submit-text/, page);
+    assert.match(block, /data-request-id/, page);
+    assert.match(block, /name="_gotcha"/, page);
+    assert.match(block, /<iframe[^>]*data-contact-frame[^>]*hidden/, page);
+    assert.match(block, /data-form-status/, page);
+    assert.match(block, /data-submit-text/, page);
   }
 });
 
