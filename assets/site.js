@@ -10,27 +10,27 @@ const universalNavigation = [
     sectionPages: "home",
   },
   {
-    href: "/courses",
+    href: "/courses/",
     label: "選課程",
     eyebrow: "ACADEMY",
     pages: "courses",
     sectionPages: "courses career choice-over-effort startup entrepreneurship ai-course",
   },
   {
-    href: "/insights",
+    href: "/insights/",
     label: "看觀點",
     eyebrow: "INSIGHTS",
     pages: "insights",
     sectionPages: "insights resources articles lab book",
   },
   {
-    href: "/ai-transform",
+    href: "/ai-transform/",
     label: "找顧問",
     eyebrow: "AI ADVISORY",
     pages: "ai-transform",
   },
   {
-    href: "/contact",
+    href: "/contact/",
     label: "聊更多",
     eyebrow: "LET'S TALK",
     pages: "contact",
@@ -78,10 +78,10 @@ if (nav) {
 document.querySelectorAll(".footer-nav").forEach((footerNav) => {
   footerNav.innerHTML = [
     '<a href="/">認識我</a>',
-    '<a href="/courses">選課程</a>',
-    '<a href="/insights">看觀點</a>',
-    '<a href="/ai-transform">找顧問</a>',
-    '<a href="/contact">聊更多</a>',
+    '<a href="/courses/">選課程</a>',
+    '<a href="/insights/">看觀點</a>',
+    '<a href="/ai-transform/">找顧問</a>',
+    '<a href="/contact/">聊更多</a>',
   ].join("");
 });
 
