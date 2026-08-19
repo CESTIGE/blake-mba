@@ -12,6 +12,7 @@
     "link_text",
     "form_name",
     "inquiry_type",
+    "lead_source",
   ]);
   const MAX_PARAMETER_LENGTH = 100;
 
