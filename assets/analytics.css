@@ -98,6 +98,14 @@
     padding: 18px;
   }
 
+  .has-page-deck .analytics-settings {
+    bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+
+  .has-page-deck .analytics-consent {
+    bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+
   .analytics-consent__actions {
     align-items: stretch;
     flex-direction: column-reverse;

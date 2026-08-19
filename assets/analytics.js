@@ -63,7 +63,7 @@
 
   const analyticsStyles = document.createElement("link");
   analyticsStyles.rel = "stylesheet";
-  analyticsStyles.href = "/assets/analytics.css?v=20260804gtm1";
+  analyticsStyles.href = "/assets/analytics.css?v=20260819gtm2";
   document.head.appendChild(analyticsStyles);
 
   function updateConsent(choice) {
