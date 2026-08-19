@@ -17,21 +17,11 @@ const universalNavigation = [
     sectionPages: "courses career choice-over-effort startup finder entrepreneurship ai-course",
     submenuLabel: "選課程子選單",
     children: [
-      { href: "/courses", label: "最新課程", pages: "courses" },
+      { href: "/courses", label: "課程總覽", pages: "courses" },
       {
-        href: "/courses/choice-over-effort",
-        label: "選擇重於努力",
-        pages: "choice-over-effort",
-      },
-      {
-        href: "/courses/entrepreneurship",
-        label: "創業課程",
-        pages: "entrepreneurship",
-      },
-      {
-        href: "/courses/ai",
-        label: "AI 課程",
-        pages: "ai-course",
+        href: "/course-finder",
+        label: "幫我選課",
+        pages: "finder",
       },
     ],
   },

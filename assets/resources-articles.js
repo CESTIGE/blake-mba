@@ -1,4 +1,4 @@
-const taxonomy = ['AI 應用', '職涯與選擇', '創業與產品', '團隊與管理'];
+const taxonomy = ['AI 職涯定位', '選擇重於努力', 'OGSM 人生策略', 'AI 工作流', '創業實戰'];
 const state = { articles: [], filter: 'all', year: 'all', sort: 'newest' };
 
 const formatDate = (value) => value.replaceAll('-', '.');
@@ -21,17 +21,16 @@ function renderArticles() {
   const grid = document.querySelector('[data-article-grid]');
   const empty = document.querySelector('[data-empty]');
   const visible = state.articles
-    .filter((article) => state.filter === 'all' || article.category === state.filter)
+    .filter((article) => state.filter === 'all' || (article.topics || [article.category]).includes(state.filter))
     .filter((article) => state.year === 'all' || article.date.startsWith(state.year))
     .sort((a, b) => state.sort === 'newest' ? b.date.localeCompare(a.date) : a.date.localeCompare(b.date));
   grid.innerHTML = visible.map(articleCard).join('');
   empty.hidden = visible.length > 0;
 }
-
 function renderFilters() {
   const filters = document.querySelector('[data-filters]');
   filters.insertAdjacentHTML('beforeend', taxonomy.map((category) => {
-    const count = state.articles.filter((article) => article.category === category).length;
+    const count = state.articles.filter((article) => (article.topics || [article.category]).includes(category)).length;
     return `<button type="button" data-filter="${category}" aria-pressed="false">${category}<small>${count}</small></button>`;
   }
   ).join(''));
@@ -73,7 +72,7 @@ function renderFeatured() {
 
 async function initArticles() {
   try {
-    const response = await fetch('../content/articles.json');
+    const response = await fetch('/content/articles.json');
     if (!response.ok) throw new Error('Article data unavailable');
     state.articles = (await response.json())
       .filter((article) => article.status === 'published')
@@ -85,7 +84,7 @@ async function initArticles() {
     renderArchiveControls();
     renderArticles();
   } catch (error) {
-    document.querySelector('[data-article-grid]').innerHTML = '<p class="load-error">文章資料暫時無法載入，請前往 <a href="https://blake.mba/articles/">完整文章列表</a>。</p>';
+    document.querySelector('[data-article-grid]').innerHTML = '<p class="load-error">文章資料暫時無法載入，請稍後重新整理，或直接開啟單篇文章。</p>';
   }
 }
 
