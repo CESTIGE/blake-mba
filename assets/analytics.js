@@ -12,6 +12,7 @@
     "link_text",
     "form_name",
     "inquiry_type",
+    "lead_source",
   ]);
   const MAX_PARAMETER_LENGTH = 100;
 
@@ -63,7 +64,7 @@
 
   const analyticsStyles = document.createElement("link");
   analyticsStyles.rel = "stylesheet";
-  analyticsStyles.href = "/assets/analytics.css?v=20260804gtm1";
+  analyticsStyles.href = "/assets/analytics.css?v=20260819gtm2";
   document.head.appendChild(analyticsStyles);
 
   function updateConsent(choice) {
