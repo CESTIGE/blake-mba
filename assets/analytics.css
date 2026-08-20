@@ -66,11 +66,16 @@
   border-color: rgba(255, 255, 255, 0.42);
 }
 
+.analytics-settings-region {
+  display: flex;
+  align-items: center;
+  min-height: 68px;
+  padding: 12px max(12px, calc((100vw - 1200px) / 2));
+  background: #faf7f1;
+  border-top: 1px solid rgba(11, 29, 42, 0.12);
+}
+
 .analytics-settings {
-  position: fixed;
-  left: 12px;
-  bottom: 12px;
-  z-index: 9998;
   padding: 0 14px;
   color: #0b1d2a;
   background: rgba(250, 247, 241, 0.96);
@@ -96,10 +101,6 @@
     grid-template-columns: 1fr;
     width: calc(100vw - 24px);
     padding: 18px;
-  }
-
-  .has-page-deck .analytics-settings {
-    bottom: calc(72px + env(safe-area-inset-bottom));
   }
 
   .has-page-deck .analytics-consent {

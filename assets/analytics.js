@@ -64,7 +64,7 @@
 
   const analyticsStyles = document.createElement("link");
   analyticsStyles.rel = "stylesheet";
-  analyticsStyles.href = "/assets/analytics.css?v=20260819gtm2";
+  analyticsStyles.href = "/assets/analytics.css?v=20260820flow1";
   document.head.appendChild(analyticsStyles);
 
   function updateConsent(choice) {
@@ -126,6 +126,7 @@
     settingsButton.type = "button";
     settingsButton.className = "analytics-settings";
     settingsButton.setAttribute("aria-label", "開啟分析與隱私設定");
+    let bannerOpenedFromSettings = false;
 
     const updateSettingsLabel = () => {
       settingsButton.textContent =
@@ -138,16 +139,38 @@
       updateConsent(button.dataset.analyticsChoice);
       banner.hidden = true;
       updateSettingsLabel();
-      settingsButton.focus();
+      if (bannerOpenedFromSettings) {
+        settingsButton.focus({ preventScroll: true });
+      } else {
+        const mainContent = document.querySelector("main");
+        if (mainContent) {
+          mainContent.setAttribute("tabindex", "-1");
+          mainContent.focus({ preventScroll: true });
+        } else {
+          settingsButton.focus({ preventScroll: true });
+        }
+      }
+      bannerOpenedFromSettings = false;
     });
 
     settingsButton.addEventListener("click", () => {
+      bannerOpenedFromSettings = true;
       banner.hidden = false;
       banner.querySelector("[data-analytics-choice]")?.focus();
     });
 
     updateSettingsLabel();
-    document.body.append(banner, settingsButton);
+    const settingsRegion = document.createElement("div");
+    settingsRegion.className = "analytics-settings-region";
+    settingsRegion.append(settingsButton);
+
+    const footer = document.querySelector("footer");
+    if (footer?.parentNode) {
+      footer.parentNode.insertBefore(settingsRegion, footer);
+    } else {
+      document.body.append(settingsRegion);
+    }
+    document.body.append(banner);
 
     document.addEventListener("click", (event) => {
       const target = event.target.closest(

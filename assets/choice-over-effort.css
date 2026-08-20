@@ -7,10 +7,11 @@
   --white: #ffffff;
   --coral: #ff6534;
   --coral-dark: #d9471d;
+  --coral-text: #b83b18;
   --blue: #3153d8;
   --blue-dark: #2038a2;
   --mint: #a8d9cf;
-  --muted: #61707a;
+  --muted: #5f6e77;
   --line: rgba(11, 29, 42, 0.16);
   --content: min(1200px, calc(100% - 40px));
   --radius: 28px;
@@ -394,11 +395,15 @@ input {
 
 .eyebrow {
   margin: 0 0 22px;
-  color: var(--coral);
+  color: var(--coral-text);
   font-size: 10px;
   font-weight: 900;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+}
+
+.hero .eyebrow {
+  color: var(--coral);
 }
 
 .eyebrow span {
@@ -590,7 +595,7 @@ input {
 }
 
 .hero-course-card figcaption span {
-  color: var(--coral-dark);
+  color: var(--coral-text);
   font-size: 8px;
   letter-spacing: 0.14em;
 }
@@ -807,7 +812,7 @@ input {
 }
 
 .story-timeline small {
-  color: var(--coral-dark);
+  color: var(--coral-text);
   font-size: 9px;
   font-weight: 900;
   letter-spacing: 0.15em;
@@ -1127,7 +1132,10 @@ input {
   background: var(--blue);
 }
 
-.module-card-blue p,
+.module-card-blue p {
+  color: rgba(255, 255, 255, 0.82);
+}
+
 .module-card-ink p {
   color: rgba(255, 255, 255, 0.68);
 }
@@ -1174,7 +1182,7 @@ input {
 }
 
 .method-card-body > span {
-  color: var(--coral-dark);
+  color: var(--coral-text);
   font-size: 9px;
   font-weight: 900;
   letter-spacing: 0.18em;
@@ -1322,7 +1330,7 @@ input {
 }
 
 .output-card-heading span {
-  color: var(--coral-dark);
+  color: var(--coral-text);
   font-size: 8px;
   font-weight: 900;
   letter-spacing: 0.15em;
