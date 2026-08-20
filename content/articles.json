@@ -1,5 +1,19 @@
 [
   {
+    "title": "書已舊，夢沒鏽：重讀《i狂人賈伯斯》後的創業現實",
+    "slug": "books-grow-old-dreams-dont-rust",
+    "url": "/articles/books-grow-old-dreams-dont-rust/",
+    "category": "創業實戰",
+    "topics": ["創業實戰", "選擇重於努力"],
+    "date": "2026-08-20",
+    "readingTime": "6 分鐘",
+    "excerpt": "當年讀這本書的我，正在想像創業；現在重讀的我，已經走了很久。前人的精神可以學習，但自己的方法必須回到現實。",
+    "image": "/assets/books-grow-old-dreams-dont-rust.jpg",
+    "alt": "BLAKE 手持《i狂人賈伯斯》舊書，背景是正在工作的電腦螢幕",
+    "featured": true,
+    "status": "published"
+  },
+  {
     "title": "AI 時代的軟體創業生存法則：台灣未來 3–5 年的關鍵窗口與新護城河",
     "slug": "taiwan-software-startup-ai-window",
     "url": "/articles/taiwan-software-startup-ai-window/",
@@ -10,7 +24,7 @@
     "excerpt": "AI 正在降低軟體開發門檻；真正的差距，會回到客戶理解、價值傳遞、信任與 AI 管理能力。",
     "image": "/assets/metabiz-ndf-team.jpg",
     "alt": "BLAKE 與 metabiz 團隊在新創空間合影",
-    "featured": true,
+    "featured": false,
     "status": "published"
   },
   {

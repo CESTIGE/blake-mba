@@ -26,6 +26,7 @@ const indexedPages = new Map([
   ["https://blake.mba/courses/software-startup/", "courses/software-startup/index.html"],
   ["https://blake.mba/insights/", "insights/index.html"],
   ["https://blake.mba/articles/ai-career-positioning/", "articles/ai-career-positioning/index.html"],
+  ["https://blake.mba/articles/books-grow-old-dreams-dont-rust/", "articles/books-grow-old-dreams-dont-rust/index.html"],
   ["https://blake.mba/articles/execution-driven-team-building/", "articles/execution-driven-team-building/index.html"],
   ["https://blake.mba/articles/first-principles-idiot-index/", "articles/first-principles-idiot-index/index.html"],
   ["https://blake.mba/articles/pattern-recognition-decision-making/", "articles/pattern-recognition-decision-making/index.html"],
