@@ -20,6 +20,7 @@ const indexedPages = new Map([
   ["https://blake.mba/contact/", "contact/index.html"],
   ["https://blake.mba/courses/", "courses/index.html"],
   ["https://blake.mba/courses/ai/", "courses/ai/index.html"],
+  ["https://blake.mba/courses/ai-work-productivity/", "courses/ai-work-productivity/index.html"],
   ["https://blake.mba/courses/career-transition/", "courses/career-transition/index.html"],
   ["https://blake.mba/courses/choice-over-effort/", "courses/choice-over-effort/index.html"],
   ["https://blake.mba/courses/entrepreneurship/", "courses/entrepreneurship/index.html"],
