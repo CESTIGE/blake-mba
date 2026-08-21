@@ -512,6 +512,44 @@ img {
   margin-top: 34px;
 }
 
+.home-course-alert {
+  display: grid;
+  gap: 4px;
+  max-width: 660px;
+  margin-top: 20px;
+  padding: 16px 18px;
+  color: var(--white);
+  background: linear-gradient(135deg, rgba(255, 101, 52, 0.96), rgba(217, 71, 29, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 16px;
+  box-shadow: 0 18px 42px rgba(3, 15, 24, 0.24);
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.home-course-alert:hover,
+.home-course-alert:focus-visible {
+  color: var(--white);
+  box-shadow: 0 22px 50px rgba(3, 15, 24, 0.32);
+  transform: translateY(-2px);
+}
+
+.home-course-alert span {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.home-course-alert strong {
+  font-family: "Noto Serif TC", "Songti TC", Georgia, serif;
+  font-size: 19px;
+}
+
+.home-course-alert small {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 11px;
+}
+
 .button {
   display: inline-flex;
   min-height: 52px;
@@ -2723,6 +2761,28 @@ a.credential-card:focus-visible {
 }
 
 @media (max-width: 760px) {
+  body[data-page="home"] .analytics-consent {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  body[data-page="home"] .analytics-consent__copy {
+    display: none;
+  }
+
+  body[data-page="home"] .analytics-consent__actions {
+    align-items: stretch;
+    flex-direction: row;
+  }
+
+  body[data-page="home"] .analytics-consent__button {
+    width: auto;
+    min-width: 0;
+    flex: 1;
+    padding: 0 10px;
+    font-size: 0.76rem;
+  }
+
   .proposal-bar {
     font-size: 9px;
   }
@@ -2753,6 +2813,10 @@ a.credential-card:focus-visible {
 
   .hero-statement {
     font-size: 22px;
+  }
+
+  .home-course-alert {
+    padding: 15px 16px;
   }
 
   .identity-row {
