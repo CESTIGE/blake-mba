@@ -1123,10 +1123,8 @@ body[data-page="startup"] :focus-visible {
     grid-template-columns: 1fr;
   }
 
-  .course-catalog-card,
-  .course-catalog-card:nth-child(4),
-  .course-catalog-card:nth-child(5) {
-    grid-column: auto;
+  .course-catalog-grid > .course-catalog-card {
+    grid-column: 1 / -1;
   }
 
   .course-catalog-card h3,
