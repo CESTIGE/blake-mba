@@ -29,6 +29,10 @@ test("course overview styling gives the open course strong contrast and responsi
   assert.match(css, /\.course-catalog-card\.is-open-course\s*\{/);
   assert.match(css, /\.open-course-cover\s*\{/);
   assert.match(css, /@media \(max-width: 760px\)[^]*\.course-open-badge/s);
+  assert.match(
+    css,
+    /@media \(max-width: 1020px\)[^]*\.course-catalog-grid > \.course-catalog-card\s*\{[^}]*grid-column:\s*1\s*\/\s*-1;/s,
+  );
 });
 
 test("home page links to the currently open Linkou course above the fold", () => {
@@ -57,7 +61,7 @@ test("Linkou course is discoverable in the sitemap", () => {
 test("updated pages reference fresh CSS cache keys", () => {
   assert.match(
     read("courses/index.html"),
-    /\/assets\/courses-editorial\.css\?v=20260821linkou1/,
+    /\/assets\/courses-editorial\.css\?v=20260822grid1/,
   );
   assert.match(
     read("index.html"),
