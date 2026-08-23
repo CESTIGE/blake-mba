@@ -335,6 +335,10 @@ body[data-page="startup"] .nav-toggle {
   backdrop-filter: blur(18px);
 }
 
+.course-path-mobile {
+  display: none;
+}
+
 .course-path-visual::before {
   position: absolute;
   top: -110px;
@@ -644,7 +648,7 @@ body[data-page="startup"] .nav-toggle {
   width: 100%;
   height: 100%;
   min-height: 420px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .open-course-content {
@@ -1232,6 +1236,64 @@ body[data-page="startup"] :focus-visible {
 
   .course-open-badge strong {
     font-size: 18px;
+  }
+
+  .course-path-visual--desktop {
+    display: none;
+  }
+
+  .course-path-mobile {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .course-path-mobile-link {
+    display: grid;
+    min-width: 0;
+    min-height: 106px;
+    padding: 14px 6px 12px;
+    place-items: center;
+    align-content: center;
+    gap: 9px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-top-width: 3px;
+    border-radius: 18px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .course-path-mobile-link.is-career {
+    border-top-color: var(--blue);
+  }
+
+  .course-path-mobile-link.is-startup {
+    border-top-color: var(--coral);
+  }
+
+  .course-path-mobile-link.is-ai {
+    border-top-color: var(--mint);
+  }
+
+  .course-path-mobile-icon {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    color: var(--ink);
+    background: #fff;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 900;
+  }
+
+  .course-path-mobile-link strong {
+    font-family: "Noto Serif TC", "Songti TC", Georgia, serif;
+    font-size: 14px;
+    line-height: 1.25;
   }
 
   .course-catalog-card.is-open-course {

@@ -1,22 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-  <title id="title">AI implementation visual</title>
-  <desc id="desc">A data platform implementation map connecting stores, members, and AI operations.</desc>
-  <rect width="1200" height="760" fill="#f8fbff"/>
-  <rect x="116" y="110" width="968" height="540" rx="30" fill="#ffffff" stroke="#dce8f2" stroke-width="3"/>
-  <rect x="462" y="248" width="276" height="214" rx="26" fill="#071521"/>
-  <circle cx="600" cy="354" r="56" fill="#13bfd0"/>
-  <path d="M360 228h-92c-32 0-58 26-58 58v32" fill="none" stroke="#1769e8" stroke-width="8" stroke-linecap="round"/>
-  <path d="M840 228h92c32 0 58 26 58 58v32" fill="none" stroke="#18a77d" stroke-width="8" stroke-linecap="round"/>
-  <path d="M360 486h-92c-32 0-58-26-58-58v-32" fill="none" stroke="#f0a429" stroke-width="8" stroke-linecap="round"/>
-  <path d="M840 486h92c32 0 58-26 58-58v-32" fill="none" stroke="#13bfd0" stroke-width="8" stroke-linecap="round"/>
-  <rect x="214" y="186" width="170" height="92" rx="20" fill="#eef5fb"/>
-  <rect x="816" y="186" width="170" height="92" rx="20" fill="#eef5fb"/>
-  <rect x="214" y="482" width="170" height="92" rx="20" fill="#eef5fb"/>
-  <rect x="816" y="482" width="170" height="92" rx="20" fill="#eef5fb"/>
-  <rect x="248" y="222" width="94" height="14" rx="7" fill="#102233"/>
-  <rect x="850" y="222" width="94" height="14" rx="7" fill="#102233"/>
-  <rect x="248" y="518" width="94" height="14" rx="7" fill="#102233"/>
-  <rect x="850" y="518" width="94" height="14" rx="7" fill="#102233"/>
-  <rect x="502" y="494" width="196" height="20" rx="10" fill="#1769e8"/>
-  <rect x="540" y="532" width="120" height="14" rx="7" fill="#607083"/>
+  <title id="title">AI 從研究、判斷、產出到驗證的工作流程</title>
+  <desc id="desc">從問題出發，依序完成研究、判斷、產出與驗證，AI 在各步驟提供協作。</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0b1d2a" flood-opacity=".12"/></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0l10 5-10 5z" fill="#61707a"/></marker>
+  </defs>
+  <rect width="1200" height="760" fill="#f4f7fb"/>
+  <rect x="64" y="58" width="1072" height="644" rx="38" fill="#fff" stroke="#dce5ec" stroke-width="3"/>
+  <text x="104" y="126" fill="#ff6534" font-family="Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="4">AI WORKFLOW</text>
+  <text x="104" y="182" fill="#0b1d2a" font-family="PingFang TC, Microsoft JhengHei, sans-serif" font-size="42" font-weight="800">從問題到可驗證成果</text>
+  <path d="M320 352h38M580 352h38M840 352h38" fill="none" stroke="#61707a" stroke-width="7" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <g filter="url(#shadow)">
+    <rect x="96" y="246" width="224" height="216" rx="28" fill="#eef1ff" stroke="#3153d8" stroke-width="4"/>
+    <rect x="356" y="246" width="224" height="216" rx="28" fill="#fff3ed" stroke="#ff6534" stroke-width="4"/>
+    <rect x="616" y="246" width="224" height="216" rx="28" fill="#edf4f5" stroke="#1d4055" stroke-width="4"/>
+    <rect x="876" y="246" width="224" height="216" rx="28" fill="#edf8f5" stroke="#72b9aa" stroke-width="4"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="20" font-weight="900" text-anchor="middle">
+    <circle cx="208" cy="298" r="26" fill="#3153d8"/><text x="208" y="305" fill="#fff">01</text>
+    <circle cx="468" cy="298" r="26" fill="#ff6534"/><text x="468" y="305" fill="#0b1d2a">02</text>
+    <circle cx="728" cy="298" r="26" fill="#1d4055"/><text x="728" y="305" fill="#fff">03</text>
+    <circle cx="988" cy="298" r="26" fill="#72b9aa"/><text x="988" y="305" fill="#0b1d2a">04</text>
+  </g>
+  <g fill="#0b1d2a" font-family="PingFang TC, Microsoft JhengHei, sans-serif" text-anchor="middle">
+    <text x="208" y="370" font-size="40" font-weight="800">研究</text><text x="208" y="412" font-size="20">整理資料與缺口</text>
+    <text x="468" y="370" font-size="40" font-weight="800">判斷</text><text x="468" y="412" font-size="20">比較選項與假設</text>
+    <text x="728" y="370" font-size="40" font-weight="800">產出</text><text x="728" y="412" font-size="20">完成文件與原型</text>
+    <text x="988" y="370" font-size="40" font-weight="800">驗證</text><text x="988" y="412" font-size="20">取得回饋再修正</text>
+  </g>
+  <rect x="96" y="518" width="1004" height="116" rx="24" fill="#0b1d2a"/>
+  <circle cx="158" cy="576" r="28" fill="#ff6534"/>
+  <text x="206" y="568" fill="#a8d9cf" font-family="Arial, sans-serif" font-size="19" font-weight="900" letter-spacing="3">AI COLLABORATION LAYER</text>
+  <text x="206" y="606" fill="#fff" font-family="PingFang TC, Microsoft JhengHei, sans-serif" font-size="24" font-weight="700">AI 加速每一步，但重要判斷仍由人負責</text>
 </svg>
