@@ -1590,7 +1590,7 @@ input {
 .register-section {
   display: grid;
   min-height: 500px;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 520px);
   align-items: end;
   gap: 64px;
   padding: 100px max(24px, calc((100vw - 1200px) / 2));
@@ -1605,16 +1605,76 @@ input {
   color: rgba(255, 255, 255, 0.62);
 }
 
-.register-actions {
-  display: flex;
-  max-width: 290px;
-  flex-direction: column;
-  gap: 14px;
+.choice-register-form {
+  width: 100%;
+  padding: 28px;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 22px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.22);
 }
 
-.register-actions small {
-  color: rgba(255, 255, 255, 0.46);
-  font-size: 10px;
+.choice-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.choice-field {
+  display: grid;
+  gap: 8px;
+}
+
+.choice-field.full {
+  grid-column: 1 / -1;
+}
+
+.choice-field label {
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.choice-field input,
+.choice-field textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 12px;
+  color: var(--ink);
+  background: #fbfdff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  outline: none;
+}
+
+.choice-field textarea {
+  min-height: 112px;
+  resize: vertical;
+}
+
+.choice-field input:focus,
+.choice-field textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(49, 83, 216, 0.12);
+}
+
+.choice-register-form .button {
+  width: 100%;
+}
+
+.choice-register-form .form-note,
+.choice-register-form .form-status {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.choice-register-form .form-status {
+  min-height: 20px;
+  color: var(--blue-dark);
+  font-weight: 750;
 }
 
 .site-footer {
@@ -2032,8 +2092,12 @@ input {
     padding: 82px 20px;
   }
 
-  .register-actions {
-    max-width: none;
+  .choice-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .choice-field.full {
+    grid-column: auto;
   }
 
   .site-footer {

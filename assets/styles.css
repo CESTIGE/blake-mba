@@ -429,7 +429,7 @@ h3 {
   inset: 0;
   background:
     linear-gradient(90deg, rgba(7, 21, 33, 0.96) 0%, rgba(7, 21, 33, 0.78) 44%, rgba(7, 21, 33, 0.18) 100%),
-    url("ai-operations-dashboard.png") center right / cover no-repeat;
+    url("ai-operations-dashboard.webp") center right / cover no-repeat;
   content: "";
 }
 
@@ -554,7 +554,7 @@ h3 {
 .personal-hero::before {
   background:
     linear-gradient(90deg, rgba(7, 21, 33, 0.97) 0%, rgba(7, 21, 33, 0.82) 52%, rgba(7, 21, 33, 0.24) 100%),
-    url("ai-operations-dashboard.png") center right / cover no-repeat;
+    url("ai-operations-dashboard.webp") center right / cover no-repeat;
 }
 
 .personal-hero .hero-visual {
@@ -1847,7 +1847,7 @@ h3 {
   .hero::before {
     background:
       linear-gradient(180deg, rgba(7, 21, 33, 0.96) 0%, rgba(7, 21, 33, 0.86) 58%, rgba(7, 21, 33, 0.38) 100%),
-      url("ai-operations-dashboard.png") center / cover no-repeat;
+      url("ai-operations-dashboard.webp") center / cover no-repeat;
   }
 
   .hero h1 {
@@ -2600,6 +2600,7 @@ summary:focus-visible {
 
 .finder-callout strong {
   margin-top: 4px;
+  color: var(--ink);
 }
 
 .five-step-process {

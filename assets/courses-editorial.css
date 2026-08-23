@@ -1163,31 +1163,43 @@ body[data-page="startup"] :focus-visible {
 }
 
 @media (max-width: 760px) {
-  body[data-page="courses"] .analytics-consent {
+  body[data-page="courses"] .analytics-consent,
+  body[data-page="career"] .analytics-consent,
+  body[data-page="startup"] .analytics-consent {
     gap: 10px;
     padding: 12px;
   }
 
-  body[data-page="courses"] .analytics-consent__copy {
+  body[data-page="courses"] .analytics-consent__copy,
+  body[data-page="career"] .analytics-consent__copy,
+  body[data-page="startup"] .analytics-consent__copy {
     display: none;
   }
 
-  body[data-page="courses"] .analytics-consent__copy strong {
+  body[data-page="courses"] .analytics-consent__copy strong,
+  body[data-page="career"] .analytics-consent__copy strong,
+  body[data-page="startup"] .analytics-consent__copy strong {
     margin: 0;
     font-size: 0.9rem;
     text-align: center;
   }
 
-  body[data-page="courses"] .analytics-consent__copy p {
+  body[data-page="courses"] .analytics-consent__copy p,
+  body[data-page="career"] .analytics-consent__copy p,
+  body[data-page="startup"] .analytics-consent__copy p {
     display: none;
   }
 
-  body[data-page="courses"] .analytics-consent__actions {
+  body[data-page="courses"] .analytics-consent__actions,
+  body[data-page="career"] .analytics-consent__actions,
+  body[data-page="startup"] .analytics-consent__actions {
     align-items: stretch;
     flex-direction: row;
   }
 
-  body[data-page="courses"] .analytics-consent__button {
+  body[data-page="courses"] .analytics-consent__button,
+  body[data-page="career"] .analytics-consent__button,
+  body[data-page="startup"] .analytics-consent__button {
     width: auto;
     min-width: 0;
     flex: 1;

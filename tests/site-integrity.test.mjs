@@ -8,6 +8,7 @@ const formPages = [
   "book/index.html",
   "courses/ai/index.html",
   "courses/career-transition/index.html",
+  "courses/choice-over-effort/index.html",
   "courses/entrepreneurship/index.html",
   "courses/software-startup/index.html",
 ];
@@ -141,8 +142,18 @@ test("changed frontend assets use current cache keys", () => {
   );
   assert.match(
     read("courses/choice-over-effort/index.html"),
-    /\/assets\/choice-over-effort\.css\?v=20260820contrast1/,
+    /\/assets\/choice-over-effort\.css\?v=20260823form1/,
   );
+
+  for (const page of [
+    "courses/index.html",
+    "courses/ai/index.html",
+    "courses/career-transition/index.html",
+    "courses/entrepreneurship/index.html",
+    "courses/software-startup/index.html",
+  ]) {
+    assert.match(read(page), /\/assets\/styles\.css\?v=20260823coursefix1/, page);
+  }
 });
 
 test("the hero is the only eager and high-priority image on the home page", () => {
@@ -156,7 +167,7 @@ test("local raster content images declare intrinsic dimensions", () => {
     for (const match of read(page).matchAll(/<img\b[^>]*>/gi)) {
       const tag = match[0];
       const source = attribute(tag, "src") ?? "";
-      if (!/^(?:https:\/\/blake\.mba)?\/assets\/.+\.(?:png|jpe?g)$/i.test(source)) continue;
+      if (!/^(?:https:\/\/blake\.mba)?\/assets\/.+\.(?:png|jpe?g|webp)$/i.test(source)) continue;
       assert.ok(attribute(tag, "width"), `${page}: ${source}`);
       assert.ok(attribute(tag, "height"), `${page}: ${source}`);
     }

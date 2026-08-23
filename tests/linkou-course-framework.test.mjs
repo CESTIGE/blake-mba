@@ -64,6 +64,59 @@ test("course comparison copy and AI workflow visual explain how to choose", () =
   assert.match(visual, />從問題到可驗證成果</);
 });
 
+test("course promotion stays readable and accurate after the registration deadline", () => {
+  const globalCss = read("assets/styles.css");
+  const overview = read("courses/index.html");
+  const career = read("courses/career-transition/index.html");
+  const startup = read("courses/software-startup/index.html");
+
+  assert.match(globalCss, /\.finder-callout strong\s*\{[^}]*color:\s*var\(--ink\);/s);
+  for (const html of [overview, career, startup]) {
+    assert.doesNotMatch(html, /OPEN NOW|目前開放報名|目前有開放報名/);
+    assert.match(html, /2026\/08\/25/);
+  }
+});
+
+test("AI course points visitors to the available Linkou course", () => {
+  const html = read("courses/ai/index.html");
+  const heroEnd = html.indexOf("</section>");
+  const hero = html.slice(0, heroEnd);
+
+  assert.match(hero, /class="finder-callout"/);
+  assert.match(hero, /林口社大 16 週 AI 實作課/);
+  assert.match(hero, /href="\/courses\/ai-work-productivity\/"/);
+});
+
+test("career choice course avoids promising a guaranteed employment outcome", () => {
+  const html = read("courses/choice-over-effort/index.html");
+
+  assert.match(html, /用 AI 提升職涯選擇力/);
+  assert.doesNotMatch(html, /用 AI 拿到理想工作/);
+});
+
+test("heavy course artwork uses optimized WebP assets", () => {
+  const pages = [
+    read("courses/index.html"),
+    read("courses/ai-work-productivity/index.html"),
+    read("courses/choice-over-effort/index.html"),
+    read("courses/software-startup/index.html"),
+  ].join("\n");
+  const assets = [
+    "courses/ai-work-productivity/assets/course-cover-ai-productivity-v2.webp",
+    ...["01", "02", "04", "10", "13", "16", "22", "30"].map(
+      (number) => `assets/choice-over-effort/course-slide-${number}.webp`,
+    ),
+    "assets/ai-operations-dashboard.webp",
+  ];
+
+  assert.doesNotMatch(pages, /course-cover-ai-productivity-v2\.png|choice-over-effort\/course-slide-[0-9]+\.png|ai-operations-dashboard\.png/);
+  for (const asset of assets) {
+    const file = new URL(`../${asset}`, import.meta.url);
+    assert.ok(fs.existsSync(file), asset);
+    assert.ok(fs.statSync(file).size < 500_000, `${asset} should stay below 500 KB`);
+  }
+});
+
 test("home page links to the currently open Linkou course above the fold", () => {
   const html = read("index.html");
   const heroEnd = html.indexOf("</section>");
@@ -90,7 +143,7 @@ test("Linkou course is discoverable in the sitemap", () => {
 test("updated pages reference fresh CSS cache keys", () => {
   assert.match(
     read("courses/index.html"),
-    /\/assets\/courses-editorial\.css\?v=20260823overview1/,
+    /\/assets\/courses-editorial\.css\?v=20260823coursefix2/,
   );
   assert.match(
     read("index.html"),
@@ -102,22 +155,24 @@ test("mobile analytics consent stays compact enough to leave the course entry vi
   const css = read("assets/courses-editorial.css");
   const homeCss = read("assets/who-is-blake.css");
 
-  assert.match(
-    css,
-    /@media \(max-width: 760px\)[^]*body\[data-page="courses"\] \.analytics-consent__copy p\s*\{[^}]*display:\s*none;/s,
-  );
-  assert.match(
-    css,
-    /@media \(max-width: 760px\)[^]*body\[data-page="courses"\] \.analytics-consent__copy\s*\{[^}]*display:\s*none;/s,
-  );
-  assert.match(
-    css,
-    /@media \(max-width: 760px\)[^]*body\[data-page="courses"\] \.analytics-consent__actions\s*\{[^}]*flex-direction:\s*row;/s,
-  );
-  assert.match(
-    css,
-    /@media \(max-width: 760px\)[^]*body\[data-page="courses"\] \.analytics-consent__button\s*\{[^}]*width:\s*auto;/s,
-  );
+  const mobileCss = css.slice(css.indexOf("@media (max-width: 760px)"));
+  for (const page of ["courses", "career", "startup"]) {
+    for (const component of [
+      "analytics-consent__copy",
+      "analytics-consent__copy p",
+      "analytics-consent__actions",
+      "analytics-consent__button",
+    ]) {
+      assert.ok(
+        mobileCss.includes(`body[data-page="${page}"] .${component}`),
+        `${page} should include the compact ${component} rule`,
+      );
+    }
+  }
+  assert.match(mobileCss, /\.analytics-consent__copy\s*\{[^}]*display:\s*none;/s);
+  assert.match(mobileCss, /\.analytics-consent__copy p\s*\{[^}]*display:\s*none;/s);
+  assert.match(mobileCss, /\.analytics-consent__actions\s*\{[^}]*flex-direction:\s*row;/s);
+  assert.match(mobileCss, /\.analytics-consent__button\s*\{[^}]*width:\s*auto;/s);
   assert.match(
     homeCss,
     /@media \(max-width: 760px\)[^]*body\[data-page="home"\] \.analytics-consent__copy\s*\{[^}]*display:\s*none;/s,
