@@ -1,5 +1,19 @@
 [
   {
+    "title": "以前我不懂為什麼 AI 要用 Token 計費，現在我開始懂了",
+    "slug": "token-economy-ai-pricing",
+    "url": "/articles/token-economy-ai-pricing/",
+    "category": "AI 工作流",
+    "topics": ["AI 工作流", "創業實戰"],
+    "date": "2026-08-24",
+    "readingTime": "8 分鐘",
+    "excerpt": "傳統 SaaS 賣的是使用權；AI 開始替企業完成工作。Token 是底層成本表，任務與成果才是客戶真正購買的價值。",
+    "image": "/assets/token-economy-ai-pricing.jpg",
+    "alt": "Token 經濟學：從企業需求、Token 用量、AI 數位產能到商業價值的流程圖",
+    "featured": true,
+    "status": "published"
+  },
+  {
     "title": "書已舊，夢沒鏽：重讀《i狂人賈伯斯》後的創業現實",
     "slug": "books-grow-old-dreams-dont-rust",
     "url": "/articles/books-grow-old-dreams-dont-rust/",
@@ -10,7 +24,7 @@
     "excerpt": "當年讀這本書的我，正在想像創業；現在重讀的我，已經走了很久。前人的精神可以學習，但自己的方法必須回到現實。",
     "image": "/assets/books-grow-old-dreams-dont-rust.jpg",
     "alt": "BLAKE 手持《i狂人賈伯斯》舊書，背景是正在工作的電腦螢幕",
-    "featured": true,
+    "featured": false,
     "status": "published"
   },
   {
