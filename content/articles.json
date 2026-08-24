@@ -1,13 +1,13 @@
 [
   {
-    "title": "以前我不懂為什麼 AI 要用 Token 計費，現在我開始懂了",
+    "title": "Token 不是報價單：我開始看懂 AI 時代的成本與價值",
     "slug": "token-economy-ai-pricing",
     "url": "/articles/token-economy-ai-pricing/",
     "category": "AI 工作流",
     "topics": ["AI 工作流", "創業實戰"],
     "date": "2026-08-24",
-    "readingTime": "8 分鐘",
-    "excerpt": "傳統 SaaS 賣的是使用權；AI 開始替企業完成工作。Token 是底層成本表，任務與成果才是客戶真正購買的價值。",
+    "readingTime": "6 分鐘",
+    "excerpt": "Token 能衡量 AI 的底層成本，但客戶真正購買的是任務與成果。這也是 SaaS 從單一訂閱制走向混合計價的關鍵。",
     "image": "/assets/token-economy-ai-pricing.jpg",
     "alt": "Token 經濟學：從企業需求、Token 用量、AI 數位產能到商業價值的流程圖",
     "featured": true,
