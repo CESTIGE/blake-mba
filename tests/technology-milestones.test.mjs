@@ -64,3 +64,22 @@ test("milestone styles include responsive, focus and reduced-motion contracts", 
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
   assert.match(css, /overflow-wrap:\s*anywhere/);
 });
+
+test("desktop milestone modules use the approved large editorial format", () => {
+  const css = read("assets/technology-milestones.css");
+  assert.match(css, /\.milestone-card\s*{[^}]*width:\s*76%/s);
+  assert.match(css, /\.milestone-story p\s*{[^}]*font-size:\s*17px/s);
+  assert.match(css, /\.founder img,[^{]*\.founder-monogram\s*{[^}]*width:\s*68px[^}]*height:\s*80px/s);
+  assert.match(css, /@media\s*\(max-width:\s*1020px\)[\s\S]*?\.milestone-card,[\s\S]*?width:\s*auto/s);
+});
+
+test("the final milestone includes Elon Musk, xAI and SpaceX with sources", () => {
+  const html = read("technology-milestones/index.html");
+  const finalModule = html.match(/<article[^>]+id="era-10"[\s\S]*?<\/article>/)?.[0] ?? "";
+  assert.match(finalModule, /xAI/);
+  assert.match(finalModule, /SpaceX/);
+  assert.match(finalModule, /Elon Musk/);
+  assert.match(finalModule, /https:\/\/x\.ai\/company/);
+  assert.match(finalModule, /https:\/\/(?:new\.)?spacex\.com\/mission/);
+  assert.match(finalModule, /elon-musk\.jpg/);
+});

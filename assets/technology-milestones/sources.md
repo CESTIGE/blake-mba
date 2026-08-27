@@ -17,7 +17,7 @@ This ledger records the public sources used for page copy and portraits. Company
 | 2011–2014 | Airbnb / Uber | Brian Chesky, Airbnb co-founder; Travis Kalanick, Uber co-founder | [Airbnb about](https://news.airbnb.com/about-us/); [Uber founding story](https://www.uber.com/us/en/newsroom/ubers-founding/) |
 | 2015–2017 | Netflix / Spotify | Reed Hastings, Netflix co-founder; Daniel Ek, Spotify co-founder | [Netflix leadership update](https://about.netflix.com/en/news/leadership-update); [Spotify visual history](https://newsroom.spotify.com/spotify-timeline/) |
 | 2018–2021 | TikTok / Zoom | Zhang Yiming, ByteDance founder; Eric Yuan, Zoom founder | [TikTok and musical.ly combination](https://newsroom.tiktok.com/musical-ly-and/?lang=en); [TikTok leadership note](https://newsroom.tiktok.com/tiktok-names-ceo-and-coo?lang=en); [Zoom team](https://www.zoom.com/en/about/team/) |
-| 2022–2025 | ChatGPT / Claude / Gemini | Sam Altman, OpenAI co-founder; Dario Amodei, Anthropic co-founder and CEO; Demis Hassabis, Google DeepMind co-founder and CEO | [Introducing ChatGPT](https://openai.com/index/chatgpt/); [Introducing Claude](https://www.anthropic.com/news/introducing-claude); [Introducing Gemini](https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/) |
+| 2022–2025 | ChatGPT / Claude / Gemini / xAI / SpaceX | Sam Altman, OpenAI co-founder; Dario Amodei, Anthropic co-founder and CEO; Demis Hassabis, Google DeepMind co-founder and CEO; Elon Musk, xAI and SpaceX founder | [Introducing ChatGPT](https://openai.com/index/chatgpt/); [Introducing Claude](https://www.anthropic.com/news/introducing-claude); [Introducing Gemini](https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/); [xAI company](https://x.ai/company); [SpaceX mission and reusability](https://new.spacex.com/mission) |
 
 ## Local portrait attribution
 
@@ -40,6 +40,7 @@ This ledger records the public sources used for page copy and portraits. Company
 | `sam-altman.jpg` | Sam Altman | [Commons](https://commons.wikimedia.org/wiki/File:Meeting_with_Masayoshi_Son_and_Sam_Altman_(February_3,_2025)_(3x4_cropped_on_Altman).jpg) | Office of the Prime Minister of Japan | CC BY 4.0 |
 | `dario-amodei.jpg` | Dario Amodei | [Commons](https://commons.wikimedia.org/wiki/File:Dario_Amodei_at_TechCrunch_Disrupt_2023_01_(cropped).jpg) | TechCrunch | CC BY 2.0 |
 | `demis-hassabis.jpg` | Demis Hassabis | [Commons](https://commons.wikimedia.org/wiki/File:Demis_Hassabis,_2024_Nobel_Prize_Laureate_in_Chemistry_7_(cropped).jpg) | John Sears | CC BY-SA 4.0 |
+| `elon-musk.jpg` | Elon Musk | [Commons](https://commons.wikimedia.org/wiki/File:Elon_Musk_Colorado_2022_(cropped2).jpg) | U.S. Air Force / Trevor Cokley | Public domain |
 
 ## Portrait exception
 
