@@ -1,6 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { read } from "./helpers/site-files.mjs";
+import { pathToFileURL } from "node:url";
+import { join } from "node:path";
+import { projectRoot, read } from "./helpers/site-files.mjs";
 
 test("technology milestones preserves the reference and expands it to ten sourced modules", () => {
   const html = read("technology-milestones/index.html");
@@ -30,4 +32,25 @@ test("technology milestones remains a standalone unindexed showcase", () => {
   const siteJs = read("assets/site.js");
   assert.doesNotMatch(sitemap, /technology-milestones/);
   assert.doesNotMatch(siteJs, /technology-milestones/);
+});
+
+test("dividend state updates the panel, accessibility state and visible label", async () => {
+  const { setDividendState } = await import(pathToFileURL(join(projectRoot, "assets/technology-milestones.js")));
+  const attributes = new Map();
+  const label = { textContent: "" };
+  const toggle = {
+    setAttribute(name, value) { attributes.set(name, value); },
+    querySelector(selector) { return selector === "[data-toggle-label]" ? label : null; },
+  };
+  const panel = { hidden: true };
+
+  setDividendState(toggle, panel, true);
+  assert.equal(attributes.get("aria-expanded"), "true");
+  assert.equal(panel.hidden, false);
+  assert.equal(label.textContent, "收起紅利");
+
+  setDividendState(toggle, panel, false);
+  assert.equal(attributes.get("aria-expanded"), "false");
+  assert.equal(panel.hidden, true);
+  assert.equal(label.textContent, "展開紅利");
 });
