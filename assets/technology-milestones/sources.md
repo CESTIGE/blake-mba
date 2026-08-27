@@ -17,7 +17,11 @@ This ledger records the public sources used for page copy and portraits. Company
 | 2011–2014 | Airbnb / Uber | Brian Chesky, Airbnb co-founder; Travis Kalanick, Uber co-founder | [Airbnb about](https://news.airbnb.com/about-us/); [Uber founding story](https://www.uber.com/us/en/newsroom/ubers-founding/) |
 | 2015–2017 | Netflix / Spotify | Reed Hastings, Netflix co-founder; Daniel Ek, Spotify co-founder | [Netflix leadership update](https://about.netflix.com/en/news/leadership-update); [Spotify visual history](https://newsroom.spotify.com/spotify-timeline/) |
 | 2018–2021 | TikTok / Zoom | Zhang Yiming, ByteDance founder; Eric Yuan, Zoom founder | [TikTok and musical.ly combination](https://newsroom.tiktok.com/musical-ly-and/?lang=en); [TikTok leadership note](https://newsroom.tiktok.com/tiktok-names-ceo-and-coo?lang=en); [Zoom team](https://www.zoom.com/en/about/team/) |
-| 2022–2025 | ChatGPT / Claude / Gemini / xAI / SpaceX | Sam Altman, OpenAI co-founder; Dario Amodei, Anthropic co-founder and CEO; Demis Hassabis, Google DeepMind co-founder and CEO; Elon Musk, xAI and SpaceX founder | [Introducing ChatGPT](https://openai.com/index/chatgpt/); [Introducing Claude](https://www.anthropic.com/news/introducing-claude); [Introducing Gemini](https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/); [xAI company](https://x.ai/company); [SpaceX mission and reusability](https://new.spacex.com/mission) |
+| 2022–2025 | ChatGPT / Claude / Gemini | Sam Altman, OpenAI co-founder; Dario Amodei, Anthropic co-founder and CEO; Demis Hassabis, Google DeepMind co-founder and CEO | [Introducing ChatGPT](https://openai.com/index/chatgpt/); [Introducing Claude](https://www.anthropic.com/news/introducing-claude); [Introducing Gemini](https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/) |
+
+## Founder spotlight
+
+Elon Musk is presented after the ten-era timeline as a separate founder profile so SpaceX's 2002 origin is not misrepresented as a 2022–2025 milestone. The event sequence uses [SpaceX's mission history](https://new.spacex.com/mission), [Starlink's official site](https://www.starlink.com/), [xAI's Grok announcement](https://x.ai/news/grok), and [xAI's Colossus record](https://x.ai/colossus).
 
 ## Local portrait attribution
 
