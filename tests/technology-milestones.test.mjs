@@ -54,3 +54,13 @@ test("dividend state updates the panel, accessibility state and visible label", 
   assert.equal(panel.hidden, true);
   assert.equal(label.textContent, "展開紅利");
 });
+
+test("milestone styles include responsive, focus and reduced-motion contracts", () => {
+  const css = read("assets/technology-milestones.css");
+  assert.match(css, /--milestone-ink:\s*#0b1d2a/i);
+  assert.match(css, /min-height:\s*44px/);
+  assert.match(css, /:focus-visible/);
+  assert.match(css, /@media\s*\(max-width:\s*760px\)/);
+  assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
+  assert.match(css, /overflow-wrap:\s*anywhere/);
+});
