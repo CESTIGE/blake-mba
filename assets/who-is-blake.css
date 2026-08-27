@@ -2277,7 +2277,7 @@ a.credential-card:focus-visible {
 
 .company-card {
   display: flex;
-  min-height: 520px;
+  min-height: 660px;
   flex-direction: column;
   padding: 34px;
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -2293,6 +2293,16 @@ a.credential-card:focus-visible {
 .company-card-orange {
   color: var(--ink);
   background: var(--orange);
+}
+
+.company-card-seedream {
+  background:
+    radial-gradient(circle at 12% 12%, rgba(168, 217, 207, 0.14), transparent 16rem),
+    rgba(255, 255, 255, 0.055);
+}
+
+.company-card-tmarsbase {
+  background: #f6f0e8;
 }
 
 .company-card-top {
@@ -2324,6 +2334,69 @@ a.credential-card:focus-visible {
   opacity: 0.56;
 }
 
+.company-logo-frame {
+  display: grid;
+  min-height: 150px;
+  margin-top: 30px;
+  place-items: center;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  overflow: hidden;
+}
+
+.company-logo-frame img {
+  width: 100%;
+  max-width: 310px;
+  max-height: 110px;
+  object-fit: contain;
+}
+
+.seedream-official-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  color: #554c47;
+}
+
+.seedream-official-mark {
+  position: relative;
+  display: block;
+  width: 66px;
+  height: 62px;
+  flex: 0 0 auto;
+}
+
+.seedream-official-mark i {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border: 4px solid currentColor;
+  border-radius: 15px;
+}
+
+.seedream-official-mark i:first-child {
+  top: 1px;
+  left: 2px;
+}
+
+.seedream-official-mark i:last-child {
+  right: 1px;
+  bottom: 1px;
+}
+
+.seedream-official-name {
+  font-size: 29px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.company-logo-frame-tmarsbase img {
+  width: 104px;
+  height: 110px;
+}
+
 .company-years {
   margin: 74px 0 0;
   color: var(--orange);
@@ -2335,16 +2408,16 @@ a.credential-card:focus-visible {
 }
 
 .company-card h3 {
-  margin: 8px 0 0;
+  margin: 24px 0 0;
   font-family: "Noto Serif TC", Georgia, serif;
-  font-size: 34px;
+  font-size: 29px;
   line-height: 1.2;
 }
 
 .company-card > strong {
   display: block;
-  margin-top: 22px;
-  font-size: 20px;
+  margin-top: 14px;
+  font-size: 23px;
   line-height: 1.45;
 }
 
@@ -2357,6 +2430,91 @@ a.credential-card:focus-visible {
 .company-card-light > p:not(.company-years),
 .company-card-orange > p:not(.company-years) {
   color: rgba(11, 29, 42, 0.68);
+}
+
+.company-specialties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.company-specialties span {
+  padding: 6px 9px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.2;
+  opacity: 0.82;
+}
+
+.company-value {
+  line-height: 1.75;
+}
+
+.company-card > .company-highlights {
+  margin-top: auto;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.company-card > .company-tmarsbase-promise {
+  margin-top: 18px;
+  color: var(--ink);
+  font-family: "Noto Serif TC", Georgia, serif;
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+.company-tmarsbase-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(11, 29, 42, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.44);
+}
+
+.company-tmarsbase-pillars span {
+  min-width: 0;
+  padding: 13px 8px;
+  text-align: center;
+}
+
+.company-tmarsbase-pillars span + span {
+  border-left: 1px solid rgba(11, 29, 42, 0.12);
+}
+
+.company-tmarsbase-pillars b,
+.company-tmarsbase-pillars small {
+  display: block;
+}
+
+.company-tmarsbase-pillars b {
+  font-size: 13px;
+}
+
+.company-tmarsbase-pillars small {
+  margin-top: 5px;
+  color: rgba(11, 29, 42, 0.58);
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.company-card-light > .company-highlights,
+.company-card-orange > .company-highlights {
+  border-color: rgba(11, 29, 42, 0.12);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.48);
 }
 
 .company-takeaway {
@@ -2377,6 +2535,11 @@ a.credential-card:focus-visible {
 
 .company-card a:hover {
   text-decoration: underline;
+}
+
+.company-card .company-logo-frame:hover {
+  border-color: rgba(255, 101, 52, 0.72);
+  text-decoration: none;
 }
 
 .company-note {
@@ -2929,7 +3092,12 @@ a.credential-card:focus-visible {
   }
 
   .company-card {
-    min-height: 480px;
+    min-height: 600px;
+  }
+
+  .company-logo-frame {
+    min-height: 132px;
+    margin-top: 24px;
   }
 
   .company-card h3 {
