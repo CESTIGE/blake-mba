@@ -161,6 +161,7 @@ a { color: inherit; }
   .story-header p { display: none; }
   .story-brand { font-size: 23px; }
   .hero-copy { top: 22%; left: 24px; width: calc(100% - 48px); }
+  .hero-real-image { object-position: 64% center; }
   .hero-copy h1 { font-size: clamp(47px, 12vw, 80px); }
   .hero-copy h1 span, .hero-copy h1 strong { white-space: normal; }
   .hero-shutter { background: linear-gradient(0deg, rgba(1,6,12,.95), rgba(1,6,12,.24) 72%), linear-gradient(90deg, rgba(1,6,12,.7), transparent); }

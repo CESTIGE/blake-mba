@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import {
   cinemaOffset,
   evidenceCounterLabel,
@@ -39,4 +40,14 @@ test("cinema rail moves through every real poster without a manual scrollbar", (
   assert.equal(cinemaOffset(0, 8), 0);
   assert.equal(cinemaOffset(0.5, 8), -350);
   assert.equal(cinemaOffset(1, 8), -700);
+});
+
+test("hero uses a dedicated AI replacement film while the 2022 evidence keeps its source image", async () => {
+  const html = await readFile(new URL("../ai-future-of-work/index.html", import.meta.url), "utf8");
+  const heroSource = html.match(/class="hero-real-image"[^>]+src="([^"]+)"/)?.[1];
+  const firstEvidenceSource = html.match(/class="evolution-frame is-active">\s*<img src="([^"]+)"/)?.[1];
+
+  assert.equal(heroSource, "/assets/ai-future-of-work-real/hero-ai-replacement.png");
+  assert.equal(firstEvidenceSource, "/assets/ai-future-of-work-real/hero-youtube.jpg");
+  assert.notEqual(heroSource, firstEvidenceSource);
 });
