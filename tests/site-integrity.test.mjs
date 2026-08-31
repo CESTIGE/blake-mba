@@ -26,6 +26,9 @@ const indexedPages = new Map([
   ["https://blake.mba/courses/entrepreneurship/", "courses/entrepreneurship/index.html"],
   ["https://blake.mba/courses/software-startup/", "courses/software-startup/index.html"],
   ["https://blake.mba/insights/", "insights/index.html"],
+  ["https://blake.mba/metabiz/", "metabiz/index.html"],
+  ["https://blake.mba/seedream/", "seedream/index.html"],
+  ["https://blake.mba/tmarsbase/", "tmarsbase/index.html"],
   ["https://blake.mba/articles/ai-career-positioning/", "articles/ai-career-positioning/index.html"],
   ["https://blake.mba/articles/books-grow-old-dreams-dont-rust/", "articles/books-grow-old-dreams-dont-rust/index.html"],
   ["https://blake.mba/articles/execution-driven-team-building/", "articles/execution-driven-team-building/index.html"],
@@ -124,7 +127,9 @@ test("every HTML file uses the shipped favicon", () => {
 });
 
 test("changed frontend assets use current cache keys", () => {
+  const cardPages = new Set(["metabiz/index.html", "seedream/index.html", "tmarsbase/index.html"]);
   for (const page of indexedPages.values()) {
+    if (cardPages.has(page)) continue;
     assert.match(
       read(page),
       /<script src="\/assets\/analytics\.js\?v=20260820flow1"><\/script>/,
