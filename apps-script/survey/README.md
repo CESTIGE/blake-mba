@@ -33,4 +33,3 @@
 ## 8. 回復方式
 
 如需停止串接，先從頁面移除 endpoint，接著停用 Apps Script deployment。這些動作都不得觸碰 Google Forms 管理的回覆分頁。
-
