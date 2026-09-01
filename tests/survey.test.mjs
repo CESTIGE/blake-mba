@@ -1,5 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { spawn } from "node:child_process";
+import { once } from "node:events";
 import { attribute, read, tagWithAttribute } from "./helpers/site-files.mjs";
 import {
   SurveyTransportError,
@@ -9,6 +11,96 @@ import {
   submitSurvey,
   validateSurveyValues,
 } from "../assets/survey.js";
+
+function startPreviewServer() {
+  const child = spawn(process.execPath, ["tests/helpers/survey-preview-server.mjs", "--port", "0"], {
+    cwd: new URL("..", import.meta.url),
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  let output = "";
+  const ready = new Promise((resolve, reject) => {
+    const timeout = setTimeout(() => reject(new Error(`preview server did not start: ${output}`)), 5000);
+    child.stdout.on("data", (chunk) => {
+      output += chunk;
+      const match = output.match(/http:\/\/127\.0\.0\.1:(\d+)/);
+      if (match) {
+        clearTimeout(timeout);
+        resolve(Number(match[1]));
+      }
+    });
+    child.stderr.on("data", (chunk) => { output += chunk; });
+    child.once("error", (error) => {
+      clearTimeout(timeout);
+      reject(error);
+    });
+    child.once("exit", (code) => {
+      clearTimeout(timeout);
+      reject(new Error(`preview server exited before ready (${code}): ${output}`));
+    });
+  });
+  return { child, ready };
+}
+
+async function stopPreviewServer(child) {
+  if (child.exitCode !== null || child.signalCode !== null) return;
+  child.kill();
+  await once(child, "exit");
+}
+
+test("Google setup guide preserves the external-write boundary", () => {
+  const guide = read("apps-script/survey/README.md");
+  assert.match(guide, /SURVEY_SPREADSHEET_ID/);
+  assert.match(guide, /網站問卷回覆/);
+  assert.match(guide, /執行身分.*擁有者/s);
+  assert.match(guide, /測試資料/);
+  assert.match(guide, /回讀/);
+  assert.doesNotMatch(guide, /https:\/\/docs\.google\.com\/spreadsheets\/d\/[A-Za-z0-9_-]+/);
+  assert.doesNotMatch(guide, /https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec/);
+});
+
+test("preview server injects a loopback endpoint without changing the source page", async () => {
+  const { child, ready } = startPreviewServer();
+  try {
+    const port = await ready;
+    const page = await fetch(`http://127.0.0.1:${port}/survey/`);
+    const html = await page.text();
+    const source = read("survey/index.html");
+    assert.equal(page.status, 200);
+    assert.match(html, new RegExp(`data-survey-endpoint="http://127\\.0\\.0\\.1:${port}/api/survey"`));
+    assert.match(source, /data-survey-endpoint=""/);
+
+    const response = await fetch(`http://127.0.0.1:${port}/api/survey`, {
+      method: "POST",
+      body: JSON.stringify({ requestId: "local-test" }),
+    });
+    assert.deepEqual(await response.json(), { ok: true, submissionId: "local-preview-submission" });
+  } finally {
+    await stopPreviewServer(child);
+  }
+});
+
+test("preview server exposes the mock error and rejects unsafe requests", async () => {
+  const { child, ready } = startPreviewServer();
+  try {
+    const port = await ready;
+    const errorResponse = await fetch(`http://127.0.0.1:${port}/api/survey?mock=error`, { method: "POST" });
+    assert.deepEqual(await errorResponse.json(), {
+      ok: false,
+      code: "WRITE_ERROR",
+      message: "目前無法儲存回覆，請稍後再試。",
+    });
+
+    const traversal = await fetch(`http://127.0.0.1:${port}/..%2fpackage.json`);
+    assert.equal(traversal.status, 403);
+    const oversized = await fetch(`http://127.0.0.1:${port}/api/survey`, {
+      method: "POST",
+      body: "x".repeat(12001),
+    });
+    assert.equal(oversized.status, 413);
+  } finally {
+    await stopPreviewServer(child);
+  }
+});
 
 test("survey page exposes the approved accessible contract", () => {
   const html = read("survey/index.html");
