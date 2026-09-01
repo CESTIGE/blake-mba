@@ -9,117 +9,49 @@ const analyticsSource = readFileSync(
   "utf8",
 );
 
-function createElement(tagName) {
-  const listeners = new Map();
-  const element = {
-    tagName: String(tagName).toUpperCase(),
-    className: "",
-    dataset: {},
-    children: [],
-    parentNode: null,
-    hidden: false,
-    focusCalls: [],
-    textContent: "",
-    append(...nodes) {
-      for (const node of nodes) {
-        node.parentNode = this;
-        this.children.push(node);
-      }
-    },
-    appendChild(node) {
-      this.append(node);
-      return node;
-    },
-    insertBefore(node, referenceNode) {
-      const index = this.children.indexOf(referenceNode);
-      assert.notEqual(index, -1, "reference node must belong to its parent");
-      node.parentNode = this;
-      this.children.splice(index, 0, node);
-    },
-    setAttribute(name, value) {
-      this[name] = value;
-    },
-    addEventListener(type, handler) {
-      listeners.set(type, handler);
-    },
-    emit(type, event = {}) {
-      listeners.get(type)?.({ target: this, ...event });
-    },
-    focus(options) {
-      this.focusCalls.push(options);
-    },
-    closest(selector) {
-      if (selector === "[data-analytics-choice]" && this.dataset.analyticsChoice) {
-        return this;
-      }
-      return null;
-    },
-    querySelector(selector) {
-      if (selector !== "[data-analytics-choice]") return null;
-      return findElement(this, (candidate) => candidate.dataset.analyticsChoice);
-    },
-  };
-
-  Object.defineProperty(element, "innerHTML", {
-    set(value) {
-      this._innerHTML = value;
-      if (!String(value).includes("data-analytics-choice")) return;
-      const denied = createElement("button");
-      denied.dataset.analyticsChoice = "denied";
-      const granted = createElement("button");
-      granted.dataset.analyticsChoice = "granted";
-      this.append(denied, granted);
-    },
-    get() {
-      return this._innerHTML || "";
-    },
-  });
-
-  return element;
-}
-
-function findElement(root, predicate) {
-  if (predicate(root)) return root;
-  for (const child of root.children) {
-    const match = findElement(child, predicate);
-    if (match) return match;
-  }
-  return null;
-}
-
-function renderConsentUi(
-  storedChoice = null,
-  { withMain = true, withFooter = true } = {},
-) {
-  const body = createElement("body");
-  const main = withMain ? createElement("main") : null;
-  const footer = withFooter ? createElement("footer") : null;
-  body.append(...[main, footer].filter(Boolean));
-
+function runAnalytics(storedChoice = null) {
+  const documentListeners = new Map();
+  const headChildren = [];
+  const bodyChildren = [];
   const document = {
     readyState: "complete",
-    body,
-    head: createElement("head"),
-    createElement,
-    querySelector(selector) {
-      if (selector === "footer") return footer;
-      if (selector === "main") return main;
-      return null;
+    head: {
+      appendChild(node) {
+        headChildren.push(node);
+        return node;
+      },
     },
-    addEventListener() {},
+    body: {
+      append(...nodes) {
+        bodyChildren.push(...nodes);
+      },
+      appendChild(node) {
+        bodyChildren.push(node);
+        return node;
+      },
+    },
+    createElement(tagName) {
+      return {
+        tagName: String(tagName).toUpperCase(),
+        className: "",
+        dataset: {},
+      };
+    },
+    addEventListener(type, handler) {
+      documentListeners.set(type, handler);
+    },
   };
   const window = {
     dataLayer: [],
     document,
     location: {
-      href: "https://blake.mba/contact/",
+      href: "https://blake.mba/courses/",
       origin: "https://blake.mba",
     },
     localStorage: {
       getItem() {
         return storedChoice;
       },
-      setItem() {},
     },
   };
   window.window = window;
@@ -129,7 +61,6 @@ function renderConsentUi(
     vm.createContext({
       window,
       document,
-      localStorage: window.localStorage,
       console,
       Date,
       URL,
@@ -138,21 +69,96 @@ function renderConsentUi(
     }),
   );
 
-  return { body, footer, main };
+  return {
+    window,
+    headChildren,
+    bodyChildren,
+    click(target) {
+      documentListeners.get("click")?.({ target });
+    },
+  };
 }
 
-test("analytics never renders a consent window or settings control", () => {
-  const { body } = renderConsentUi();
-
-  const banner = findElement(
-    body,
-    (element) => element.className === "analytics-consent",
+function consentCommands(dataLayer, action) {
+  return dataLayer.filter(
+    (entry) => entry?.[0] === "consent" && entry?.[1] === action,
   );
-  const settingsButton = findElement(
-    body,
-    (element) => element.className === "analytics-settings",
-  );
+}
 
-  assert.equal(banner, null);
-  assert.equal(settingsButton, null);
+for (const storedChoice of [null, "denied", "invalid", "granted"]) {
+  test(`analytics has no consent UI for stored choice ${String(storedChoice)}`, () => {
+    const { window, headChildren, bodyChildren } = runAnalytics(storedChoice);
+
+    const defaults = consentCommands(window.dataLayer, "default");
+    const updates = consentCommands(window.dataLayer, "update");
+
+    assert.equal(defaults.length, 1);
+    assert.equal(defaults[0][2].analytics_storage, "denied");
+    assert.equal(updates.length, storedChoice === "granted" ? 1 : 0);
+    if (storedChoice === "granted") {
+      assert.equal(updates[0][2].analytics_storage, "granted");
+    }
+
+    assert.deepEqual(bodyChildren, []);
+    assert.equal(headChildren.length, 1);
+    assert.equal(headChildren[0].tagName, "SCRIPT");
+    assert.equal(headChildren[0].dataset.blakeGtm, "GTM-KLVS6KVH");
+  });
+}
+
+for (const storedChoice of [null, "denied", "invalid"]) {
+  test(`analytics does not track CTA clicks without consent: ${String(storedChoice)}`, () => {
+    const sandbox = runAnalytics(storedChoice);
+    const target = {
+      textContent: "直接詢問 BLAKE",
+      closest() {
+        return this;
+      },
+      getAttribute(name) {
+        return name === "href" ? "/contact/" : null;
+      },
+    };
+
+    sandbox.window.blakeAnalytics.trackEvent("generate_lead", {
+      form_name: "contact",
+    });
+    sandbox.click(target);
+
+    assert.equal(
+      sandbox.window.dataLayer.some(
+        (entry) => entry?.event === "generate_lead" || entry?.event === "select_content",
+      ),
+      false,
+    );
+  });
+}
+
+test("stored consent keeps CTA interaction tracking without restoring the window", () => {
+  const sandbox = runAnalytics("granted");
+  const target = {
+    textContent: "  直接詢問 BLAKE  ",
+    closest() {
+      return this;
+    },
+    getAttribute(name) {
+      return name === "href" ? "/contact/?from=courses" : null;
+    },
+  };
+
+  sandbox.click(target);
+
+  assert.deepEqual(
+    {
+      ...sandbox.window.dataLayer.find(
+        (entry) => entry?.event === "select_content",
+      ),
+    },
+    {
+      event: "select_content",
+      content_type: "cta",
+      item_id: "/contact/",
+      link_text: "直接詢問 BLAKE",
+    },
+  );
+  assert.deepEqual(sandbox.bodyChildren, []);
 });

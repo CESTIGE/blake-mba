@@ -127,15 +127,23 @@ test("every HTML file uses the shipped favicon", () => {
 });
 
 test("changed frontend assets use current cache keys", () => {
-  const cardPages = new Set(["metabiz/index.html", "seedream/index.html", "tmarsbase/index.html"]);
-  for (const page of indexedPages.values()) {
-    if (cardPages.has(page)) continue;
-    assert.match(
-      read(page),
-      /<script src="\/assets\/analytics\.js\?v=20260901no-consent1"><\/script>/,
-      page,
-    );
+  const analyticsScript =
+    '<script src="/assets/analytics.js?v=20260901no-consent1"></script>';
+  for (const page of htmlFiles()) {
+    const html = read(page);
+    const analyticsReferences =
+      html.match(/<script src="\/assets\/analytics\.js\?v=[^"]+"><\/script>/g) ?? [];
+    if (html.includes("/assets/analytics.js")) {
+      assert.deepEqual(analyticsReferences, [analyticsScript], page);
+    }
+    assert.doesNotMatch(html, /analytics\.js\?v=20260820flow1/, page);
+    assert.doesNotMatch(html, /analytics\.css/, page);
   }
+  assert.doesNotMatch(
+    read("assets/analytics.js"),
+    /analytics\.css/,
+    "analytics.js must not restore the removed consent UI stylesheet",
+  );
 
   assert.match(
     read("ai-transform/index.html"),
