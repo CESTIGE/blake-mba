@@ -5,6 +5,7 @@ import {
   SurveyTransportError,
   buildSurveyPayload,
   createRequestId,
+  initializeSurveyPage,
   submitSurvey,
   validateSurveyValues,
 } from "../assets/survey.js";
@@ -140,6 +141,240 @@ const validValues = {
   consent: true,
   website: "",
 };
+
+function createFakeElement({ name = "", value = "", checked = false } = {}) {
+  const attributes = new Map();
+  const listeners = new Map();
+  const classes = new Set();
+  return {
+    name,
+    value,
+    checked,
+    disabled: false,
+    hidden: false,
+    textContent: "",
+    dataset: {},
+    focusCount: 0,
+    classList: {
+      add(...names) { names.forEach((className) => classes.add(className)); },
+      remove(...names) { names.forEach((className) => classes.delete(className)); },
+      contains(name) { return classes.has(name); },
+    },
+    setAttribute(name, attributeValue) { attributes.set(name, String(attributeValue)); },
+    getAttribute(name) { return attributes.get(name) ?? null; },
+    removeAttribute(name) { attributes.delete(name); },
+    focus() { this.focusCount += 1; },
+    addEventListener(type, listener) { listeners.set(type, listener); },
+    async emit(type, event = {}) { return listeners.get(type)?.({ target: this, ...event }); },
+  };
+}
+
+function createSurveyFixture({ endpoint = "", values = validValues } = {}) {
+  const controls = Object.fromEntries(Object.entries(values).map(([name, value]) => [
+    name,
+    createFakeElement({ name, value: typeof value === "boolean" ? "true" : value, checked: value === true }),
+  ]));
+  const roleChoices = ["學生", "上班族", "主管／管理者", "創業者／自由工作者", "其他"].map((value) =>
+    createFakeElement({ name: "role", value, checked: values.role === value }),
+  );
+  const fieldErrors = Object.fromEntries([
+    "role", "roleOther", "learningTopics", "currentProblem", "blakeCourseCount", "aiCourseCount", "email", "consent",
+  ].map((name) => [name, createFakeElement()]));
+  const submitButton = createFakeElement();
+  const submitLabel = createFakeElement();
+  const status = createFakeElement();
+  const successPanel = createFakeElement();
+  successPanel.hidden = true;
+  const roleOtherWrap = createFakeElement();
+  roleOtherWrap.hidden = true;
+  const listeners = new Map();
+  const form = createFakeElement();
+  form.dataset.surveyEndpoint = endpoint;
+  form.elements = {
+    namedItem(name) {
+      if (name === "role") {
+        return { get value() { return roleChoices.find((choice) => choice.checked)?.value ?? ""; } };
+      }
+      return controls[name] ?? null;
+    },
+  };
+  form.addEventListener = (type, listener) => listeners.set(type, listener);
+  form.submit = async () => listeners.get("submit")?.({ preventDefault() {} });
+  form.changeRole = async (value) => {
+    roleChoices.forEach((choice) => { choice.checked = choice.value === value; });
+    return listeners.get("change")?.({ target: roleChoices.find((choice) => choice.checked) });
+  };
+  const root = {
+    querySelector(selector) {
+      if (selector === "[data-survey-form]") return form;
+      if (selector === "[data-role-other-wrap]") return roleOtherWrap;
+      if (selector === "[data-survey-status]") return status;
+      if (selector === "[data-survey-success]") return successPanel;
+      if (selector === "[data-submit-label]") return submitLabel;
+      if (selector === "button[type=submit]") return submitButton;
+      const match = selector.match(/^\[data-field-error="(.+)"\]$/);
+      return match ? fieldErrors[match[1]] ?? null : null;
+    },
+  };
+  form.querySelector = root.querySelector;
+  form.querySelectorAll = (selector) => {
+    const match = selector.match(/^\[name="(.+)"\]$/);
+    if (match?.[1] === "role") return roleChoices;
+    return match?.[1] && controls[match[1]] ? [controls[match[1]]] : [];
+  };
+  return { root, form, controls, roleChoices, fieldErrors, submitButton, submitLabel, status, successPanel, roleOtherWrap };
+}
+
+test("controller reveals other role then clears it and its error when switching away", async () => {
+  const fixture = createSurveyFixture({ values: { ...validValues, role: "其他", roleOther: "顧問" } });
+  initializeSurveyPage(fixture.root, { now: () => new Date("2026-09-01T01:23:45.000Z") });
+
+  await fixture.form.changeRole("其他");
+  assert.equal(fixture.roleOtherWrap.hidden, false);
+  await fixture.form.changeRole("上班族");
+
+  assert.equal(fixture.controls.roleOther.value, "");
+  assert.equal(fixture.roleOtherWrap.hidden, true);
+  assert.equal(fixture.fieldErrors.roleOther.textContent, "");
+  assert.equal(fixture.controls.roleOther.getAttribute("aria-invalid"), null);
+});
+
+test("controller renders invalid fields and focuses the first error without submitting", async () => {
+  let fetchCalls = 0;
+  const fixture = createSurveyFixture({ values: { ...validValues, learningTopics: "", consent: false } });
+  initializeSurveyPage(fixture.root, {
+    fetchImpl: async () => { fetchCalls += 1; return new Response(JSON.stringify({ ok: true })); },
+    now: () => new Date("2026-09-01T01:23:45.000Z"),
+  });
+
+  await fixture.form.submit();
+
+  assert.equal(fixture.controls.learningTopics.getAttribute("aria-invalid"), "true");
+  assert.equal(fixture.fieldErrors.learningTopics.textContent, "請填寫最想學的課程主題。");
+  assert.equal(fixture.controls.learningTopics.focusCount, 1);
+  assert.equal(fetchCalls, 0);
+});
+
+test("controller retains preview mode and exposes CONFIG_ERROR without a request", async () => {
+  let fetchCalls = 0;
+  const fixture = createSurveyFixture();
+  initializeSurveyPage(fixture.root, {
+    fetchImpl: async () => { fetchCalls += 1; return new Response(JSON.stringify({ ok: true })); },
+    now: () => new Date("2026-09-01T01:23:45.000Z"),
+  });
+
+  await fixture.form.submit();
+
+  assert.equal(fixture.status.hidden, false);
+  assert.match(fixture.status.textContent, /預覽模式/);
+  assert.equal(fixture.status.dataset.statusCode, "CONFIG_ERROR");
+  assert.equal(fixture.form.hidden, false);
+  assert.equal(fetchCalls, 0);
+});
+
+test("controller shows pending state and prevents a duplicate request", async () => {
+  let resolveFetch;
+  let fetchCalls = 0;
+  const fixture = createSurveyFixture({ endpoint: "http://localhost:4173/api/survey" });
+  initializeSurveyPage(fixture.root, {
+    fetchImpl: async () => {
+      fetchCalls += 1;
+      return new Promise((resolve) => { resolveFetch = resolve; });
+    },
+    cryptoObject: { randomUUID: () => "request-1" },
+    now: () => new Date("2026-09-01T01:23:45.000Z"),
+  });
+
+  const pending = fixture.form.submit();
+  assert.equal(fixture.form.getAttribute("aria-busy"), "true");
+  assert.equal(fixture.submitButton.disabled, true);
+  assert.equal(fixture.submitLabel.textContent, "正在送出…");
+  await fixture.form.submit();
+  assert.equal(fetchCalls, 1);
+  resolveFetch(new Response(JSON.stringify({ ok: true }), { status: 200 }));
+  await pending;
+});
+
+test("controller reveals success and tracks only approved lead metadata after confirmed success", async () => {
+  const originalAnalytics = globalThis.blakeAnalytics;
+  const events = [];
+  globalThis.blakeAnalytics = { trackEvent: (name, data) => events.push({ name, data }) };
+  const fixture = createSurveyFixture({ endpoint: "http://localhost:4173/api/survey" });
+  try {
+    initializeSurveyPage(fixture.root, {
+      fetchImpl: async () => new Response(JSON.stringify({ ok: true }), { status: 200 }),
+      cryptoObject: { randomUUID: () => "request-1" },
+      now: () => new Date("2026-09-01T01:23:45.000Z"),
+    });
+    await fixture.form.submit();
+
+    assert.equal(fixture.form.hidden, true);
+    assert.equal(fixture.successPanel.hidden, false);
+    assert.equal(fixture.successPanel.focusCount, 1);
+    assert.deepEqual(events, [{
+      name: "generate_lead",
+      data: { form_name: "course survey", inquiry_type: "learning needs", lead_source: "survey page" },
+    }]);
+    assert.deepEqual(Object.keys(events[0].data), ["form_name", "inquiry_type", "lead_source"]);
+  } finally {
+    globalThis.blakeAnalytics = originalAnalytics;
+  }
+});
+
+test("controller preserves values and request id after API failure or timeout so retry can succeed", async () => {
+  const bodies = [];
+  let attempt = 0;
+  const fixture = createSurveyFixture({ endpoint: "http://localhost:4173/api/survey" });
+  initializeSurveyPage(fixture.root, {
+    fetchImpl: async (_url, options) => {
+      bodies.push(JSON.parse(options.body));
+      attempt += 1;
+      if (attempt === 1) throw new SurveyTransportError("TIMEOUT", "timed out");
+      return new Response(JSON.stringify({ ok: true }), { status: 200 });
+    },
+    cryptoObject: { randomUUID: () => "retry-request" },
+    now: () => new Date("2026-09-01T01:23:45.000Z"),
+  });
+
+  await fixture.form.submit();
+  assert.equal(fixture.controls.learningTopics.value, validValues.learningTopics);
+  assert.equal(fixture.submitButton.disabled, false);
+  assert.equal(fixture.status.getAttribute("role"), "alert");
+  assert.match(fixture.status.textContent, /尚未確認/);
+  await fixture.form.submit();
+
+  assert.equal(bodies.length, 2);
+  assert.equal(bodies[0].requestId, "retry-request");
+  assert.equal(bodies[1].requestId, "retry-request");
+  assert.equal(fixture.successPanel.hidden, false);
+});
+
+test("controller keeps values and restores retry controls after an API failure", async () => {
+  const fixture = createSurveyFixture({ endpoint: "http://localhost:4173/api/survey" });
+  initializeSurveyPage(fixture.root, {
+    fetchImpl: async () => new Response(JSON.stringify({ ok: false, code: "WRITE_ERROR" }), { status: 200 }),
+    cryptoObject: { randomUUID: () => "failed-request" },
+    now: () => new Date("2026-09-01T01:23:45.000Z"),
+  });
+
+  await fixture.form.submit();
+
+  assert.equal(fixture.controls.currentProblem.value, validValues.currentProblem);
+  assert.equal(fixture.submitButton.disabled, false);
+  assert.equal(fixture.submitLabel.textContent, "送出回覆");
+  assert.equal(fixture.status.getAttribute("role"), "alert");
+  assert.match(fixture.status.textContent, /沒有送出成功/);
+  assert.equal(fixture.successPanel.hidden, true);
+});
+
+test("survey lead analytics call excludes every survey field and identifier", () => {
+  const source = read("assets/survey.js");
+  const trackingCall = source.match(/trackEvent\("generate_lead",\s*\{([\s\S]*?)\}\s*\);/);
+  assert.ok(trackingCall, "confirmed lead tracking call is present");
+  for (const disallowedKey of ["role", "learningTopics", "currentProblem", "blakeCourseCount", "aiCourseCount", "email", "requestId", "submissionId"]) {
+    assert.doesNotMatch(trackingCall[1], new RegExp(`\\b${disallowedKey}\\b`, "i"), disallowedKey);
+  }
+});
 
 test("validateSurveyValues returns field-specific errors", () => {
   assert.deepEqual(validateSurveyValues({

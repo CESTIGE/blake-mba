@@ -95,8 +95,11 @@ export function buildSurveyPayload(values, { requestId, submittedAtClient }) {
 export async function submitSurvey(endpoint, payload, {
   fetchImpl = globalThis.fetch,
   timeoutMs = 15_000,
+  setTimeoutImpl = globalThis.setTimeout,
+  clearTimeoutImpl = globalThis.clearTimeout,
 } = {}) {
-  if (!isAllowedEndpoint(endpoint) || typeof fetchImpl !== "function" || !Number.isFinite(timeoutMs) || timeoutMs <= 0) {
+  if (!isAllowedEndpoint(endpoint) || typeof fetchImpl !== "function" || !Number.isFinite(timeoutMs) || timeoutMs <= 0
+    || typeof setTimeoutImpl !== "function" || typeof clearTimeoutImpl !== "function") {
     throw new SurveyTransportError("CONFIG_ERROR", "問卷送出設定無效。");
   }
 
@@ -105,7 +108,7 @@ export async function submitSurvey(endpoint, payload, {
   let timedOut = false;
   try {
     const timeout = new Promise((_, reject) => {
-      timer = setTimeout(() => {
+      timer = setTimeoutImpl(() => {
         timedOut = true;
         controller.abort();
         reject(new SurveyTransportError("TIMEOUT", "送出逾時，尚未確認是否完成。"));
@@ -151,6 +154,159 @@ export async function submitSurvey(endpoint, payload, {
     }
     throw new SurveyTransportError("INVALID_RESPONSE", "無法讀取伺服器回應。");
   } finally {
-    clearTimeout(timer);
+    clearTimeoutImpl(timer);
   }
+}
+
+function fieldControl(form, name) {
+  return form.elements?.namedItem(name) ?? null;
+}
+
+function controlsForField(form, name) {
+  const controls = form.querySelectorAll?.(`[name="${name}"]`);
+  if (controls?.length) return Array.from(controls);
+  const control = fieldControl(form, name);
+  return control && typeof control.setAttribute === "function" ? [control] : [];
+}
+
+export function readSurveyValues(form) {
+  const valueFor = (name) => fieldControl(form, name)?.value ?? "";
+  return {
+    role: valueFor("role"),
+    roleOther: valueFor("roleOther"),
+    learningTopics: valueFor("learningTopics"),
+    currentProblem: valueFor("currentProblem"),
+    blakeCourseCount: valueFor("blakeCourseCount"),
+    aiCourseCount: valueFor("aiCourseCount"),
+    email: valueFor("email"),
+    consent: fieldControl(form, "consent")?.checked === true,
+    website: valueFor("website"),
+  };
+}
+
+export function renderFieldErrors(form, errors) {
+  for (const name of ["role", "roleOther", "learningTopics", "currentProblem", "blakeCourseCount", "aiCourseCount", "email", "consent"]) {
+    const message = errors[name] ?? "";
+    const errorElement = form.querySelector?.(`[data-field-error="${name}"]`);
+    if (errorElement) errorElement.textContent = message;
+    for (const control of controlsForField(form, name)) {
+      if (message) control.setAttribute("aria-invalid", "true");
+      else control.removeAttribute("aria-invalid");
+    }
+  }
+}
+
+export function initializeSurveyPage(root = document, dependencies = {}) {
+  const form = root?.querySelector?.("[data-survey-form]");
+  if (!form) return;
+
+  const roleOtherWrap = root.querySelector("[data-role-other-wrap]");
+  const roleOtherInput = fieldControl(form, "roleOther");
+  const status = root.querySelector("[data-survey-status]");
+  const successPanel = root.querySelector("[data-survey-success]");
+  const submitButton = root.querySelector("button[type=submit]");
+  const submitLabel = root.querySelector("[data-submit-label]");
+  const now = dependencies.now ?? (() => new Date());
+  const baseState = form.dataset.surveyEndpoint?.trim() ? "idle" : "preview";
+  let pending = false;
+  let pendingRequestId = "";
+
+  const setState = (state) => {
+    form.dataset.surveyState = state;
+  };
+  const setStatus = (message, type = "status", code = "") => {
+    if (!status) return;
+    status.hidden = false;
+    status.textContent = message;
+    status.dataset.statusCode = code;
+    status.setAttribute("role", type === "error" ? "alert" : "status");
+  };
+  const setSubmitting = (isSubmitting) => {
+    form.setAttribute("aria-busy", String(isSubmitting));
+    if (submitButton) submitButton.disabled = isSubmitting;
+    if (submitLabel) submitLabel.textContent = isSubmitting ? "正在送出…" : "送出回覆";
+    form.classList?.toggle?.("is-loading", isSubmitting);
+  };
+  const updateRoleOther = () => {
+    const isOther = fieldControl(form, "role")?.value === "其他";
+    if (roleOtherWrap) roleOtherWrap.hidden = !isOther;
+    if (roleOtherInput) roleOtherInput.disabled = !isOther;
+    if (!isOther && roleOtherInput) {
+      roleOtherInput.value = "";
+      const errorElement = form.querySelector?.('[data-field-error="roleOther"]');
+      if (errorElement) errorElement.textContent = "";
+      roleOtherInput.removeAttribute("aria-invalid");
+    }
+  };
+
+  setState(baseState);
+  setSubmitting(false);
+  updateRoleOther();
+  form.addEventListener("change", (event) => {
+    if (event.target?.name === "role") updateRoleOther();
+  });
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (pending) return;
+
+    setState("validating");
+    const values = readSurveyValues(form);
+    const errors = validateSurveyValues(values);
+    renderFieldErrors(form, errors);
+    const firstError = Object.keys(errors)[0];
+    if (firstError) {
+      controlsForField(form, firstError)[0]?.focus();
+      setState(baseState);
+      return;
+    }
+
+    const endpoint = form.dataset.surveyEndpoint?.trim() ?? "";
+    if (!endpoint) {
+      setStatus("目前為預覽模式，尚未開放送出。", "error", "CONFIG_ERROR");
+      setState("error");
+      return;
+    }
+
+    pending = true;
+    pendingRequestId ||= createRequestId(dependencies.cryptoObject);
+    setState("submitting");
+    setSubmitting(true);
+    const payload = buildSurveyPayload(values, {
+      requestId: pendingRequestId,
+      submittedAtClient: now().toISOString(),
+    });
+
+    try {
+      await submitSurvey(endpoint, payload, {
+        fetchImpl: dependencies.fetchImpl,
+        timeoutMs: 15_000,
+        setTimeoutImpl: dependencies.setTimeoutImpl,
+        clearTimeoutImpl: dependencies.clearTimeoutImpl,
+      });
+      form.hidden = true;
+      if (successPanel) {
+        successPanel.hidden = false;
+        successPanel.focus();
+      }
+      pendingRequestId = "";
+      setState("success");
+      globalThis.blakeAnalytics?.trackEvent("generate_lead", {
+        form_name: "course survey",
+        inquiry_type: "learning needs",
+        lead_source: "survey page",
+      });
+    } catch (error) {
+      setStatus(error?.code === "TIMEOUT"
+        ? "送出狀態尚未確認。你的內容仍保留，請稍後重新送出。"
+        : "這次沒有送出成功。你的內容仍保留，請稍後再試。", "error", error?.code ?? "UNKNOWN_ERROR");
+      setState("error");
+    } finally {
+      pending = false;
+      setSubmitting(false);
+    }
+  });
+}
+
+if (typeof document !== "undefined" && document.querySelector("[data-survey-form]")) {
+  initializeSurveyPage(document);
 }
