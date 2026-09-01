@@ -132,15 +132,11 @@ test("changed frontend assets use current cache keys", () => {
     if (cardPages.has(page)) continue;
     assert.match(
       read(page),
-      /<script src="\/assets\/analytics\.js\?v=20260820flow1"><\/script>/,
+      /<script src="\/assets\/analytics\.js\?v=20260901no-consent1"><\/script>/,
       page,
     );
   }
 
-  assert.match(
-    read("assets/analytics.js"),
-    /\/assets\/analytics\.css\?v=20260820flow1/,
-  );
   assert.match(
     read("ai-transform/index.html"),
     /\/assets\/ai-transform\.css\?v=20260820contrast1/,
@@ -169,10 +165,8 @@ test("local raster content images declare intrinsic dimensions", () => {
   }
 });
 
-test("mobile deck controls keep full touch regions and the consent banner clears the deck", () => {
+test("mobile deck controls keep full touch regions", () => {
   const deck = read("assets/paged-sections.css");
-  const analytics = read("assets/analytics.css");
   assert.match(deck, /\.page-deck-anchor\s*\{[^}]*width:\s*44px;[^}]*height:\s*44px;/s);
   assert.match(deck, /\.page-deck-button\s*\{[^}]*width:\s*44px;[^}]*height:\s*44px;/s);
-  assert.match(analytics, /\.has-page-deck \.analytics-consent\s*\{[^}]*bottom:\s*calc\(/s);
 });

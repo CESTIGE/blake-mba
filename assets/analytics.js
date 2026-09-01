@@ -41,15 +41,7 @@
     }
   }
 
-  function saveChoice(choice) {
-    try {
-      window.localStorage.setItem(STORAGE_KEY, choice);
-    } catch {
-      // Consent still applies for this page even when storage is unavailable.
-    }
-  }
-
-  let currentChoice = readChoice();
+  const currentChoice = readChoice();
 
   if (currentChoice === GRANTED) {
     window.gtag("consent", "update", { analytics_storage: GRANTED });
@@ -61,26 +53,6 @@
   gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
   window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
   document.head.appendChild(gtmScript);
-
-  const analyticsStyles = document.createElement("link");
-  analyticsStyles.rel = "stylesheet";
-  analyticsStyles.href = "/assets/analytics.css?v=20260820flow1";
-  document.head.appendChild(analyticsStyles);
-
-  function updateConsent(choice) {
-    currentChoice = choice;
-    saveChoice(choice);
-    window.gtag("consent", "update", {
-      ad_storage: DENIED,
-      analytics_storage: choice,
-      ad_user_data: DENIED,
-      ad_personalization: DENIED,
-    });
-    window.dataLayer.push({
-      event: "blake_consent_update",
-      analytics_storage: choice,
-    });
-  }
 
   function sanitizeParameters(parameters) {
     return Object.fromEntries(
@@ -106,72 +78,7 @@
 
   window.blakeAnalytics = { trackEvent };
 
-  function createConsentUi() {
-    const banner = document.createElement("section");
-    banner.className = "analytics-consent";
-    banner.setAttribute("aria-label", "分析與隱私設定");
-    banner.hidden = Boolean(currentChoice);
-    banner.innerHTML = `
-      <div class="analytics-consent__copy">
-        <strong>協助我們改善 BLAKE.MBA</strong>
-        <p>允許後，Google Analytics 會協助我們了解頁面瀏覽、互動與來源。我們不會把表單中的姓名、Email、電話或訊息內容傳送到分析系統，你也能隨時更改選擇。</p>
-      </div>
-      <div class="analytics-consent__actions">
-        <button type="button" class="analytics-consent__button analytics-consent__button--secondary" data-analytics-choice="denied">僅使用必要功能</button>
-        <button type="button" class="analytics-consent__button analytics-consent__button--primary" data-analytics-choice="granted">允許匿名分析</button>
-      </div>
-    `;
-
-    const settingsButton = document.createElement("button");
-    settingsButton.type = "button";
-    settingsButton.className = "analytics-settings";
-    settingsButton.setAttribute("aria-label", "開啟分析與隱私設定");
-    let bannerOpenedFromSettings = false;
-
-    const updateSettingsLabel = () => {
-      settingsButton.textContent =
-        currentChoice === GRANTED ? "分析：開啟" : "分析與隱私設定";
-    };
-
-    banner.addEventListener("click", (event) => {
-      const button = event.target.closest("[data-analytics-choice]");
-      if (!button) return;
-      updateConsent(button.dataset.analyticsChoice);
-      banner.hidden = true;
-      updateSettingsLabel();
-      if (bannerOpenedFromSettings) {
-        settingsButton.focus({ preventScroll: true });
-      } else {
-        const mainContent = document.querySelector("main");
-        if (mainContent) {
-          mainContent.setAttribute("tabindex", "-1");
-          mainContent.focus({ preventScroll: true });
-        } else {
-          settingsButton.focus({ preventScroll: true });
-        }
-      }
-      bannerOpenedFromSettings = false;
-    });
-
-    settingsButton.addEventListener("click", () => {
-      bannerOpenedFromSettings = true;
-      banner.hidden = false;
-      banner.querySelector("[data-analytics-choice]")?.focus();
-    });
-
-    updateSettingsLabel();
-    const settingsRegion = document.createElement("div");
-    settingsRegion.className = "analytics-settings-region";
-    settingsRegion.append(settingsButton);
-
-    const footer = document.querySelector("footer");
-    if (footer?.parentNode) {
-      footer.parentNode.insertBefore(settingsRegion, footer);
-    } else {
-      document.body.append(settingsRegion);
-    }
-    document.body.append(banner);
-
+  function registerInteractionTracking() {
     document.addEventListener("click", (event) => {
       const target = event.target.closest(
         "a.button, a.btn, button.button, [data-inquiry-type], [data-print-page]",
@@ -206,8 +113,10 @@
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", createConsentUi, { once: true });
+    document.addEventListener("DOMContentLoaded", registerInteractionTracking, {
+      once: true,
+    });
   } else {
-    createConsentUi();
+    registerInteractionTracking();
   }
 })();

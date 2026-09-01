@@ -97,33 +97,3 @@ test("updated pages reference fresh CSS cache keys", () => {
     /\/assets\/who-is-blake\.css\?v=20260827companies2/,
   );
 });
-
-test("mobile analytics consent stays compact enough to leave the course entry visible", () => {
-  const css = read("assets/courses-editorial.css");
-  const homeCss = read("assets/who-is-blake.css");
-
-  assert.match(
-    css,
-    /@media \(max-width: 760px\)[^]*body\[data-page="courses"\] \.analytics-consent__copy p\s*\{[^}]*display:\s*none;/s,
-  );
-  assert.match(
-    css,
-    /@media \(max-width: 760px\)[^]*body\[data-page="courses"\] \.analytics-consent__copy\s*\{[^}]*display:\s*none;/s,
-  );
-  assert.match(
-    css,
-    /@media \(max-width: 760px\)[^]*body\[data-page="courses"\] \.analytics-consent__actions\s*\{[^}]*flex-direction:\s*row;/s,
-  );
-  assert.match(
-    css,
-    /@media \(max-width: 760px\)[^]*body\[data-page="courses"\] \.analytics-consent__button\s*\{[^}]*width:\s*auto;/s,
-  );
-  assert.match(
-    homeCss,
-    /@media \(max-width: 760px\)[^]*body\[data-page="home"\] \.analytics-consent__copy\s*\{[^}]*display:\s*none;/s,
-  );
-  assert.match(
-    homeCss,
-    /@media \(max-width: 760px\)[^]*body\[data-page="home"\] \.analytics-consent__actions\s*\{[^}]*flex-direction:\s*row;/s,
-  );
-});

@@ -141,66 +141,9 @@ function renderConsentUi(
   return { body, footer, main };
 }
 
-test("analytics settings renders in a normal-flow slot immediately before the footer", () => {
-  const { body, footer } = renderConsentUi();
-  const settingsButton = findElement(
-    body,
-    (element) => element.className === "analytics-settings",
-  );
+test("analytics never renders a consent window or settings control", () => {
+  const { body } = renderConsentUi();
 
-  assert.ok(settingsButton, "settings button should render");
-  assert.equal(settingsButton.parentNode.className, "analytics-settings-region");
-  assert.equal(settingsButton.parentNode.parentNode, body);
-  assert.equal(
-    body.children.indexOf(settingsButton.parentNode) + 1,
-    body.children.indexOf(footer),
-  );
-});
-
-test("analytics settings styles never anchor the control to the viewport", () => {
-  const css = readFileSync(
-    fileURLToPath(new URL("../assets/analytics.css", import.meta.url)),
-    "utf8",
-  );
-  const settingsRules = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(
-    ([, selectors]) =>
-      selectors
-        .split(",")
-        .some((selector) =>
-          /\.analytics-settings(?:-region)?(?:\b|:)/.test(selector.trim()),
-        ),
-  );
-
-  assert.ok(settingsRules.length > 0, "settings styles should exist");
-  assert.ok(
-    settingsRules.some(([, selectors]) =>
-      selectors.split(",").some((selector) =>
-        /\.analytics-settings-region(?:\b|:)/.test(selector.trim()),
-      ),
-    ),
-    "settings region styles should be checked",
-  );
-  for (const [, selectors, declarations] of settingsRules) {
-    const position = declarations.match(
-      /(?:^|;)\s*position\s*:\s*([^;]+)/i,
-    )?.[1].trim();
-    if (position) {
-      assert.match(
-        position,
-        /^(?:static|relative)$/i,
-        `out-of-flow positioning found in ${selectors.trim()}`,
-      );
-    }
-    assert.doesNotMatch(
-      declarations,
-      /(?:^|;)\s*(?:inset|top|right|bottom|left)\s*:/i,
-      `viewport inset found in ${selectors.trim()}`,
-    );
-  }
-});
-
-test("initial consent choice focuses main without changing the scroll position", () => {
-  const { body, main } = renderConsentUi();
   const banner = findElement(
     body,
     (element) => element.className === "analytics-consent",
@@ -209,62 +152,7 @@ test("initial consent choice focuses main without changing the scroll position",
     body,
     (element) => element.className === "analytics-settings",
   );
-  const deniedButton = findElement(
-    banner,
-    (element) => element.dataset.analyticsChoice === "denied",
-  );
 
-  banner.emit("click", { target: deniedButton });
-
-  assert.equal(banner.hidden, true);
-  assert.equal(main.tabindex, "-1");
-  assert.equal(main.focusCalls.length, 1);
-  assert.equal(main.focusCalls[0]?.preventScroll, true);
-  assert.equal(settingsButton.focusCalls.length, 0);
-});
-
-test("consent choice returns focus to settings when settings opened the banner", () => {
-  const { body, main } = renderConsentUi("denied");
-  const banner = findElement(
-    body,
-    (element) => element.className === "analytics-consent",
-  );
-  const settingsButton = findElement(
-    body,
-    (element) => element.className === "analytics-settings",
-  );
-  const grantedButton = findElement(
-    banner,
-    (element) => element.dataset.analyticsChoice === "granted",
-  );
-
-  settingsButton.emit("click");
-  banner.emit("click", { target: grantedButton });
-
-  assert.equal(banner.hidden, true);
-  assert.equal(settingsButton.focusCalls.length, 1);
-  assert.equal(settingsButton.focusCalls[0]?.preventScroll, true);
-  assert.equal(main.focusCalls.length, 0);
-});
-
-test("initial consent choice falls back to settings when main is unavailable", () => {
-  const { body } = renderConsentUi(null, { withMain: false });
-  const banner = findElement(
-    body,
-    (element) => element.className === "analytics-consent",
-  );
-  const settingsButton = findElement(
-    body,
-    (element) => element.className === "analytics-settings",
-  );
-  const deniedButton = findElement(
-    banner,
-    (element) => element.dataset.analyticsChoice === "denied",
-  );
-
-  banner.emit("click", { target: deniedButton });
-
-  assert.equal(banner.hidden, true);
-  assert.equal(settingsButton.focusCalls.length, 1);
-  assert.equal(settingsButton.focusCalls[0]?.preventScroll, true);
+  assert.equal(banner, null);
+  assert.equal(settingsButton, null);
 });
