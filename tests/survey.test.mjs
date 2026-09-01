@@ -35,6 +35,14 @@ function hasBooleanAttribute(tag, name) {
   return new RegExp(`(?:^|\\s)${name}(?:\\s|>|=)`, "i").test(tag);
 }
 
+function blockForTag(html, startTag, closingTag) {
+  const start = html.indexOf(startTag);
+  assert.ok(start >= 0, `missing block start: ${startTag}`);
+  const end = html.indexOf(closingTag, start);
+  assert.ok(end >= 0, `missing block end: ${closingTag}`);
+  return html.slice(start, end + closingTag.length);
+}
+
 test("survey page preserves exact field names states and standalone boundaries", () => {
   const html = read("survey/index.html");
   const form = tagWithAttribute(html, "form", "data-survey-form");
@@ -85,6 +93,14 @@ test("survey page preserves exact field names states and standalone boundaries",
   assert.match(html, /<label\b[^>]*for="survey-consent"[^>]*>/);
   assert.equal(attribute(tagById(html, "input", "website"), "name"), "website");
   assert.equal(attribute(tagById(html, "input", "website"), "tabindex"), "-1");
+});
+
+test("survey role fieldset avoids an unnamed redundant radiogroup", () => {
+  const html = read("survey/index.html");
+  const roleFieldset = tagWithAttribute(html, "fieldset", "data-role-group");
+  assert.equal(attribute(roleFieldset, "aria-describedby"), "role-error");
+  const roleBlock = blockForTag(html, roleFieldset, "</fieldset>");
+  assert.doesNotMatch(roleBlock, /\srole="radiogroup"/);
 });
 
 test("survey CSS preserves BLAKE tokens and accessibility states", () => {
