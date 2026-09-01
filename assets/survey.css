@@ -356,6 +356,7 @@ h1 {
   background: var(--survey-white);
   border: 1px solid var(--survey-line);
   border-radius: 12px;
+  cursor: pointer;
 }
 
 .survey-option:has(input:checked),
@@ -364,9 +365,10 @@ h1 {
   border-color: rgba(49, 83, 216, 0.42);
 }
 
-.survey-option label,
-.survey-consent-choice label {
-  cursor: pointer;
+.survey-option:has(input:focus-visible),
+.survey-consent-choice:has(input:focus-visible) {
+  outline: 3px solid var(--survey-coral);
+  outline-offset: 3px;
 }
 
 .field {
@@ -437,7 +439,7 @@ textarea::placeholder {
   padding: 24px 0 0;
 }
 
-.survey-consent label {
+.survey-consent-choice {
   background: rgba(168, 217, 207, 0.25);
 }
 

@@ -173,7 +173,11 @@ test("survey page preserves exact field names states and standalone boundaries",
     const input = tagById(html, "input", id);
     assert.equal(attribute(input, "name"), "role", id);
     assert.equal(attribute(input, "value"), value, id);
-    assert.match(html, new RegExp(`<label\\b[^>]*for="${id}"[^>]*>\\s*${label}\\s*</label>`), id);
+    assert.match(
+      html,
+      new RegExp(`<label\\b(?=[^>]*\\bclass="survey-option")(?=[^>]*\\bfor="${id}")[^>]*>[\\s\\S]*?<span>${label}</span>[\\s\\S]*?</label>`),
+      id,
+    );
   }
   assert.equal(hasBooleanAttribute(tagById(html, "input", "role-student"), "required"), true);
 
@@ -191,7 +195,7 @@ test("survey page preserves exact field names states and standalone boundaries",
   assert.equal(hasBooleanAttribute(tagById(html, "input", "email"), "required"), false);
   assert.equal(attribute(tagById(html, "input", "survey-consent"), "name"), "consent");
   assert.equal(hasBooleanAttribute(tagById(html, "input", "survey-consent"), "required"), true);
-  assert.match(html, /<label\b[^>]*for="survey-consent"[^>]*>/);
+  assert.match(html, /<label\b(?=[^>]*\bclass="survey-consent-choice")(?=[^>]*\bfor="survey-consent")[^>]*>/);
   assert.equal(attribute(tagById(html, "input", "website"), "name"), "website");
   assert.equal(attribute(tagById(html, "input", "website"), "tabindex"), "-1");
 });
@@ -204,6 +208,27 @@ test("survey role fieldset avoids an unnamed redundant radiogroup", () => {
   assert.doesNotMatch(roleBlock, /\srole="radiogroup"/);
 });
 
+test("radio and consent tiles are single full-target labels", () => {
+  const html = read("survey/index.html");
+  const optionLabels = Array.from(html.matchAll(/<label\b([^>]*\bclass="survey-option"[^>]*)>([\s\S]*?)<\/label>/g));
+  assert.equal(optionLabels.length, 5);
+  for (const [, attributes, contents] of optionLabels) {
+    const forId = attribute(`<label ${attributes}>`, "for");
+    assert.ok(forId, "full option tile has an explicit label association");
+    assert.match(contents, new RegExp(`<input\\b(?=[^>]*\\bid="${forId}")[^>]*>`));
+    assert.equal((contents.match(/<input\b/g) ?? []).length, 1);
+    assert.doesNotMatch(contents, /<label\b/);
+  }
+
+  const consentLabels = Array.from(html.matchAll(/<label\b([^>]*\bclass="survey-consent-choice"[^>]*)>([\s\S]*?)<\/label>/g));
+  assert.equal(consentLabels.length, 1);
+  const [, consentAttributes, consentContents] = consentLabels[0];
+  assert.equal(attribute(`<label ${consentAttributes}>`, "for"), "survey-consent");
+  assert.match(consentContents, /<input\b(?=[^>]*\bid="survey-consent")[^>]*>/);
+  assert.equal((consentContents.match(/<input\b/g) ?? []).length, 1);
+  assert.doesNotMatch(consentContents, /<label\b/);
+});
+
 test("survey CSS preserves BLAKE tokens and accessibility states", () => {
   const css = read("assets/survey.css");
   for (const token of ["#0b1d2a", "#f3eee5", "#ff6534", "#3153d8", "#a8d9cf"]) {
@@ -213,6 +238,8 @@ test("survey CSS preserves BLAKE tokens and accessibility states", () => {
   assert.match(css, /min-height:\s*44px/);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
   assert.match(css, /@media\s*\(max-width:\s*760px\)/);
+  assert.match(css, /\.survey-option,\s*\.survey-consent-choice\s*\{[\s\S]*?min-height:\s*44px;[\s\S]*?cursor:\s*pointer;/);
+  assert.match(css, /\.survey-option:has\(input:focus-visible\),\s*\.survey-consent-choice:has\(input:focus-visible\)\s*\{[\s\S]*?outline:\s*3px solid/);
 });
 
 test("survey CSS locks the approved responsive and state contract", () => {
@@ -344,7 +371,7 @@ test("controller renders invalid fields and focuses the first error without subm
   let fetchCalls = 0;
   const fixture = createSurveyFixture({ values: { ...validValues, learningTopics: "", consent: false } });
   initializeSurveyPage(fixture.root, {
-    fetchImpl: async () => { fetchCalls += 1; return new Response(JSON.stringify({ ok: true })); },
+    fetchImpl: async () => { fetchCalls += 1; return new Response(JSON.stringify({ ok: true, submissionId: "submission-1" })); },
     now: () => new Date("2026-09-01T01:23:45.000Z"),
   });
 
@@ -360,7 +387,7 @@ test("controller retains preview mode and exposes CONFIG_ERROR without a request
   let fetchCalls = 0;
   const fixture = createSurveyFixture();
   initializeSurveyPage(fixture.root, {
-    fetchImpl: async () => { fetchCalls += 1; return new Response(JSON.stringify({ ok: true })); },
+    fetchImpl: async () => { fetchCalls += 1; return new Response(JSON.stringify({ ok: true, submissionId: "submission-1" })); },
     now: () => new Date("2026-09-01T01:23:45.000Z"),
   });
 
@@ -402,7 +429,7 @@ test("controller shows pending state and prevents a duplicate request", async ()
   assert.equal(fixture.submitLabel.textContent, "正在送出…");
   await fixture.form.submit();
   assert.equal(fetchCalls, 1);
-  resolveFetch(new Response(JSON.stringify({ ok: true }), { status: 200 }));
+  resolveFetch(new Response(JSON.stringify({ ok: true, submissionId: "submission-1" }), { status: 200 }));
   await pending;
 });
 
@@ -413,7 +440,7 @@ test("controller reveals success and tracks only approved lead metadata after co
   const fixture = createSurveyFixture({ endpoint: "http://localhost:4173/api/survey" });
   try {
     initializeSurveyPage(fixture.root, {
-      fetchImpl: async () => new Response(JSON.stringify({ ok: true }), { status: 200 }),
+      fetchImpl: async () => new Response(JSON.stringify({ ok: true, submissionId: "submission-1" }), { status: 200 }),
       cryptoObject: { randomUUID: () => "request-1" },
       now: () => new Date("2026-09-01T01:23:45.000Z"),
     });
@@ -441,7 +468,7 @@ test("controller preserves values and request id after API failure or timeout so
       bodies.push(JSON.parse(options.body));
       attempt += 1;
       if (attempt === 1) throw new SurveyTransportError("TIMEOUT", "timed out");
-      return new Response(JSON.stringify({ ok: true }), { status: 200 });
+      return new Response(JSON.stringify({ ok: true, submissionId: "submission-1" }), { status: 200 });
     },
     cryptoObject: { randomUUID: () => "retry-request" },
     now: () => new Date("2026-09-01T01:23:45.000Z"),
@@ -589,8 +616,25 @@ test("submitSurvey posts readable text/plain JSON and returns confirmed success"
   assert.equal(calls[0].options.body, JSON.stringify({ requestId: "id" }));
 });
 
+test("submitSurvey rejects successful responses without a non-empty string submissionId", async () => {
+  for (const responseBody of [
+    { ok: true },
+    { ok: true, submissionId: "" },
+    { ok: true, submissionId: "   " },
+    { ok: true, submissionId: 123 },
+  ]) {
+    await assert.rejects(
+      submitSurvey("https://script.google.com/macros/s/example/exec", {}, {
+        fetchImpl: async () => new Response(JSON.stringify(responseBody), { status: 200 }),
+        timeoutMs: 1000,
+      }),
+      (error) => error instanceof SurveyTransportError && error.code === "INVALID_RESPONSE",
+    );
+  }
+});
+
 test("submitSurvey permits only Apps Script exec and loopback preview endpoints", async () => {
-  const fetchImpl = async () => new Response(JSON.stringify({ ok: true }), { status: 200 });
+  const fetchImpl = async () => new Response(JSON.stringify({ ok: true, submissionId: "submission-1" }), { status: 200 });
   for (const endpoint of [
     "https://script.google.com/macros/s/example/exec",
     "http://localhost:4173/api/survey",
@@ -613,7 +657,7 @@ test("submitSurvey permits only Apps Script exec and loopback preview endpoints"
 });
 
 test("submitSurvey rejects an Apps Script URL with a nonstandard port", async () => {
-  const fetchImpl = async () => new Response(JSON.stringify({ ok: true }), { status: 200 });
+  const fetchImpl = async () => new Response(JSON.stringify({ ok: true, submissionId: "submission-1" }), { status: 200 });
   await assert.rejects(
     submitSurvey("https://script.google.com:444/macros/s/example/exec", {}, { fetchImpl, timeoutMs: 1000 }),
     (error) => error instanceof SurveyTransportError && error.code === "CONFIG_ERROR",
@@ -621,7 +665,7 @@ test("submitSurvey rejects an Apps Script URL with a nonstandard port", async ()
 });
 
 test("submitSurvey rejects an Apps Script URL with a username", async () => {
-  const fetchImpl = async () => new Response(JSON.stringify({ ok: true }), { status: 200 });
+  const fetchImpl = async () => new Response(JSON.stringify({ ok: true, submissionId: "submission-1" }), { status: 200 });
   await assert.rejects(
     submitSurvey("https://user@script.google.com/macros/s/example/exec", {}, { fetchImpl, timeoutMs: 1000 }),
     (error) => error instanceof SurveyTransportError && error.code === "CONFIG_ERROR",
@@ -629,7 +673,7 @@ test("submitSurvey rejects an Apps Script URL with a username", async () => {
 });
 
 test("submitSurvey rejects an Apps Script URL with a password", async () => {
-  const fetchImpl = async () => new Response(JSON.stringify({ ok: true }), { status: 200 });
+  const fetchImpl = async () => new Response(JSON.stringify({ ok: true, submissionId: "submission-1" }), { status: 200 });
   await assert.rejects(
     submitSurvey("https://user:password@script.google.com/macros/s/example/exec", {}, { fetchImpl, timeoutMs: 1000 }),
     (error) => error instanceof SurveyTransportError && error.code === "CONFIG_ERROR",

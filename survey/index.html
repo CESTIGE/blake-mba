@@ -68,26 +68,26 @@
             <fieldset class="survey-question" data-role-group aria-describedby="role-error">
               <legend><span>01</span>你目前的角色 <em>必填</em></legend>
               <div class="survey-options">
-                <div class="survey-option">
+                <label class="survey-option" for="role-student">
                   <input id="role-student" type="radio" name="role" value="學生" required>
-                  <label for="role-student">學生</label>
-                </div>
-                <div class="survey-option">
+                  <span>學生</span>
+                </label>
+                <label class="survey-option" for="role-worker">
                   <input id="role-worker" type="radio" name="role" value="上班族">
-                  <label for="role-worker">上班族</label>
-                </div>
-                <div class="survey-option">
+                  <span>上班族</span>
+                </label>
+                <label class="survey-option" for="role-manager">
                   <input id="role-manager" type="radio" name="role" value="主管／管理者">
-                  <label for="role-manager">主管／管理者</label>
-                </div>
-                <div class="survey-option">
+                  <span>主管／管理者</span>
+                </label>
+                <label class="survey-option" for="role-founder">
                   <input id="role-founder" type="radio" name="role" value="創業者／自由工作者">
-                  <label for="role-founder">創業者／自由工作者</label>
-                </div>
-                <div class="survey-option">
+                  <span>創業者／自由工作者</span>
+                </label>
+                <label class="survey-option" for="role-other">
                   <input id="role-other" type="radio" name="role" value="其他">
-                  <label for="role-other">其他</label>
-                </div>
+                  <span>其他</span>
+                </label>
               </div>
               <p id="role-error" class="field-error" data-field-error="role"></p>
               <div class="field role-other" data-role-other-wrap hidden>
@@ -146,10 +146,10 @@
             </fieldset>
 
             <div class="survey-consent">
-              <div class="survey-consent-choice">
+              <label class="survey-consent-choice" for="survey-consent">
                 <input id="survey-consent" type="checkbox" name="consent" value="true" required aria-describedby="consent-error">
-                <label for="survey-consent">我了解這份回覆只用於了解課程需求與後續課程資訊。</label>
-              </div>
+                <span>我了解這份回覆只用於了解課程需求與後續課程資訊。</span>
+              </label>
               <p id="consent-error" class="field-error" data-field-error="consent"></p>
             </div>
 

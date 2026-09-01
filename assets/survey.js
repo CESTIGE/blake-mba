@@ -146,6 +146,9 @@ export async function submitSurvey(endpoint, payload, {
         typeof result.message === "string" && result.message ? result.message : "送出未完成，請稍後再試。",
       );
     }
+    if (typeof result.submissionId !== "string" || !result.submissionId.trim()) {
+      throw new SurveyTransportError("INVALID_RESPONSE", "無法讀取伺服器回應。");
+    }
     return result;
   } catch (error) {
     if (error instanceof SurveyTransportError) throw error;

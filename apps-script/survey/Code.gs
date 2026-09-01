@@ -8,11 +8,13 @@ function handleSurveySubmission(rawBody, services) {
     return { ok: false, code: "INVALID_BODY", message: "無法讀取送出內容。" };
   }
 
-  var normalized = normalizeSurveyPayload(payload);
-  if (!normalized.ok) return normalized;
-  if (normalized.value.website) {
+  var website = capText(payload.website, 200);
+  if (website) {
     return { ok: true, submissionId: services.utilities.getUuid() };
   }
+
+  var normalized = normalizeSurveyPayload(payload);
+  if (!normalized.ok) return normalized;
   if (!services.lock.tryLock(5000)) {
     return { ok: false, code: "BUSY", message: "目前送出較繁忙，請稍後再試。" };
   }

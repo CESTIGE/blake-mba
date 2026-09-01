@@ -55,6 +55,7 @@ function fakeServices({
     openedSpreadsheetId: null,
     lockAttempts: [],
     releasedLocks: 0,
+    cacheGets: [],
     cachePuts: [],
   };
   const cacheValues = new Map(cached ? [[`survey:${validPayload.requestId}`, cached]] : []);
@@ -85,7 +86,10 @@ function fakeServices({
       releaseLock() { state.releasedLocks += 1; },
     },
     cache: {
-      get: (key) => cacheValues.get(key) ?? null,
+      get: (key) => {
+        state.cacheGets.push(key);
+        return cacheValues.get(key) ?? null;
+      },
       put: (key, value, ttl) => {
         cacheValues.set(key, value);
         state.cachePuts.push({ key, value, ttl });
@@ -301,6 +305,24 @@ test("honeypot submissions succeed without acquiring a lock or writing", () => {
 
   assert.deepEqual(JSON.parse(JSON.stringify(result)), { ok: true, submissionId: "submission-1" });
   assert.deepEqual(services.state.lockAttempts, []);
+  assert.equal(services.state.openedSpreadsheetId, null);
+  assert.deepEqual(services.state.dataRows, []);
+});
+
+test("honeypot submissions bypass field validation and all persistence services", () => {
+  const app = loadAppsScript();
+  const services = fakeServices();
+  const result = app.handleSurveySubmission(JSON.stringify({
+    website: `  ${"bot".repeat(100)}  `,
+    role: "",
+    learningTopics: "",
+    currentProblem: "",
+    consent: false,
+  }), services);
+
+  assert.deepEqual(JSON.parse(JSON.stringify(result)), { ok: true, submissionId: "submission-1" });
+  assert.deepEqual(services.state.lockAttempts, []);
+  assert.deepEqual(services.state.cacheGets, []);
   assert.equal(services.state.openedSpreadsheetId, null);
   assert.deepEqual(services.state.dataRows, []);
 });
