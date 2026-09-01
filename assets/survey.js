@@ -221,6 +221,13 @@ export function initializeSurveyPage(root = document, dependencies = {}) {
     status.dataset.statusCode = code;
     status.setAttribute("role", type === "error" ? "alert" : "status");
   };
+  const clearStatus = () => {
+    if (!status) return;
+    status.hidden = true;
+    status.textContent = "";
+    delete status.dataset.statusCode;
+    status.removeAttribute("role");
+  };
   const setSubmitting = (isSubmitting) => {
     form.setAttribute("aria-busy", String(isSubmitting));
     if (submitButton) submitButton.disabled = isSubmitting;
@@ -241,6 +248,7 @@ export function initializeSurveyPage(root = document, dependencies = {}) {
 
   setState(baseState);
   setSubmitting(false);
+  if (baseState === "idle") clearStatus();
   updateRoleOther();
   form.addEventListener("change", (event) => {
     if (event.target?.name === "role") updateRoleOther();
@@ -283,6 +291,7 @@ export function initializeSurveyPage(root = document, dependencies = {}) {
         setTimeoutImpl: dependencies.setTimeoutImpl,
         clearTimeoutImpl: dependencies.clearTimeoutImpl,
       });
+      clearStatus();
       form.hidden = true;
       if (successPanel) {
         successPanel.hidden = false;

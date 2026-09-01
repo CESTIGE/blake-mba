@@ -28,6 +28,14 @@ test("survey page exposes the approved accessible contract", () => {
   assert.match(html, /\/assets\/survey\.js\?v=20260901survey1/);
 });
 
+test("survey page loads the analytics bootstrap before its controller", () => {
+  const html = read("survey/index.html");
+  const analyticsIndex = html.indexOf('<script src="/assets/analytics.js"></script>');
+  const controllerIndex = html.indexOf('<script type="module" src="/assets/survey.js?v=20260901survey1"></script>');
+  assert.ok(analyticsIndex >= 0, "survey page loads the existing analytics bootstrap");
+  assert.ok(controllerIndex > analyticsIndex, "analytics bootstrap loads before the survey controller");
+});
+
 function tagById(html, tagName, id) {
   return html.match(new RegExp(`<${tagName}\\b(?=[^>]*\\bid="${id}")[^>]*>`, "i"))?.[0] ?? "";
 }
@@ -183,6 +191,7 @@ function createSurveyFixture({ endpoint = "", values = validValues } = {}) {
   const submitButton = createFakeElement();
   const submitLabel = createFakeElement();
   const status = createFakeElement();
+  status.textContent = "目前為預覽模式，尚未開放送出";
   const successPanel = createFakeElement();
   successPanel.hidden = true;
   const roleOtherWrap = createFakeElement();
@@ -272,6 +281,16 @@ test("controller retains preview mode and exposes CONFIG_ERROR without a request
   assert.equal(fetchCalls, 0);
 });
 
+test("controller clears the preview notice when a configured form starts idle", () => {
+  const fixture = createSurveyFixture({ endpoint: "http://localhost:4173/api/survey" });
+  initializeSurveyPage(fixture.root, { now: () => new Date("2026-09-01T01:23:45.000Z") });
+
+  assert.equal(fixture.form.dataset.surveyState, "idle");
+  assert.equal(fixture.status.hidden, true);
+  assert.equal(fixture.status.textContent, "");
+  assert.equal(fixture.status.getAttribute("role"), null);
+});
+
 test("controller shows pending state and prevents a duplicate request", async () => {
   let resolveFetch;
   let fetchCalls = 0;
@@ -347,6 +366,9 @@ test("controller preserves values and request id after API failure or timeout so
   assert.equal(bodies[0].requestId, "retry-request");
   assert.equal(bodies[1].requestId, "retry-request");
   assert.equal(fixture.successPanel.hidden, false);
+  assert.equal(fixture.status.hidden, true);
+  assert.equal(fixture.status.textContent, "");
+  assert.equal(fixture.status.getAttribute("role"), null);
 });
 
 test("controller keeps values and restores retry controls after an API failure", async () => {
