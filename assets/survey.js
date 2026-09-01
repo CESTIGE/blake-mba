@@ -15,9 +15,9 @@ function isAllowedEndpoint(endpoint) {
     return false;
   }
 
-  if (url.search || url.hash) return false;
+  if (url.search || url.hash || url.username || url.password) return false;
   if (url.protocol === "https:" && url.hostname === "script.google.com") {
-    return APPS_SCRIPT_PATH_PATTERN.test(url.pathname);
+    return !url.port && APPS_SCRIPT_PATH_PATTERN.test(url.pathname);
   }
   if (url.protocol !== "http:" || !url.port || url.pathname !== LOCAL_PREVIEW_PATH) return false;
   if (url.hostname !== "localhost" && url.hostname !== "127.0.0.1") return false;

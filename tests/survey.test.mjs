@@ -142,6 +142,30 @@ test("submitSurvey permits only Apps Script exec and loopback preview endpoints"
   }
 });
 
+test("submitSurvey rejects an Apps Script URL with a nonstandard port", async () => {
+  const fetchImpl = async () => new Response(JSON.stringify({ ok: true }), { status: 200 });
+  await assert.rejects(
+    submitSurvey("https://script.google.com:444/macros/s/example/exec", {}, { fetchImpl, timeoutMs: 1000 }),
+    (error) => error instanceof SurveyTransportError && error.code === "CONFIG_ERROR",
+  );
+});
+
+test("submitSurvey rejects an Apps Script URL with a username", async () => {
+  const fetchImpl = async () => new Response(JSON.stringify({ ok: true }), { status: 200 });
+  await assert.rejects(
+    submitSurvey("https://user@script.google.com/macros/s/example/exec", {}, { fetchImpl, timeoutMs: 1000 }),
+    (error) => error instanceof SurveyTransportError && error.code === "CONFIG_ERROR",
+  );
+});
+
+test("submitSurvey rejects an Apps Script URL with a password", async () => {
+  const fetchImpl = async () => new Response(JSON.stringify({ ok: true }), { status: 200 });
+  await assert.rejects(
+    submitSurvey("https://user:password@script.google.com/macros/s/example/exec", {}, { fetchImpl, timeoutMs: 1000 }),
+    (error) => error instanceof SurveyTransportError && error.code === "CONFIG_ERROR",
+  );
+});
+
 test("submitSurvey converts an aborted request into a timeout error", async () => {
   const fetchImpl = async (_url, options) => new Promise((_resolve, reject) => {
     options.signal.addEventListener("abort", () => reject(new DOMException("aborted", "AbortError")));
