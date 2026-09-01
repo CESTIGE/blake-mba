@@ -97,6 +97,40 @@ test("website honeypot does not invalidate a legitimate payload", () => {
   assert.equal(result.ok, true);
 });
 
+test("normalizeSurveyPayload preserves a capped website honeypot value", () => {
+  const core = loadScript("apps-script/survey/Core.gs");
+  const result = core.normalizeSurveyPayload({
+    ...validPayload,
+    website: `  ${"w".repeat(250)}  `,
+  });
+  assert.equal(result.ok, true);
+  assert.equal(result.value.website.length, 200);
+  assert.equal(result.value.website, "w".repeat(200));
+});
+
+test("normalizeSurveyPayload caps roleOther at 100 characters", () => {
+  const core = loadScript("apps-script/survey/Core.gs");
+  const result = core.normalizeSurveyPayload({
+    ...validPayload,
+    role: "其他",
+    roleOther: `  ${"r".repeat(140)}  `,
+  });
+  assert.equal(result.ok, true);
+  assert.equal(result.value.roleOther.length, 100);
+  assert.equal(result.value.roleOther, "r".repeat(100));
+});
+
+test("normalizeSurveyPayload caps submittedAtClient at 40 characters", () => {
+  const core = loadScript("apps-script/survey/Core.gs");
+  const result = core.normalizeSurveyPayload({
+    ...validPayload,
+    submittedAtClient: `  ${"2".repeat(60)}  `,
+  });
+  assert.equal(result.ok, true);
+  assert.equal(result.value.submittedAtClient.length, 40);
+  assert.equal(result.value.submittedAtClient, "2".repeat(40));
+});
+
 test("buildSurveyRow preserves the fixed spreadsheet column order", () => {
   const core = loadScript("apps-script/survey/Core.gs");
   const normalized = core.normalizeSurveyPayload(validPayload).value;

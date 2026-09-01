@@ -52,17 +52,22 @@ function validateTextField(value, maxLength) {
   return trimmed;
 }
 
+function capText(value, maxLength) {
+  return trimText(value).slice(0, maxLength);
+}
+
 function normalizeSurveyPayload(payload) {
   var fields = [];
   var requestId = trimText(payload.requestId);
   var role = trimText(payload.role);
-  var roleOther = trimText(payload.roleOther);
+  var roleOther = capText(payload.roleOther, 100);
   var learningTopics = validateTextField(payload.learningTopics, 300);
   var currentProblem = validateTextField(payload.currentProblem, 2000);
   var blakeCourseCount = trimText(payload.blakeCourseCount);
   var aiCourseCount = trimText(payload.aiCourseCount);
   var email = trimText(payload.email).toLowerCase();
-  var submittedAtClient = trimText(payload.submittedAtClient);
+  var submittedAtClient = capText(payload.submittedAtClient, 40);
+  var website = capText(payload.website, 200);
   var consent = payload.consent === true;
 
   if (!requestId || requestId.length > 64 || !isUuid(requestId)) fields.push("requestId");
@@ -95,6 +100,7 @@ function normalizeSurveyPayload(payload) {
           email: email,
           consent: consent,
           submittedAtClient: submittedAtClient,
+          website: website,
         },
       };
 }
