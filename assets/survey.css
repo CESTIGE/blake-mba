@@ -344,8 +344,8 @@ h1 {
   gap: 10px;
 }
 
-.survey-options label,
-.survey-consent label {
+.survey-option,
+.survey-consent-choice {
   display: grid;
   grid-template-columns: 22px minmax(0, 1fr);
   gap: 12px;
@@ -356,13 +356,17 @@ h1 {
   background: var(--survey-white);
   border: 1px solid var(--survey-line);
   border-radius: 12px;
-  cursor: pointer;
 }
 
-.survey-options label:has(input:checked),
-.survey-consent label:has(input:checked) {
+.survey-option:has(input:checked),
+.survey-consent-choice:has(input:checked) {
   background: rgba(49, 83, 216, 0.08);
   border-color: rgba(49, 83, 216, 0.42);
+}
+
+.survey-option label,
+.survey-consent-choice label {
+  cursor: pointer;
 }
 
 .field {

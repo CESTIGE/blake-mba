@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { read } from "./helpers/site-files.mjs";
+import { attribute, read, tagWithAttribute } from "./helpers/site-files.mjs";
 import {
   SurveyTransportError,
   buildSurveyPayload,
@@ -27,6 +27,66 @@ test("survey page exposes the approved accessible contract", () => {
   assert.match(html, /\/assets\/survey\.js\?v=20260901survey1/);
 });
 
+function tagById(html, tagName, id) {
+  return html.match(new RegExp(`<${tagName}\\b(?=[^>]*\\bid="${id}")[^>]*>`, "i"))?.[0] ?? "";
+}
+
+function hasBooleanAttribute(tag, name) {
+  return new RegExp(`(?:^|\\s)${name}(?:\\s|>|=)`, "i").test(tag);
+}
+
+test("survey page preserves exact field names states and standalone boundaries", () => {
+  const html = read("survey/index.html");
+  const form = tagWithAttribute(html, "form", "data-survey-form");
+  assert.equal(attribute(form, "data-survey-endpoint"), "");
+  assert.doesNotMatch(html, /data-site-nav/);
+  assert.doesNotMatch(html, /assets\/site\.js/);
+  assert.match(html, />目前為預覽模式，尚未開放送出</);
+  assert.match(html, /\/assets\/survey\.css\?v=20260901survey1/);
+  assert.match(html, /\/assets\/survey\.js\?v=20260901survey1/);
+
+  for (const field of [
+    "role", "roleOther", "learningTopics", "currentProblem",
+    "blakeCourseCount", "aiCourseCount", "email", "consent",
+  ]) {
+    assert.match(html, new RegExp(`data-field-error="${field}"`), field);
+  }
+
+  const roleFieldset = tagWithAttribute(html, "fieldset", "data-role-group");
+  assert.equal(attribute(roleFieldset, "aria-describedby"), "role-error");
+  for (const [id, value, label] of [
+    ["role-student", "學生", "學生"],
+    ["role-worker", "上班族", "上班族"],
+    ["role-manager", "主管／管理者", "主管／管理者"],
+    ["role-founder", "創業者／自由工作者", "創業者／自由工作者"],
+    ["role-other", "其他", "其他"],
+  ]) {
+    const input = tagById(html, "input", id);
+    assert.equal(attribute(input, "name"), "role", id);
+    assert.equal(attribute(input, "value"), value, id);
+    assert.match(html, new RegExp(`<label\\b[^>]*for="${id}"[^>]*>\\s*${label}\\s*</label>`), id);
+  }
+  assert.equal(hasBooleanAttribute(tagById(html, "input", "role-student"), "required"), true);
+
+  assert.equal(attribute(tagById(html, "input", "role-other-text"), "name"), "roleOther");
+  assert.equal(hasBooleanAttribute(tagById(html, "input", "role-other-text"), "required"), false);
+  assert.equal(attribute(tagById(html, "input", "learning-topics"), "name"), "learningTopics");
+  assert.equal(hasBooleanAttribute(tagById(html, "input", "learning-topics"), "required"), true);
+  assert.equal(attribute(tagById(html, "textarea", "current-problem"), "name"), "currentProblem");
+  assert.equal(hasBooleanAttribute(tagById(html, "textarea", "current-problem"), "required"), true);
+  assert.equal(attribute(tagById(html, "input", "blake-course-count"), "name"), "blakeCourseCount");
+  assert.equal(hasBooleanAttribute(tagById(html, "input", "blake-course-count"), "required"), false);
+  assert.equal(attribute(tagById(html, "input", "ai-course-count"), "name"), "aiCourseCount");
+  assert.equal(hasBooleanAttribute(tagById(html, "input", "ai-course-count"), "required"), false);
+  assert.equal(attribute(tagById(html, "input", "email"), "name"), "email");
+  assert.equal(hasBooleanAttribute(tagById(html, "input", "email"), "required"), false);
+  assert.equal(attribute(tagById(html, "input", "survey-consent"), "name"), "consent");
+  assert.equal(hasBooleanAttribute(tagById(html, "input", "survey-consent"), "required"), true);
+  assert.match(html, /<label\b[^>]*for="survey-consent"[^>]*>/);
+  assert.equal(attribute(tagById(html, "input", "website"), "name"), "website");
+  assert.equal(attribute(tagById(html, "input", "website"), "tabindex"), "-1");
+});
+
 test("survey CSS preserves BLAKE tokens and accessibility states", () => {
   const css = read("assets/survey.css");
   for (const token of ["#0b1d2a", "#f3eee5", "#ff6534", "#3153d8", "#a8d9cf"]) {
@@ -37,6 +97,21 @@ test("survey CSS preserves BLAKE tokens and accessibility states", () => {
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
   assert.match(css, /@media\s*\(max-width:\s*760px\)/);
 });
+
+test("survey CSS locks the approved responsive and state contract", () => {
+  const css = read("assets/survey.css");
+  for (const width of ["1020", "760", "430", "340"]) {
+    assert.match(css, new RegExp(`@media\\s*\\(max-width:\\s*${width}px\\)`), width);
+  }
+  assert.match(css, /grid-template-columns:\s*minmax\(240px,\s*0\.72fr\)\s*minmax\(0,\s*1\.28fr\)/);
+  assert.match(css, /border-radius:\s*28px/);
+  assert.match(css, /\.is-invalid/);
+  assert.match(css, /\[aria-invalid="true"\]/);
+  assert.match(css, /disabled/);
+  assert.match(css, /is-loading/);
+  assert.match(css, /is-success/);
+});
+
 
 const validValues = {
   role: "上班族",
