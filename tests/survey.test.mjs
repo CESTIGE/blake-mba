@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { read } from "./helpers/site-files.mjs";
 import {
   SurveyTransportError,
   buildSurveyPayload,
@@ -7,6 +8,35 @@ import {
   submitSurvey,
   validateSurveyValues,
 } from "../assets/survey.js";
+
+test("survey page exposes the approved accessible contract", () => {
+  const html = read("survey/index.html");
+  assert.equal((html.match(/<h1\b/g) ?? []).length, 1);
+  assert.match(html, /<meta name="robots" content="noindex, nofollow">/);
+  assert.match(html, /data-survey-form/);
+  assert.match(html, /你目前的角色/);
+  assert.match(html, /你今天最想學哪些課程主題？/);
+  assert.match(html, /你目前最想解決的一個問題是什麼？/);
+  assert.match(html, /上過幾次我的課？/);
+  assert.match(html, /上過幾次 AI 的課？/);
+  assert.match(html, /如果願意收到後續課程資訊/);
+  assert.match(html, /data-survey-status[^>]*aria-live="polite"/);
+  assert.match(html, /data-survey-success/);
+  assert.match(html, /name="website"[^>]*tabindex="-1"/);
+  assert.match(html, /\/assets\/survey\.css\?v=20260901survey1/);
+  assert.match(html, /\/assets\/survey\.js\?v=20260901survey1/);
+});
+
+test("survey CSS preserves BLAKE tokens and accessibility states", () => {
+  const css = read("assets/survey.css");
+  for (const token of ["#0b1d2a", "#f3eee5", "#ff6534", "#3153d8", "#a8d9cf"]) {
+    assert.match(css, new RegExp(token));
+  }
+  assert.match(css, /:focus-visible/);
+  assert.match(css, /min-height:\s*44px/);
+  assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
+  assert.match(css, /@media\s*\(max-width:\s*760px\)/);
+});
 
 const validValues = {
   role: "上班族",

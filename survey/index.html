@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <title>BLAKE 課程需求調查｜60 秒告訴我你最想學什麼</title>
+    <meta name="description" content="花 60 秒告訴 BLAKE 你目前的角色、最想學的課程主題，以及現在最想解決的問題。Email 選填。">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://blake.mba/survey/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:site_name" content="BLAKE｜William Huang">
+    <meta property="og:title" content="BLAKE 課程需求調查｜60 秒告訴我你最想學什麼">
+    <meta property="og:description" content="可匿名填寫，Email 選填。你的回覆只用於了解課程需求與後續課程資訊。">
+    <meta property="og:url" content="https://blake.mba/survey/">
+    <meta property="og:image" content="https://blake.mba/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BLAKE 課程需求調查｜60 秒告訴我你最想學什麼">
+    <meta name="twitter:description" content="可匿名填寫，Email 選填。你的回覆只用於了解課程需求與後續課程資訊。">
+    <meta name="twitter:image" content="https://blake.mba/og.png">
+    <link rel="stylesheet" href="/assets/survey.css?v=20260901survey1">
+  </head>
+  <body>
+    <a class="skip-link" href="#survey-form">跳到問卷</a>
+    <header class="survey-header" aria-label="BLAKE 問卷頁首">
+      <a class="survey-brand" href="/" aria-label="BLAKE 首頁">
+        <span class="survey-brand-mark">B</span>
+        <span class="survey-brand-text"><span>BLAKE</span><span>WILLIAM HUANG</span></span>
+      </a>
+      <a class="survey-home-link" href="/">返回主站</a>
+    </header>
+
+    <main class="survey-page">
+      <section class="survey-intro-band" aria-labelledby="survey-title">
+        <div class="survey-shell survey-hero">
+          <div class="survey-hero-copy">
+            <span class="survey-eyebrow">COURSE NEEDS SURVEY</span>
+            <h1 id="survey-title">花 60 秒，告訴我你最想學什麼。</h1>
+            <p class="survey-lead">可匿名填寫，Email 選填。你的回覆只用於了解課程需求與後續課程資訊。</p>
+            <p class="survey-preview-note" data-survey-status aria-live="polite" role="status">目前為預覽模式，尚未開放送出</p>
+          </div>
+          <aside class="survey-context" aria-label="填寫說明">
+            <span>01</span>
+            <p>六題單頁完成。必填題會標示，送出前會在畫面上提示需要補齊的地方。</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="survey-form-band" aria-label="課程需求問卷">
+        <div class="survey-shell survey-layout">
+          <aside class="survey-side-note" aria-label="資料使用說明">
+            <span>WHY THIS EXISTS</span>
+            <p>我會用這些回覆判斷接下來的課程主題、案例深度與後續說明。這不是公開留言，也不需要留下姓名。</p>
+          </aside>
+
+          <form id="survey-form" class="survey-form" method="post" novalidate data-survey-form data-survey-endpoint="">
+            <div class="survey-honeypot" aria-hidden="true">
+              <label for="website">請勿填寫此欄位</label>
+              <input id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="survey-form-heading">
+              <span>START HERE</span>
+              <p><i aria-hidden="true">*</i> 必填</p>
+            </div>
+
+            <fieldset class="survey-question">
+              <legend><span>01</span>你目前的角色 <em>必填</em></legend>
+              <div class="survey-options" aria-describedby="role-error">
+                <label><input type="radio" name="role" value="學生" required>學生</label>
+                <label><input type="radio" name="role" value="上班族">上班族</label>
+                <label><input type="radio" name="role" value="主管／管理者">主管／管理者</label>
+                <label><input type="radio" name="role" value="創業者／自由工作者">創業者／自由工作者</label>
+                <label><input type="radio" name="role" value="其他">其他</label>
+              </div>
+              <p id="role-error" class="field-error" data-field-error="role"></p>
+              <div class="field role-other" data-role-other-wrap hidden>
+                <label for="role-other">其他角色補充</label>
+                <input id="role-other" name="roleOther" maxlength="100" aria-describedby="role-other-error">
+                <p id="role-other-error" class="field-error" data-field-error="roleOther"></p>
+              </div>
+            </fieldset>
+
+            <fieldset class="survey-question">
+              <legend><span>02</span>你今天最想學哪些課程主題？ <em>必填</em></legend>
+              <div class="field">
+                <label for="learning-topics">課程主題</label>
+                <input id="learning-topics" name="learningTopics" maxlength="300" required aria-describedby="learning-topics-hint learning-topics-error" placeholder="例如：AI 工作流程、自動化、商業簡報">
+                <p id="learning-topics-hint" class="field-hint">最多 300 字，簡短寫下幾個方向即可。</p>
+                <p id="learning-topics-error" class="field-error" data-field-error="learningTopics"></p>
+              </div>
+            </fieldset>
+
+            <fieldset class="survey-question">
+              <legend><span>03</span>你目前最想解決的一個問題是什麼？ <em>必填</em></legend>
+              <div class="field">
+                <label for="current-problem">目前問題</label>
+                <textarea id="current-problem" name="currentProblem" maxlength="2000" required aria-describedby="current-problem-hint current-problem-error" placeholder="請描述現在卡住的情境、想達到的結果，或希望課程幫你補上的能力。"></textarea>
+                <p id="current-problem-hint" class="field-hint">最多 2000 字，可用一兩句話回答。</p>
+                <p id="current-problem-error" class="field-error" data-field-error="currentProblem"></p>
+              </div>
+            </fieldset>
+
+            <fieldset class="survey-question survey-question-grid">
+              <legend><span>04</span>上過幾次我的課？ <em>選填</em></legend>
+              <div class="field">
+                <label for="blake-course-count">次數</label>
+                <input id="blake-course-count" name="blakeCourseCount" inputmode="numeric" pattern="[0-9]*" maxlength="3" aria-describedby="blake-course-count-error" placeholder="0">
+                <p id="blake-course-count-error" class="field-error" data-field-error="blakeCourseCount"></p>
+              </div>
+            </fieldset>
+
+            <fieldset class="survey-question survey-question-grid">
+              <legend><span>05</span>上過幾次 AI 的課？ <em>選填</em></legend>
+              <div class="field">
+                <label for="ai-course-count">次數</label>
+                <input id="ai-course-count" name="aiCourseCount" inputmode="numeric" pattern="[0-9]*" maxlength="3" aria-describedby="ai-course-count-error" placeholder="0">
+                <p id="ai-course-count-error" class="field-error" data-field-error="aiCourseCount"></p>
+              </div>
+            </fieldset>
+
+            <fieldset class="survey-question">
+              <legend><span>06</span>如果願意收到後續課程資訊，請留下 Email（選填）</legend>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" maxlength="254" aria-describedby="email-hint email-error" placeholder="you@example.com">
+                <p id="email-hint" class="field-hint">不填也可以送出問卷。</p>
+                <p id="email-error" class="field-error" data-field-error="email"></p>
+              </div>
+            </fieldset>
+
+            <div class="survey-consent">
+              <label>
+                <input type="checkbox" name="consent" value="true" required aria-describedby="consent-error">
+                <span>我了解這份回覆只用於了解課程需求與後續課程資訊。</span>
+              </label>
+              <p id="consent-error" class="field-error" data-field-error="consent"></p>
+            </div>
+
+            <button class="survey-submit" type="submit">
+              <span data-submit-label>送出回覆</span>
+            </button>
+          </form>
+
+          <section class="survey-success" data-survey-success hidden tabindex="-1" aria-labelledby="survey-success-title">
+            <span aria-hidden="true">✓</span>
+            <h2 id="survey-success-title">已收到你的回覆</h2>
+            <p>謝謝你花時間告訴我。後續若留下 Email，我會只針對課程相關資訊與你聯絡。</p>
+            <a href="/">返回 BLAKE 主站</a>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/assets/survey.js?v=20260901survey1"></script>
+  </body>
+</html>
