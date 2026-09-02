@@ -157,6 +157,19 @@ test("the hero is the only eager and high-priority image on the home page", () =
   assert.equal((html.match(/fetchpriority="high"/g) ?? []).length, 1);
 });
 
+test("every home page class feedback action opens the independent survey", () => {
+  const html = read("index.html");
+  const surveyLinks = [...html.matchAll(/href="([^"]+)"/g)]
+    .map((match) => match[1])
+    .filter((href) => href.includes("forms.gle") || href.includes("/survey/"));
+
+  assert.deepEqual(surveyLinks, [
+    "https://blake.mba/survey/",
+    "https://blake.mba/survey/",
+    "https://blake.mba/survey/",
+  ]);
+});
+
 test("local raster content images declare intrinsic dimensions", () => {
   for (const page of htmlFiles()) {
     for (const match of read(page).matchAll(/<img\b[^>]*>/gi)) {
