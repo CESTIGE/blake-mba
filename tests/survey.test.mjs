@@ -150,6 +150,7 @@ test("survey page preserves exact field names states and standalone boundaries",
   assert.equal(attribute(form, "data-survey-endpoint"), "");
   assert.doesNotMatch(html, /data-site-nav/);
   assert.doesNotMatch(html, /assets\/site\.js/);
+  assert.doesNotMatch(html, /survey-side-note|WHY THIS EXISTS/);
   assert.match(html, />目前為預覽模式，尚未開放送出</);
   assert.match(html, /\/assets\/survey\.css\?v=20260901survey1/);
   assert.match(html, /\/assets\/survey\.js\?v=20260901survey1/);
@@ -247,7 +248,8 @@ test("survey CSS locks the approved responsive and state contract", () => {
   for (const width of ["1020", "760", "430", "340"]) {
     assert.match(css, new RegExp(`@media\\s*\\(max-width:\\s*${width}px\\)`), width);
   }
-  assert.match(css, /grid-template-columns:\s*minmax\(240px,\s*0\.72fr\)\s*minmax\(0,\s*1\.28fr\)/);
+  assert.match(css, /\.survey-layout\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0,\s*1fr\)/);
+  assert.match(css, /\.survey-form,\s*\.survey-success\s*\{[\s\S]*?max-width:\s*820px/);
   assert.match(css, /border-radius:\s*28px/);
   assert.match(css, /\.is-invalid/);
   assert.match(css, /\[aria-invalid="true"\]/);

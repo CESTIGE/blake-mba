@@ -248,28 +248,15 @@ h1 {
 
 .survey-layout {
   display: grid;
-  grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
-  gap: clamp(28px, 5vw, 58px);
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
   align-items: start;
-}
-
-.survey-side-note {
-  position: sticky;
-  top: 104px;
-  padding-top: 18px;
-  border-top: 3px solid var(--survey-blue);
-}
-
-.survey-side-note p {
-  max-width: 30rem;
-  margin: 18px 0 0;
-  color: var(--survey-muted);
-  font-size: 15px;
 }
 
 .survey-form,
 .survey-success {
   width: 100%;
+  max-width: 820px;
   min-width: 0;
   padding: clamp(24px, 4vw, 44px);
   background: var(--survey-paper-2);
@@ -556,14 +543,8 @@ textarea:focus-visible {
 }
 
 @media (max-width: 1020px) {
-  .survey-hero,
-  .survey-layout {
+  .survey-hero {
     grid-template-columns: 1fr;
-  }
-
-  .survey-side-note {
-    position: static;
-    top: auto;
   }
 
   .survey-context {
