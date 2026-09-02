@@ -70,7 +70,7 @@ test("founded-company logos and highlights have responsive presentation rules", 
   const html = read("index.html");
   const css = read("assets/who-is-blake.css");
 
-  assert.match(html, /who-is-blake\.css\?v=20260827companies2/);
+  assert.match(html, /who-is-blake\.css\?v=20260902connect2/);
   assert.match(css, /\.company-logo-frame\s*\{/);
   assert.match(css, /\.company-specialties\s*\{/);
   assert.match(css, /\.company-highlights\s*\{/);
