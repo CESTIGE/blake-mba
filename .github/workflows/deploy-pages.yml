@@ -1,0 +1,59 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+
+      - name: Prepare static site
+        env:
+          SURVEY_ENDPOINT: ${{ secrets.SURVEY_ENDPOINT }}
+        run: |
+          mkdir _site
+          git archive HEAD | tar -x -C _site
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = '_site/survey/index.html';
+          const endpoint = process.env.SURVEY_ENDPOINT || '';
+          if (!/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(endpoint)) {
+            throw new Error('SURVEY_ENDPOINT is missing or invalid.');
+          }
+          const source = fs.readFileSync(path, 'utf8');
+          const marker = 'data-survey-endpoint=""';
+          if (!source.includes(marker)) {
+            throw new Error('Survey endpoint marker was not found.');
+          }
+          fs.writeFileSync(path, source.replace(marker, `data-survey-endpoint="${endpoint}"`));
+          NODE
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
