@@ -1,0 +1,160 @@
+{
+  "profile": { "username": "williamblakehuang", "displayName": "Huang Blake" },
+  "items": [
+    {
+      "id": "demo-photo-nccu",
+      "mediaType": "IMAGE",
+      "caption": "政大創客松｜把問題看清楚，把想法做成可以驗證的方案。",
+      "mediaUrl": "",
+      "thumbnailUrl": "/assets/who-is-blake/proof-teaching.png",
+      "permalink": "https://www.instagram.com/williamblakehuang/",
+      "timestamp": "2026-08-30T10:00:00Z",
+      "children": []
+    },
+    {
+      "id": "demo-photo-founder",
+      "mediaType": "IMAGE",
+      "caption": "從市場問題出發，把想法一步步做成產品。",
+      "mediaUrl": "/assets/who-is-blake/proof-founder-team.png",
+      "thumbnailUrl": "",
+      "permalink": "https://www.instagram.com/williamblakehuang/",
+      "timestamp": "2026-08-20T10:00:00Z",
+      "children": []
+    },
+    {
+      "id": "demo-carousel-profile",
+      "mediaType": "CAROUSEL_ALBUM",
+      "caption": "創業、顧問與 AI 實作現場。",
+      "mediaUrl": "/assets/who-is-blake/blake-hero.jpg",
+      "thumbnailUrl": "",
+      "permalink": "https://www.instagram.com/williamblakehuang/",
+      "timestamp": "2026-08-10T10:00:00Z",
+      "children": []
+    },
+    {
+      "id": "demo-photo-ai-workshop",
+      "mediaType": "IMAGE",
+      "caption": "AI 工作坊｜把工具選擇變成可執行的流程。",
+      "mediaUrl": "",
+      "thumbnailUrl": "/assets/who-is-blake/proof-teaching.png",
+      "permalink": "https://www.instagram.com/williamblakehuang/",
+      "timestamp": "2026-08-01T10:00:00Z",
+      "children": []
+    },
+    {
+      "id": "demo-photo-product-sprint",
+      "mediaType": "IMAGE",
+      "caption": "產品衝刺｜先驗證問題，再投入資源。",
+      "mediaUrl": "/assets/who-is-blake/proof-founder-team.png",
+      "thumbnailUrl": "",
+      "permalink": "https://www.instagram.com/williamblakehuang/",
+      "timestamp": "2026-07-24T10:00:00Z",
+      "children": []
+    },
+    {
+      "id": "demo-carousel-field-notes",
+      "mediaType": "CAROUSEL_ALBUM",
+      "caption": "現場筆記｜顧問、教學與創業題目交會的地方。",
+      "mediaUrl": "/assets/who-is-blake/blake-hero.jpg",
+      "thumbnailUrl": "",
+      "permalink": "https://www.instagram.com/williamblakehuang/",
+      "timestamp": "2026-07-10T10:00:00Z",
+      "children": []
+    },
+    {
+      "id": "demo-photo-market-questions",
+      "mediaType": "IMAGE",
+      "caption": "市場題目｜每個好產品都從可被檢驗的問題開始。",
+      "mediaUrl": "",
+      "thumbnailUrl": "/assets/who-is-blake/proof-teaching.png",
+      "permalink": "https://www.instagram.com/williamblakehuang/",
+      "timestamp": "2026-06-28T10:00:00Z",
+      "children": []
+    },
+    {
+      "id": "demo-photo-founder-table",
+      "mediaType": "IMAGE",
+      "caption": "創辦人討論｜把抽象策略翻成今天能做的下一步。",
+      "mediaUrl": "/assets/who-is-blake/proof-founder-team.png",
+      "thumbnailUrl": "",
+      "permalink": "https://www.instagram.com/williamblakehuang/",
+      "timestamp": "2026-06-16T10:00:00Z",
+      "children": []
+    },
+    {
+      "id": "demo-carousel-ai-course",
+      "mediaType": "CAROUSEL_ALBUM",
+      "caption": "AI 課程現場｜讓團隊用同一套語言討論工具與產出。",
+      "mediaUrl": "/assets/who-is-blake/blake-hero.jpg",
+      "thumbnailUrl": "",
+      "permalink": "https://www.instagram.com/williamblakehuang/",
+      "timestamp": "2026-06-03T10:00:00Z",
+      "children": []
+    },
+    {
+      "id": "demo-photo-practice",
+      "mediaType": "IMAGE",
+      "caption": "實作練習｜少一點空泛口號，多一點可被驗證的輸出。",
+      "mediaUrl": "",
+      "thumbnailUrl": "/assets/who-is-blake/proof-teaching.png",
+      "permalink": "https://www.instagram.com/williamblakehuang/",
+      "timestamp": "2026-05-20T10:00:00Z",
+      "children": []
+    },
+    {
+      "id": "demo-photo-team-build",
+      "mediaType": "IMAGE",
+      "caption": "團隊建立｜把不同角色拉到同一張問題地圖上。",
+      "mediaUrl": "/assets/who-is-blake/proof-founder-team.png",
+      "thumbnailUrl": "",
+      "permalink": "https://www.instagram.com/williamblakehuang/",
+      "timestamp": "2026-05-09T10:00:00Z",
+      "children": []
+    },
+    {
+      "id": "demo-carousel-method",
+      "mediaType": "CAROUSEL_ALBUM",
+      "caption": "方法整理｜從訪談、假設、原型到市場回饋。",
+      "mediaUrl": "/assets/who-is-blake/blake-hero.jpg",
+      "thumbnailUrl": "",
+      "permalink": "https://www.instagram.com/williamblakehuang/",
+      "timestamp": "2026-04-26T10:00:00Z",
+      "children": []
+    },
+    {
+      "id": "demo-photo-decision",
+      "mediaType": "IMAGE",
+      "caption": "決策會議｜先釐清風險，再決定要不要放大。",
+      "mediaUrl": "",
+      "thumbnailUrl": "/assets/who-is-blake/proof-teaching.png",
+      "permalink": "https://www.instagram.com/williamblakehuang/",
+      "timestamp": "2026-04-12T10:00:00Z",
+      "children": []
+    },
+    {
+      "id": "demo-photo-build",
+      "mediaType": "IMAGE",
+      "caption": "把想法做出來，讓市場回應，而不是只停在簡報裡。",
+      "mediaUrl": "/assets/who-is-blake/proof-founder-team.png",
+      "thumbnailUrl": "",
+      "permalink": "https://www.instagram.com/williamblakehuang/",
+      "timestamp": "2026-03-30T10:00:00Z",
+      "children": []
+    },
+    {
+      "id": "demo-carousel-review",
+      "mediaType": "CAROUSEL_ALBUM",
+      "caption": "回顧與修正｜每次現場都留下下一輪改善的證據。",
+      "mediaUrl": "/assets/who-is-blake/blake-hero.jpg",
+      "thumbnailUrl": "",
+      "permalink": "https://www.instagram.com/williamblakehuang/",
+      "timestamp": "2026-03-18T10:00:00Z",
+      "children": []
+    }
+  ],
+  "meta": {
+    "source": "fixture",
+    "syncedAt": "2026-08-31T00:00:00Z",
+    "stale": false
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "blake-instagram-feed",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-02",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "vars": {
+    "INSTAGRAM_API_VERSION": "v25.0",
+    "ALLOWED_ORIGINS": "http://localhost:4173,http://127.0.0.1:4173,http://127.0.0.1:4174,https://blake.mba,https://blake-mba-cestige.pages.dev"
+  }
+}
