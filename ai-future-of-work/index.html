@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/ai-future-of-work.css?v=20260830a">
-  <script type="module" src="/assets/ai-future-of-work.mjs?v=20260827b"></script>
+  <link rel="stylesheet" href="/assets/ai-future-of-work.css?v=20260903a">
+  <script type="module" src="/assets/ai-future-of-work.mjs?v=20260903c"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要內容</a>
@@ -22,6 +22,11 @@
     <span class="story-status"><i></i>SCROLL FILM</span>
   </header>
   <div class="page-progress" aria-hidden="true"><span data-page-progress></span></div>
+  <nav class="story-page-nav" aria-label="頁面段落導覽">
+    <button type="button" data-story-previous aria-label="上一頁"><span aria-hidden="true">↑</span></button>
+    <p data-story-status aria-live="polite"><strong>01</strong><span>開場</span><small>／07</small></p>
+    <button type="button" data-story-next aria-label="下一頁"><span aria-hidden="true">↓</span></button>
+  </nav>
 
   <main id="main">
     <section class="hero-film scroll-scene" data-scroll-scene data-scene-name="開場" aria-labelledby="hero-title">
@@ -131,14 +136,14 @@
         </header>
         <div class="poster-viewport">
           <div class="poster-rail" data-cinema-rail>
-            <article class="poster-card poster-danger"><img src="/assets/ai-future-of-work-real/terminator.jpg" alt="電影《魔鬼終結者》真實海報" width="1000" height="1500" loading="lazy"><div><span>01｜失控</span><h3>《魔鬼終結者》</h3><p>SKYNET 將目標最佳化推向人類毀滅。</p></div></article>
-            <article class="poster-card poster-control"><img src="/assets/ai-future-of-work-real/irobot.jpg" alt="電影《機械公敵》真實海報" width="1000" height="1500" loading="lazy"><div><span>02｜控制</span><h3>《機械公敵》</h3><p>保護人類，最後變成限制人類。</p></div></article>
-            <article class="poster-card poster-danger"><img src="/assets/ai-future-of-work-real/matrix.jpg" alt="電影《駭客任務》真實海報" width="1000" height="1500" loading="lazy"><div><span>03｜囚禁</span><h3>《駭客任務》</h3><p>機器提供完美幻境，也取走真實選擇。</p></div></article>
-            <article class="poster-card poster-world"><img src="/assets/ai-future-of-work-real/ready-player-one.jpg" alt="電影《一級玩家》真實海報" width="1000" height="1500" loading="lazy"><div><span>04｜逃離</span><h3>《一級玩家》</h3><p>虛擬世界越迷人，現實責任越容易被遺忘。</p></div></article>
-            <article class="poster-card poster-intimate"><img src="/assets/ai-future-of-work-real/her.jpg" alt="電影《雲端情人》真實海報" width="1000" height="1500" loading="lazy"><div><span>05｜親密</span><h3>《雲端情人》</h3><p>AI 能理解語言，卻不一定共享人的生命限制。</p></div></article>
-            <article class="poster-card poster-partner"><img src="/assets/ai-future-of-work-real/big-hero-6.jpg" alt="電影《大英雄天團》真實海報" width="1000" height="1500" loading="lazy"><div><span>06｜照護</span><h3>《大英雄天團》</h3><p>好的 AI 夥伴放大人的同理與行動能力。</p></div></article>
-            <article class="poster-card poster-partner"><img src="/assets/ai-future-of-work-real/walle.jpg" alt="電影《瓦力》真實海報" width="1000" height="1500" loading="lazy"><div><span>07｜依賴</span><h3>《瓦力》</h3><p>便利可以照顧人，也可能讓人失去自主能力。</p></div></article>
-            <article class="poster-card poster-world"><img src="/assets/ai-future-of-work-real/interstellar.jpg" alt="電影《星際效應》真實海報" width="1000" height="1500" loading="lazy"><div><span>08｜信任</span><h3>《星際效應》</h3><p>TARS 證明可靠的 AI 來自透明、可調整與共同任務。</p></div></article>
+            <button class="poster-card poster-danger" type="button" data-movie-id="terminator" aria-haspopup="dialog" aria-label="查看《魔鬼終結者》對應的現實科技"><img src="/assets/ai-future-of-work-real/terminator.jpg" alt="電影《魔鬼終結者》真實海報" width="1000" height="1500" loading="lazy"><span class="poster-copy"><span>01｜失控</span><strong>《魔鬼終結者》</strong><span>SKYNET 將目標最佳化推向人類毀滅。</span><em>查看現實科技 →</em></span></button>
+            <button class="poster-card poster-control" type="button" data-movie-id="irobot" aria-haspopup="dialog" aria-label="查看《機械公敵》對應的現實科技"><img src="/assets/ai-future-of-work-real/irobot.jpg" alt="電影《機械公敵》真實海報" width="1000" height="1500" loading="lazy"><span class="poster-copy"><span>02｜控制</span><strong>《機械公敵》</strong><span>保護人類，最後變成限制人類。</span><em>查看現實科技 →</em></span></button>
+            <button class="poster-card poster-danger" type="button" data-movie-id="matrix" aria-haspopup="dialog" aria-label="查看《駭客任務》對應的現實科技"><img src="/assets/ai-future-of-work-real/matrix.jpg" alt="電影《駭客任務》真實海報" width="1000" height="1500" loading="lazy"><span class="poster-copy"><span>03｜囚禁</span><strong>《駭客任務》</strong><span>機器提供完美幻境，也取走真實選擇。</span><em>查看現實科技 →</em></span></button>
+            <button class="poster-card poster-world" type="button" data-movie-id="ready-player-one" aria-haspopup="dialog" aria-label="查看《一級玩家》對應的現實科技"><img src="/assets/ai-future-of-work-real/ready-player-one.jpg" alt="電影《一級玩家》真實海報" width="1000" height="1500" loading="lazy"><span class="poster-copy"><span>04｜逃離</span><strong>《一級玩家》</strong><span>虛擬世界越迷人，現實責任越容易被遺忘。</span><em>查看現實科技 →</em></span></button>
+            <button class="poster-card poster-intimate" type="button" data-movie-id="her" aria-haspopup="dialog" aria-label="查看《雲端情人》對應的現實科技"><img src="/assets/ai-future-of-work-real/her.jpg" alt="電影《雲端情人》真實海報" width="1000" height="1500" loading="lazy"><span class="poster-copy"><span>05｜親密</span><strong>《雲端情人》</strong><span>AI 能理解語言，卻不一定共享人的生命限制。</span><em>查看現實科技 →</em></span></button>
+            <button class="poster-card poster-partner" type="button" data-movie-id="big-hero-6" aria-haspopup="dialog" aria-label="查看《大英雄天團》對應的現實科技"><img src="/assets/ai-future-of-work-real/big-hero-6.jpg" alt="電影《大英雄天團》真實海報" width="1000" height="1500" loading="lazy"><span class="poster-copy"><span>06｜照護</span><strong>《大英雄天團》</strong><span>好的 AI 夥伴放大人的同理與行動能力。</span><em>查看現實科技 →</em></span></button>
+            <button class="poster-card poster-partner" type="button" data-movie-id="walle" aria-haspopup="dialog" aria-label="查看《瓦力》對應的現實科技"><img src="/assets/ai-future-of-work-real/walle.jpg" alt="電影《瓦力》真實海報" width="1000" height="1500" loading="lazy"><span class="poster-copy"><span>07｜依賴</span><strong>《瓦力》</strong><span>便利可以照顧人，也可能讓人失去自主能力。</span><em>查看現實科技 →</em></span></button>
+            <button class="poster-card poster-world" type="button" data-movie-id="interstellar" aria-haspopup="dialog" aria-label="查看《星際效應》對應的現實科技"><img src="/assets/ai-future-of-work-real/interstellar.jpg" alt="電影《星際效應》真實海報" width="1000" height="1500" loading="lazy"><span class="poster-copy"><span>08｜信任</span><strong>《星際效應》</strong><span>TARS 證明可靠的 AI 來自透明、可調整與共同任務。</span><em>查看現實科技 →</em></span></button>
           </div>
         </div>
         <p class="cinema-extension">延伸對照：《2001 太空漫遊》的 HAL 9000、《鋼鐵人》的 JARVIS。</p>
@@ -154,7 +159,7 @@
 
     <section class="source-film" aria-labelledby="source-title">
       <h2 id="source-title">來源與影像紀錄</h2>
-      <p>最後查核：2026.08.27。頁面區分已發生事件、公司預測、研究觀察與電影詮釋。</p>
+      <p>最後查核：2026.09.03。頁面區分已發生事件、公司預測、研究觀察、產品進度與電影詮釋。</p>
       <div>
         <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/in-full/2-jobs-outlook/" target="_blank" rel="noopener noreferrer">WEF Future of Jobs 2025</a>
         <a href="https://www.gallup.com/workplace/711287/workers-continue-report-downsizing.aspx" target="_blank" rel="noopener noreferrer">Gallup 2026</a>
@@ -165,6 +170,19 @@
       <small>電影海報僅用於評論與作品辨識；著作權屬各片商與權利人。</small>
     </section>
   </main>
+
+  <dialog class="movie-tech-dialog" data-movie-tech-dialog aria-labelledby="movie-tech-title">
+    <button class="movie-tech-close" type="button" data-movie-tech-close aria-label="關閉現實科技介紹">×</button>
+    <div class="movie-tech-visual" aria-hidden="true"><span data-movie-tech-monogram>AI</span><i></i></div>
+    <article>
+      <p class="movie-tech-kicker">電影想像 × 現實科技</p>
+      <div class="movie-tech-meta"><span data-movie-tech-company></span><strong data-movie-tech-maturity></strong></div>
+      <h2 id="movie-tech-title" data-movie-tech-name></h2>
+      <p data-movie-tech-summary></p>
+      <aside><strong>現實界線</strong><p data-movie-tech-reality></p></aside>
+      <a data-movie-tech-source href="https://blake.mba/" target="_blank" rel="noopener noreferrer">查看官方科技資料 ↗</a>
+    </article>
+  </dialog>
 
   <footer class="story-footer"><a href="/">BLAKE</a><p>AI × WORK｜REAL EVIDENCE, HUMAN RESPONSIBILITY.</p></footer>
 </body>
