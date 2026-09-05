@@ -70,3 +70,10 @@ test("course and advisory indexes link to the enterprise workshop", () => {
     );
   }
 });
+
+test("enterprise training query maps to the existing contact option", () => {
+  const script = read("assets/site.js");
+  const contact = read("contact/index.html");
+  assert.match(script, /"enterprise-training": "企業內訓"/);
+  assert.match(contact, /<option>企業內訓<\/option>/);
+});
