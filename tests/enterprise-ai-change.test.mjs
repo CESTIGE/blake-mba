@@ -77,3 +77,21 @@ test("enterprise training query maps to the existing contact option", () => {
   assert.match(script, /"enterprise-training": "企業內訓"/);
   assert.match(contact, /<option>企業內訓<\/option>/);
 });
+
+test("enterprise AI workshop publishes conservative Course structured data", () => {
+  const html = read(page);
+  const blocks = [
+    ...html.matchAll(
+      /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,
+    ),
+  ];
+  const course = blocks
+    .map((match) => JSON.parse(match[1]))
+    .find((item) => item["@type"] === "Course");
+  assert.equal(course.name, "AI 變革推動實戰班");
+  assert.equal(course.url, "https://blake.mba/courses/enterprise-ai-change/");
+  assert.equal(course.inLanguage, "zh-Hant");
+  assert.equal(course.provider.name, "William Blake Huang 黃大成");
+  assert.equal(course.offers, undefined);
+  assert.equal(course.aggregateRating, undefined);
+});
