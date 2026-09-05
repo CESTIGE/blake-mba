@@ -92,7 +92,7 @@ body[data-page="enterprise-workshop"] .brand-mark {
   max-width: 660px;
   margin: 30px 0 0;
   color: rgba(255, 255, 255, 0.86);
-  font-size: clamp(18px, 2vw, 22px);
+  font-size: 1.375rem;
   line-height: 1.75;
 }
 
@@ -190,7 +190,7 @@ body[data-page="enterprise-workshop"] .brand-mark {
 .barrier-list { border-top: 1px solid rgba(16, 37, 63, 0.2); }
 .barrier-list article { display: grid; grid-template-columns: 72px 1fr; gap: 30px; padding: 30px 0; border-bottom: 1px solid rgba(16, 37, 63, 0.2); }
 .barrier-list article > span { color: var(--workshop-orange); font-weight: 900; letter-spacing: 0.12em; }
-.barrier-list h3 { margin: 0 0 8px; font-size: clamp(22px, 3vw, 32px); }
+.barrier-list h3 { margin: 0 0 8px; font-size: 2rem; }
 .barrier-list p { max-width: 760px; margin: 0; color: #536270; line-height: 1.7; }
 
 .workshop-method { color: #fff; background: var(--workshop-ink); }
@@ -295,6 +295,7 @@ body[data-page="enterprise-workshop"] .brand-mark {
   .role-band article + article { border-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.18); }
   .output-heading { position: static; }
   .workshop-hero h1 { font-size: 3.75rem; }
+  .workshop-lead { font-size: 1.125rem; }
   .workshop-section-heading h2,
   .workshop-instructor h2 { font-size: 3rem; }
   .workshop-consultation h2 { font-size: 3.5rem; }
@@ -306,6 +307,7 @@ body[data-page="enterprise-workshop"] .brand-mark {
   .workshop-section-heading h2,
   .workshop-instructor h2 { font-size: 2.4rem; }
   .workshop-module h3 { font-size: 1.75rem; }
+  .barrier-list h3 { font-size: 1.5rem; }
   .workshop-deliverables strong { font-size: 1.2rem; }
   .workshop-consultation h2 { font-size: 2.8rem; }
   .workshop-actions { align-items: stretch; flex-direction: column; }
