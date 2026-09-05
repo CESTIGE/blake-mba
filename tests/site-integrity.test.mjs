@@ -136,7 +136,7 @@ test("changed frontend assets use current cache keys", () => {
   );
   assert.match(
     read("ai-transform/index.html"),
-    /\/assets\/ai-transform\.css\?v=20260820contrast1/,
+    /\/assets\/ai-transform\.css\?v=20260905workshop1/,
   );
   assert.match(
     read("courses/choice-over-effort/index.html"),
