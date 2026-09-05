@@ -2012,6 +2012,169 @@ a.credential-card:focus-visible {
   text-decoration: none;
 }
 
+.connect-section {
+  position: relative;
+  padding: 118px max(32px, calc((100vw - var(--content)) / 2));
+  color: var(--white);
+  background:
+    linear-gradient(90deg, transparent 49.9%, rgba(255, 255, 255, 0.045) 50%, transparent 50.1%),
+    #041018;
+  overflow: hidden;
+}
+
+.connect-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.55fr);
+  align-items: end;
+  gap: 56px;
+  margin-bottom: 52px;
+}
+
+.connect-heading h2 {
+  max-width: 780px;
+  font-size: clamp(44px, 6vw, 76px);
+}
+
+.connect-heading > p {
+  max-width: 470px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.connect-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.connect-card {
+  --connect-card-accent: var(--mint);
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 320px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 28px;
+  color: var(--white);
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025)),
+    #0b1d2a;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.18);
+  isolation: isolate;
+  overflow: hidden;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.connect-card:hover {
+  border-color: var(--connect-card-accent);
+  background-color: #102635;
+  transform: translateY(-3px);
+}
+
+.connect-card-instagram {
+  --connect-card-accent: #ff7a52;
+}
+
+.connect-card-facebook {
+  --connect-card-accent: #6f9cff;
+}
+
+.connect-card-line {
+  --connect-card-accent: #69df80;
+}
+
+.connect-card-contact {
+  --connect-card-accent: var(--mint);
+}
+
+.connect-card::after {
+  position: absolute;
+  right: -38px;
+  bottom: -54px;
+  width: 210px;
+  height: 210px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--connect-card-accent) 18%, transparent), transparent 68%);
+  content: "";
+  pointer-events: none;
+  z-index: -1;
+}
+
+.connect-card-icon {
+  position: absolute;
+  right: -26px;
+  bottom: -22px;
+  width: 188px;
+  height: 188px;
+  color: var(--connect-card-accent);
+  opacity: 0.16;
+  pointer-events: none;
+  transform: rotate(-7deg);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.connect-card:hover .connect-card-icon {
+  opacity: 0.28;
+  transform: rotate(-3deg) scale(1.04);
+}
+
+.connect-card-index {
+  color: var(--orange);
+  font-family: Georgia, serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.connect-card-copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.connect-card-copy small {
+  color: var(--connect-card-accent);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.connect-card-copy strong {
+  max-width: 12ch;
+  font-family: "Noto Serif TC", Georgia, serif;
+  font-size: clamp(26px, 2.25vw, 34px);
+  line-height: 1.25;
+}
+
+.connect-card-copy > span {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 13px;
+}
+
+.connect-card-action {
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+  padding-bottom: 5px;
+  border-bottom: 1px solid currentColor;
+  color: var(--connect-card-accent);
+  font-size: 12px;
+  font-weight: 900;
+}
+
 .site-footer {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -2921,6 +3084,15 @@ a.credential-card:focus-visible {
   .feedback-qr-card {
     justify-self: center;
   }
+
+  .connect-heading {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .connect-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 760px) {
@@ -3390,6 +3562,32 @@ a.credential-card:focus-visible {
     font-size: 20px;
   }
 
+  .connect-section {
+    padding: 82px 20px;
+  }
+
+  .connect-heading {
+    margin-bottom: 36px;
+  }
+
+  .connect-heading h2 {
+    font-size: 40px;
+  }
+
+  .connect-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .connect-card {
+    min-height: 300px;
+    padding: 26px;
+  }
+
+  .connect-card-icon {
+    width: 170px;
+    height: 170px;
+  }
+
   .site-footer {
     grid-template-columns: 1fr;
     gap: 14px;
@@ -3421,6 +3619,11 @@ a.credential-card:focus-visible {
   }
 
   .section {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .connect-section {
     padding-right: 16px;
     padding-left: 16px;
   }

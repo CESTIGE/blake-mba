@@ -94,7 +94,7 @@ test("updated pages reference fresh CSS cache keys", () => {
   );
   assert.match(
     read("index.html"),
-    /\/assets\/who-is-blake\.css\?v=20260827companies2/,
+    /\/assets\/who-is-blake\.css\?v=20260902connect2/,
   );
 });
 
