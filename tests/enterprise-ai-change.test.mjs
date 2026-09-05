@@ -4,17 +4,8 @@ import { attribute, read } from "./helpers/site-files.mjs";
 
 const page = "courses/enterprise-ai-change/index.html";
 
-function readWorkshopPage() {
-  try {
-    return read(page);
-  } catch (error) {
-    if (error?.code === "ENOENT") return "";
-    throw error;
-  }
-}
-
 test("enterprise AI workshop exposes the approved promise and audience", () => {
-  const html = readWorkshopPage();
+  const html = read(page);
   assert.match(html, /AI 變革推動實戰班/);
   assert.match(html, /HR 帶隊 × 主管共識 × 種子員工實作/);
   assert.match(html, /六小時完成企業第一個可試行的 AI 工作流程/);
@@ -24,8 +15,8 @@ test("enterprise AI workshop exposes the approved promise and audience", () => {
 });
 
 test("enterprise AI workshop contains six modules totaling 360 minutes", () => {
-  const html = readWorkshopPage();
-  const minutes = [...html.matchAll(/<article\b[^>]*>/gi)]
+  const html = read(page);
+  const minutes = [...html.matchAll(/<[a-z][\w:-]*\b[^>]*>/gi)]
     .map((match) => match[0])
     .filter((tag) =>
       (attribute(tag, "class") ?? "").split(/\s+/).includes("workshop-module"),
@@ -36,7 +27,7 @@ test("enterprise AI workshop contains six modules totaling 360 minutes", () => {
 });
 
 test("enterprise AI workshop contains all seven deliverables", () => {
-  const html = readWorkshopPage();
+  const html = read(page);
   for (const output of [
     "AI 導入障礙診斷表",
     "優先流程選題表",
@@ -51,7 +42,7 @@ test("enterprise AI workshop contains all seven deliverables", () => {
 });
 
 test("enterprise AI workshop routes consultation through the existing enterprise form", () => {
-  const html = readWorkshopPage();
+  const html = read(page);
   const consultationLinks = [...html.matchAll(/<a\b[^>]*>/gi)]
     .map((match) => attribute(match[0], "href"))
     .filter(
@@ -62,7 +53,7 @@ test("enterprise AI workshop routes consultation through the existing enterprise
 });
 
 test("enterprise AI workshop states the sensitive-data and delivery boundaries", () => {
-  const html = readWorkshopPage();
+  const html = read(page);
   assert.match(html, /去識別化/);
   assert.match(html, /個資/);
   assert.match(html, /營業秘密/);
