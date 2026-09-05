@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { read } from "./helpers/site-files.mjs";
+import { attribute, read } from "./helpers/site-files.mjs";
 
 const page = "courses/enterprise-ai-change/index.html";
 
@@ -25,9 +25,12 @@ test("enterprise AI workshop exposes the approved promise and audience", () => {
 
 test("enterprise AI workshop contains six modules totaling 360 minutes", () => {
   const html = readWorkshopPage();
-  const minutes = [
-    ...html.matchAll(/class="workshop-module" data-minutes="(\d+)"/g),
-  ].map((match) => Number(match[1]));
+  const minutes = [...html.matchAll(/<article\b[^>]*>/gi)]
+    .map((match) => match[0])
+    .filter((tag) =>
+      (attribute(tag, "class") ?? "").split(/\s+/).includes("workshop-module"),
+    )
+    .map((tag) => Number(attribute(tag, "data-minutes")));
   assert.deepEqual(minutes, [40, 65, 75, 90, 45, 45]);
   assert.equal(minutes.reduce((total, value) => total + value, 0), 360);
 });
@@ -49,8 +52,12 @@ test("enterprise AI workshop contains all seven deliverables", () => {
 
 test("enterprise AI workshop routes consultation through the existing enterprise form", () => {
   const html = readWorkshopPage();
-  const cta = /href="\/contact\/\?inquiry=enterprise-training#contact-form"/g;
-  assert.ok((html.match(cta) ?? []).length >= 2);
+  const consultationLinks = [...html.matchAll(/<a\b[^>]*>/gi)]
+    .map((match) => attribute(match[0], "href"))
+    .filter(
+      (href) => href === "/contact/?inquiry=enterprise-training#contact-form",
+    );
+  assert.ok(consultationLinks.length >= 2);
   assert.doesNotMatch(html, /<form\b/i);
 });
 
