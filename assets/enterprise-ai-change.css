@@ -66,13 +66,21 @@ body[data-page="enterprise-workshop"] .brand-mark {
   letter-spacing: 0.15em;
 }
 
+.workshop-course-name {
+  margin: 0 0 18px;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
 .workshop-hero h1 {
   max-width: 880px;
   margin: 0;
   font-family: "Noto Serif TC", "Songti TC", Georgia, serif;
-  font-size: clamp(46px, 6.8vw, 88px);
+  font-size: 5.5rem;
   line-height: 1.04;
-  letter-spacing: -0.055em;
+  letter-spacing: 0;
 }
 
 .workshop-hero h1 span {
@@ -167,9 +175,9 @@ body[data-page="enterprise-workshop"] .brand-mark {
 .workshop-section-heading h2 {
   margin: 0;
   font-family: "Noto Serif TC", "Songti TC", Georgia, serif;
-  font-size: clamp(38px, 5vw, 66px);
+  font-size: 4.125rem;
   line-height: 1.1;
-  letter-spacing: -0.045em;
+  letter-spacing: 0;
 }
 .workshop-section-heading > p:not(.workshop-eyebrow),
 .workshop-heading-split > p {
@@ -210,7 +218,7 @@ body[data-page="enterprise-workshop"] .brand-mark {
 .workshop-module-featured { color: #fff; background: var(--workshop-orange); }
 .module-meta { display: flex; justify-content: space-between; gap: 20px; color: var(--workshop-orange); font-size: 12px; font-weight: 900; letter-spacing: 0.1em; }
 .workshop-module-featured .module-meta { color: #fff; }
-.workshop-module h3 { margin: 48px 0 16px; font-size: clamp(25px, 3vw, 36px); line-height: 1.2; }
+.workshop-module h3 { margin: 48px 0 16px; font-size: 2.25rem; line-height: 1.2; }
 .workshop-module > p { margin: 0; color: #536270; line-height: 1.7; }
 .workshop-module-featured > p { color: rgba(255, 255, 255, 0.88); }
 .workshop-module footer { margin-top: auto; padding-top: 28px; }
@@ -225,7 +233,7 @@ body[data-page="enterprise-workshop"] .brand-mark {
 .workshop-deliverables { margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(255, 255, 255, 0.22); }
 .workshop-deliverables li { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 25px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.22); }
 .workshop-deliverables span { color: #ffac83; font-weight: 900; }
-.workshop-deliverables strong { font-size: clamp(18px, 2.4vw, 25px); }
+.workshop-deliverables strong { font-size: 1.5625rem; }
 .output-boundary { display: grid; grid-template-columns: 150px 1fr; gap: 28px; margin-top: 64px; padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, 0.2); }
 .output-boundary strong { color: #ffac83; }
 .output-boundary p { max-width: 760px; margin: 0; color: rgba(255, 255, 255, 0.7); line-height: 1.7; }
@@ -245,7 +253,7 @@ body[data-page="enterprise-workshop"] .brand-mark {
 .instructor-photo { margin: 0; }
 .instructor-photo img { width: 100%; height: auto; display: block; border-radius: 18px 18px 0 0; }
 .instructor-photo figcaption { padding: 18px 20px; color: rgba(255, 255, 255, 0.7); background: #173e58; font-size: 13px; }
-.workshop-instructor h2 { margin: 0 0 42px; font-family: "Noto Serif TC", "Songti TC", Georgia, serif; font-size: clamp(38px, 5vw, 64px); line-height: 1.1; letter-spacing: -0.045em; }
+.workshop-instructor h2 { margin: 0 0 42px; font-family: "Noto Serif TC", "Songti TC", Georgia, serif; font-size: 4rem; line-height: 1.1; letter-spacing: 0; }
 .experience-map { border-top: 1px solid rgba(255, 255, 255, 0.2); }
 .experience-map article { padding: 25px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
 .experience-map h3 { margin: 0; font-size: 23px; }
@@ -264,7 +272,7 @@ body[data-page="enterprise-workshop"] .brand-mark {
 .workshop-consultation { padding: 100px 0; color: #fff; background: var(--workshop-orange); }
 .consultation-layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.6fr); gap: 64px; align-items: end; }
 .workshop-consultation .workshop-eyebrow { color: #fff; }
-.workshop-consultation h2 { margin: 0; font-family: "Noto Serif TC", "Songti TC", Georgia, serif; font-size: clamp(44px, 6vw, 76px); line-height: 1.05; letter-spacing: -0.05em; }
+.workshop-consultation h2 { margin: 0; font-family: "Noto Serif TC", "Songti TC", Georgia, serif; font-size: 4.75rem; line-height: 1.05; letter-spacing: 0; }
 .workshop-consultation p:not(.workshop-eyebrow) { max-width: 700px; color: rgba(255, 255, 255, 0.88); font-size: 18px; line-height: 1.7; }
 .consultation-action { display: grid; gap: 12px; }
 .consultation-action .workshop-button-primary { color: var(--workshop-ink-deep); background: #fff; border-color: #fff; }
@@ -286,11 +294,20 @@ body[data-page="enterprise-workshop"] .brand-mark {
   .role-band { grid-template-columns: 1fr; }
   .role-band article + article { border-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.18); }
   .output-heading { position: static; }
+  .workshop-hero h1 { font-size: 3.75rem; }
+  .workshop-section-heading h2,
+  .workshop-instructor h2 { font-size: 3rem; }
+  .workshop-consultation h2 { font-size: 3.5rem; }
 }
 
 @media (max-width: 560px) {
   .workshop-container { width: min(100% - 28px, 1200px); }
-  .workshop-hero h1 { font-size: clamp(42px, 13vw, 62px); }
+  .workshop-hero h1 { font-size: 2.75rem; }
+  .workshop-section-heading h2,
+  .workshop-instructor h2 { font-size: 2.4rem; }
+  .workshop-module h3 { font-size: 1.75rem; }
+  .workshop-deliverables strong { font-size: 1.2rem; }
+  .workshop-consultation h2 { font-size: 2.8rem; }
   .workshop-actions { align-items: stretch; flex-direction: column; }
   .workshop-button { width: 100%; }
   .workshop-modules,
