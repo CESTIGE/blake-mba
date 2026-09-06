@@ -73,6 +73,21 @@ test("enterprise AI guide presents five sourced overseas adoption cases", () => 
   );
 });
 
+test("enterprise AI guide explains the six-step FDE adoption loop in order", () => {
+  const html = read(page);
+  const start = html.indexOf('id="fde"');
+  const end = html.indexOf('id="method"');
+  const section = html.slice(start, end);
+  const steps = ["診斷", "選題", "共創", "評估", "試行", "交接"];
+  const positions = steps.map((step) => section.indexOf(`>${step}<`));
+
+  assert.ok(start >= 0 && end > start);
+  assert.match(section, /Forward Deployed Engineer/);
+  assert.ok(positions.every((position) => position >= 0));
+  assert.deepEqual([...positions].sort((a, b) => a - b), positions);
+  assert.match(section, /正式系統整合、資安測試與維運需另案評估/);
+});
+
 test("enterprise AI workshop exposes the approved promise and audience", () => {
   const html = read(page);
   assert.match(html, /AI 變革推動實戰班/);
