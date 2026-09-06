@@ -195,6 +195,50 @@ body[data-page="enterprise-workshop"] .brand-mark {
 .barrier-list h3 { margin: 0 0 8px; font-size: 2rem; }
 .barrier-list p { max-width: 760px; margin: 0; color: #536270; line-height: 1.7; }
 
+.workshop-failure { color: #fff; background: #8e2f20; }
+.workshop-failure .workshop-section-heading > p:not(.workshop-eyebrow) { color: rgba(255, 255, 255, 0.78); }
+.workshop-failure .workshop-eyebrow { color: #ffd0b7; }
+.failure-loop { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; counter-reset: failure; }
+.failure-loop li { position: relative; min-height: 240px; padding: 28px 22px; border: 1px solid rgba(255, 255, 255, 0.24); border-right: 0; }
+.failure-loop li:last-child { border-right: 1px solid rgba(255, 255, 255, 0.24); background: var(--workshop-ink-deep); }
+.failure-loop li:not(:last-child)::after { content: "→"; position: absolute; z-index: 1; top: 28px; right: -11px; color: #ffd0b7; font-size: 20px; font-weight: 900; }
+.failure-loop span { display: block; margin-bottom: 44px; color: #ffd0b7; font-size: 12px; font-weight: 900; letter-spacing: 0.12em; }
+.failure-loop strong { display: block; font-size: 1.45rem; }
+.failure-loop p { margin-bottom: 0; color: rgba(255, 255, 255, 0.76); line-height: 1.65; }
+
+.workshop-outcome { background: #fff; }
+.outcome-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr); gap: clamp(52px, 9vw, 120px); align-items: center; }
+.workshop-outcome h2 { margin: 0; font-family: "Noto Serif TC", "Songti TC", Georgia, serif; font-size: 4.1rem; line-height: 1.12; }
+.outcome-copy { padding: 34px; border-left: 5px solid var(--workshop-orange); background: var(--workshop-paper); }
+.outcome-copy p { margin-top: 0; color: #536270; font-size: 1.1rem; line-height: 1.8; }
+.outcome-copy strong { display: block; color: var(--workshop-ink); font-size: 1.25rem; line-height: 1.65; }
+
+.workshop-cases { background: #e8eef2; }
+.case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.case-card { display: flex; flex-direction: column; min-height: 510px; padding: clamp(26px, 3.6vw, 42px); border: 1px solid rgba(16, 37, 63, 0.14); border-radius: 18px; background: #fff; box-shadow: 0 14px 42px rgba(16, 37, 63, 0.07); }
+.case-card-featured { grid-column: 1 / -1; min-height: auto; background: linear-gradient(135deg, #fff 0%, #fff7f1 100%); }
+.case-meta { display: flex; align-items: center; justify-content: space-between; color: var(--workshop-orange); font-size: 12px; font-weight: 900; letter-spacing: 0.1em; }
+.case-card h3 { margin: 34px 0 22px; font-size: clamp(1.75rem, 3vw, 2.55rem); }
+.case-card p { margin: 0 0 16px; color: #536270; line-height: 1.7; }
+.case-card p strong { color: var(--workshop-ink); }
+.case-card .case-result { padding: 16px 18px; border-radius: 10px; color: #29465d; background: #edf5f8; }
+.case-card .case-lesson { color: #163b31; }
+.case-card a { width: fit-content; margin-top: auto; padding-top: 16px; color: #a33e16; font-weight: 850; text-underline-offset: 4px; }
+.case-card a:focus-visible { outline: 3px solid var(--workshop-orange); outline-offset: 5px; }
+.case-boundary { max-width: 920px; margin: 30px 0 0; padding-left: 18px; border-left: 3px solid var(--workshop-orange); color: #536270; line-height: 1.7; }
+
+.workshop-fde { color: #fff; background: #173e58; }
+.workshop-fde .workshop-section-heading > div > p { color: rgba(255, 255, 255, 0.76); line-height: 1.75; }
+.fde-intro { padding-left: 18px; border-left: 3px solid #ff9b68; }
+.fde-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(255, 255, 255, 0.2); border-left: 1px solid rgba(255, 255, 255, 0.2); }
+.fde-steps li { display: grid; grid-template-columns: 42px 1fr; gap: 14px; min-height: 250px; padding: 28px 24px; border-right: 1px solid rgba(255, 255, 255, 0.2); border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+.fde-steps li > span { color: #ffac83; font-size: 12px; font-weight: 900; }
+.fde-steps strong { display: block; font-size: 1.65rem; }
+.fde-steps p { color: rgba(255, 255, 255, 0.74); line-height: 1.65; }
+.fde-steps small { display: block; color: #ffcfb8; line-height: 1.5; }
+.fde-boundary { display: grid; grid-template-columns: 150px 1fr; gap: 28px; margin-top: 34px; padding: 25px 28px; border-radius: 12px; color: var(--workshop-ink); background: #fff; }
+.fde-boundary p { margin: 0; line-height: 1.65; }
+
 .workshop-method { color: #fff; background: var(--workshop-ink); }
 .workshop-method .workshop-section-heading > p:not(.workshop-eyebrow) { color: rgba(255, 255, 255, 0.72); }
 .workshop-method-flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
@@ -211,6 +255,14 @@ body[data-page="enterprise-workshop"] .brand-mark {
 .role-band span { color: #ffac83; font-size: 13px; font-weight: 900; letter-spacing: 0.1em; }
 .role-band strong { display: block; margin-top: 8px; font-size: 22px; }
 .role-band p { margin-bottom: 0; color: rgba(255, 255, 255, 0.68); line-height: 1.6; }
+.solution-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.solution-grid article { min-height: 250px; padding: 28px; border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 14px; background: rgba(255, 255, 255, 0.05); }
+.solution-grid article > span { display: block; margin-bottom: 42px; color: #ffac83; font-size: 2.8rem; font-weight: 950; }
+.solution-grid strong { display: block; font-size: 1.55rem; }
+.solution-grid p { color: rgba(255, 255, 255, 0.72); line-height: 1.65; }
+.solution-grid .solution-fde { grid-column: 1 / -1; min-height: auto; display: grid; grid-template-columns: 130px 220px 1fr; gap: 22px; align-items: center; color: var(--workshop-ink-deep); background: #ff9b68; }
+.solution-grid .solution-fde > span { margin: 0; color: var(--workshop-ink-deep); }
+.solution-grid .solution-fde p { margin: 0; color: #3d3028; }
 
 .workshop-curriculum { background: #fbf8f2; }
 .workshop-modules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: 1px solid rgba(16, 37, 63, 0.18); }
@@ -239,6 +291,16 @@ body[data-page="enterprise-workshop"] .brand-mark {
 .output-boundary { display: grid; grid-template-columns: 150px 1fr; gap: 28px; margin-top: 64px; padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, 0.2); }
 .output-boundary strong { color: #ffac83; }
 .output-boundary p { max-width: 760px; margin: 0; color: rgba(255, 255, 255, 0.7); line-height: 1.7; }
+
+.workshop-sprint { background: var(--workshop-blue); }
+.sprint-layout { display: grid; grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr); gap: clamp(56px, 9vw, 120px); align-items: start; }
+.sprint-timeline { margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(16, 37, 63, 0.22); }
+.sprint-timeline li { display: grid; grid-template-columns: 100px 1fr; gap: 26px; padding: 27px 0; border-bottom: 1px solid rgba(16, 37, 63, 0.22); }
+.sprint-timeline li > span { color: #a33e16; font-size: 12px; font-weight: 900; letter-spacing: 0.12em; }
+.sprint-timeline strong { font-size: 1.4rem; }
+.sprint-timeline p { margin: 8px 0 0; color: #536270; line-height: 1.65; }
+.sprint-boundary { display: grid; grid-template-columns: 150px 1fr; gap: 28px; margin-top: 52px; padding-top: 28px; border-top: 1px solid rgba(16, 37, 63, 0.22); }
+.sprint-boundary p { margin: 0; color: #536270; line-height: 1.65; }
 
 .fit-columns { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 1px solid rgba(16, 37, 63, 0.18); }
 .fit-column { padding: clamp(30px, 5vw, 58px); background: #fff; }
@@ -294,6 +356,20 @@ body[data-page="enterprise-workshop"] .brand-mark {
   .arrangement-layout,
   .consultation-layout { grid-template-columns: 1fr; gap: 42px; }
   .workshop-method-flow { grid-template-columns: 1fr; }
+  .failure-loop,
+  .fde-steps,
+  .solution-grid { grid-template-columns: 1fr; }
+  .failure-loop li { min-height: auto; border-right: 1px solid rgba(255, 255, 255, 0.24); border-bottom: 0; }
+  .failure-loop li:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.24); }
+  .failure-loop li:not(:last-child)::after { content: "↓"; top: auto; right: 24px; bottom: -13px; }
+  .failure-loop span { margin-bottom: 14px; }
+  .case-grid { grid-template-columns: 1fr; }
+  .case-card-featured { grid-column: auto; }
+  .case-card { min-height: auto; }
+  .solution-grid .solution-fde { grid-column: auto; grid-template-columns: 1fr; }
+  .solution-grid .solution-fde > span { margin-bottom: 0; }
+  .outcome-layout,
+  .sprint-layout { grid-template-columns: 1fr; gap: 42px; }
   .workshop-method-flow li { min-height: auto; border-right: 1px solid rgba(255, 255, 255, 0.18); border-bottom: 0; }
   .workshop-method-flow li:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.18); }
   .workshop-method-flow span { margin-bottom: 20px; }
@@ -303,7 +379,8 @@ body[data-page="enterprise-workshop"] .brand-mark {
   .workshop-hero h1 { font-size: 3.75rem; }
   .workshop-lead { font-size: 1.125rem; }
   .workshop-section-heading h2,
-  .workshop-instructor h2 { font-size: 3rem; }
+  .workshop-instructor h2,
+  .workshop-outcome h2 { font-size: 3rem; }
   .workshop-consultation h2 { font-size: 3.5rem; }
 }
 
@@ -340,7 +417,8 @@ body[data-page="enterprise-workshop"] .brand-mark {
   .workshop-mobile-facts { margin-bottom: 18px; }
   .workshop-hero h1 { font-size: 2.75rem; }
   .workshop-section-heading h2,
-  .workshop-instructor h2 { font-size: 2.4rem; }
+  .workshop-instructor h2,
+  .workshop-outcome h2 { font-size: 2.4rem; }
   .workshop-module h3 { font-size: 1.75rem; }
   .barrier-list h3 { font-size: 1.5rem; }
   .workshop-deliverables strong { font-size: 1.2rem; }
@@ -353,6 +431,30 @@ body[data-page="enterprise-workshop"] .brand-mark {
   .workshop-module:nth-last-child(2) { border-bottom: 1px solid rgba(16, 37, 63, 0.15); }
   .fit-column + .fit-column { border-left: 0; border-top: 1px solid rgba(16, 37, 63, 0.18); }
   .output-boundary { grid-template-columns: 1fr; }
+  .fde-boundary,
+  .sprint-boundary { grid-template-columns: 1fr; gap: 10px; }
+  .fde-steps li { min-height: auto; }
+  .sprint-timeline li { grid-template-columns: 78px 1fr; gap: 16px; }
+}
+
+@media (max-width: 430px) {
+  .workshop-hero { min-height: auto; padding: 22px 0 30px; }
+  .workshop-course-name { display: none; }
+  .workshop-hero .workshop-eyebrow { margin-bottom: 10px; font-size: 0.68rem; }
+  .workshop-mobile-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-bottom: 12px; }
+  .workshop-mobile-facts li { min-height: 36px; padding: 5px 7px; font-size: 0.76rem; }
+  .workshop-hero h1 { font-size: 2.25rem; line-height: 1.03; }
+  .workshop-lead { margin-top: 14px; font-size: 0.94rem; line-height: 1.55; }
+  .workshop-subtitle { margin-top: 10px; font-size: 0.83rem; }
+  .workshop-actions { margin-top: 16px; }
+  .workshop-actions .workshop-button-ghost { display: none; }
+  .workshop-button { min-height: 44px; padding: 10px 14px; }
+  .workshop-section { padding: 64px 0; }
+  .fde-steps { grid-template-columns: 1fr; }
+  .case-card { padding: 24px 20px; border-radius: 14px; }
+  .case-card h3 { margin-top: 24px; }
+  .solution-grid article { min-height: auto; }
+  .solution-grid article > span { margin-bottom: 18px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

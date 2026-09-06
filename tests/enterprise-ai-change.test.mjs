@@ -107,6 +107,31 @@ test("enterprise AI offer connects 1 by 3 by 30 to workshop and sprint", () => {
   assert.deepEqual([...positions].sort((a, b) => a - b), positions);
 });
 
+test("enterprise AI lazy-guide components stack safely on small screens", () => {
+  const css = read("assets/enterprise-ai-change.css");
+
+  for (const selector of [
+    ".failure-loop",
+    ".case-grid",
+    ".case-card",
+    ".fde-steps",
+    ".solution-grid",
+    ".sprint-timeline",
+  ]) {
+    assert.ok(css.includes(selector), selector);
+  }
+
+  assert.match(css, /@media \(max-width: 430px\)/);
+  assert.match(
+    css,
+    /@media \(max-width: 430px\)[^]*\.workshop-hero\s*\{[^}]*min-height:\s*auto;/s,
+  );
+  assert.match(
+    css,
+    /@media \(max-width: 430px\)[^]*\.fde-steps\s*\{[^}]*grid-template-columns:\s*1fr;/s,
+  );
+});
+
 test("enterprise AI workshop exposes the approved promise and audience", () => {
   const html = read(page);
   assert.match(html, /AI 變革推動實戰班/);
