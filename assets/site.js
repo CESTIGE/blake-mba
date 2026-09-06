@@ -148,6 +148,7 @@ if (inquirySelect) {
   );
   const inquiryPresetValues = {
     "ai-advisory": "AI 應用或創業顧問",
+    "enterprise-training": "企業內訓",
   };
   const inquiryValue = inquiryPresetValues[inquiryPreset];
 

@@ -4,15 +4,15 @@ import test from "node:test";
 
 const read = (path) => fs.readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
 
-test("course overview presents Linkou as the first of six full course cards", () => {
+test("course overview presents Linkou as the first of seven full course cards", () => {
   const html = read("courses/index.html");
   const cards = html.match(/class="course-catalog-card[^"]*"/g) ?? [];
 
-  assert.equal(cards.length, 6);
-  assert.match(html, /六堂課/);
+  assert.equal(cards.length, 7);
+  assert.match(html, /七堂課/);
   assert.match(
     html,
-    /class="course-catalog-card is-open-course"[^]*?跨界 AI 提升職場生產力[^]*?2026\/08\/25[^]*?href="\/courses\/ai-work-productivity\/"/,
+    /class="course-catalog-card is-open-course"[^]*?跨界 AI 提升職場生產力[^]*?2026\/09\/05[^]*?href="\/courses\/ai-work-productivity\/"/,
   );
   assert.match(
     html,
@@ -57,21 +57,22 @@ test("course comparison copy and AI workflow visual explain how to choose", () =
   const html = read("courses/index.html");
   const visual = read("assets/visual-ai-implementation.svg");
 
-  assert.match(html, /六堂課，從你現在的問題開始選。/);
+  assert.match(html, /七堂課，從你現在的問題開始選。/);
   assert.doesNotMatch(html, /六堂課，一次比較清楚。/);
   assert.match(html, /alt="AI 從研究、判斷、產出到驗證的工作流程"/);
   for (const label of ["研究", "判斷", "產出", "驗證"]) assert.match(visual, new RegExp(`>${label}<`));
   assert.match(visual, />從問題到可驗證成果</);
 });
 
-test("home page links to the currently open Linkou course above the fold", () => {
+test("home page links to current Linkou course information above the fold", () => {
   const html = read("index.html");
   const heroEnd = html.indexOf("</section>");
   const hero = html.slice(0, heroEnd);
 
   assert.match(hero, /class="home-course-alert"/);
   assert.match(hero, /林口社大 16 週 AI 實作課/);
-  assert.match(hero, /2026\/08\/25/);
+  assert.match(hero, /課程資料 · 2026\/09\/05 開課/);
+  assert.doesNotMatch(hero, /目前開放報名|線上報名至 2026\/08\/25/);
   assert.match(hero, /href="\/courses\/ai-work-productivity\/"/);
   assert.ok(
     hero.indexOf('class="home-course-alert"') < hero.indexOf('class="hero-actions"'),
@@ -90,7 +91,7 @@ test("Linkou course is discoverable in the sitemap", () => {
 test("updated pages reference fresh CSS cache keys", () => {
   assert.match(
     read("courses/index.html"),
-    /\/assets\/courses-editorial\.css\?v=20260823overview1/,
+    /\/assets\/courses-editorial\.css\?v=20260906enterprise1/,
   );
   assert.match(
     read("index.html"),
