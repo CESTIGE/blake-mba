@@ -132,6 +132,15 @@ test("enterprise AI lazy-guide components stack safely on small screens", () => 
   );
 });
 
+test("enterprise AI in-page destinations clear the fixed site header", () => {
+  const css = read("assets/enterprise-ai-change.css");
+
+  assert.match(
+    css,
+    /\.enterprise-workshop-page > section\s*\{[^}]*scroll-margin-top:\s*88px;/s,
+  );
+});
+
 test("enterprise AI workshop exposes the approved promise and audience", () => {
   const html = read(page);
   assert.match(html, /AI 變革推動實戰班/);

@@ -9,6 +9,8 @@
   font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
 }
 
+.enterprise-workshop-page > section { scroll-margin-top: 88px; }
+
 body[data-page="enterprise-workshop"] .site-header {
   color: #fff;
   background: rgba(8, 24, 39, 0.96);
