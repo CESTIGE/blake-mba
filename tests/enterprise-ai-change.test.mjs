@@ -27,6 +27,52 @@ test("enterprise AI hero gives HR the four decision facts and one primary action
   }
 });
 
+test("enterprise AI guide presents five sourced overseas adoption cases", () => {
+  const html = read(page);
+  const cases = [
+    [
+      "OpenAI × Crete",
+      "https://openai.com/index/building-self-improving-tax-agents-with-codex/",
+    ],
+    [
+      "Palantir AIP Bootcamp",
+      "https://investors.palantir.com/files/2025%20FY%20PLTR%2010-K.pdf",
+    ],
+    [
+      "Palantir × Beyond Meat",
+      "https://www.palantir.com/assets/xrfr7uokpv1b/4rM2L8TANQGcPsLKOzdMJ0/6795f2b89327a87361743319836f0c42/AIPCon_Mar_-24_-_Bootcamp_One-Pager_-_Beyond_Meat.pdf",
+    ],
+    [
+      "Anthropic × ServiceNow",
+      "https://www.anthropic.com/news/servicenow-anthropic-claude",
+    ],
+    [
+      "Microsoft × KOHLER",
+      "https://www.microsoft.com/en/customers/story/26948-kohler-company-microsoft-365-copilot",
+    ],
+  ];
+
+  const start = html.indexOf('id="cases"');
+  const end = html.indexOf('id="method"');
+  const section = html.slice(start, end);
+  assert.ok(start >= 0 && end > start);
+
+  for (const [name, href] of cases) {
+    assert.ok(section.includes(name), name);
+    const link = [...section.matchAll(/<a\b[^>]*>/gi)]
+      .map((match) => match[0])
+      .find((tag) => attribute(tag, "href") === href);
+    assert.ok(link, href);
+    assert.equal(attribute(link, "target"), "_blank");
+    assert.equal(attribute(link, "rel"), "noopener noreferrer");
+  }
+
+  assert.match(
+    section,
+    /外部案例公開成果[^<]*不代表 BLAKE 對個別企業的成果保證/,
+  );
+});
+
 test("enterprise AI workshop exposes the approved promise and audience", () => {
   const html = read(page);
   assert.match(html, /AI 變革推動實戰班/);
