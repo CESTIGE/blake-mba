@@ -4,6 +4,29 @@ import { attribute, read } from "./helpers/site-files.mjs";
 
 const page = "courses/enterprise-ai-change/index.html";
 
+test("enterprise AI guide presents the approved problem-first story in order", () => {
+  const html = read(page);
+  const ids = ["overview", "barriers", "failure-loop", "outcome"];
+  const positions = ids.map((id) => html.indexOf(`id="${id}"`));
+
+  assert.ok(positions.every((position) => position >= 0));
+  assert.deepEqual([...positions].sort((a, b) => a - b), positions);
+});
+
+test("enterprise AI hero gives HR the four decision facts and one primary action", () => {
+  const html = read(page);
+
+  for (const phrase of [
+    "上市櫃企業 HR",
+    "6 小時工作坊",
+    "30 天落地衝刺",
+    "FDE 式陪跑",
+    "預約企業 AI 落地診斷",
+  ]) {
+    assert.match(html, new RegExp(phrase));
+  }
+});
+
 test("enterprise AI workshop exposes the approved promise and audience", () => {
   const html = read(page);
   assert.match(html, /AI 變革推動實戰班/);
