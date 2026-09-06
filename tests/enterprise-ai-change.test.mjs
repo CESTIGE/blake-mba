@@ -95,3 +95,20 @@ test("enterprise AI workshop publishes conservative Course structured data", () 
   assert.equal(course.offers, undefined);
   assert.equal(course.aggregateRating, undefined);
 });
+
+test("enterprise AI workshop keeps first-visit consent controls clear of the mobile CTA", () => {
+  const css = read("assets/enterprise-ai-change.css");
+
+  assert.match(
+    css,
+    /@media \(max-width: 760px\)[^]*body\[data-page="enterprise-workshop"\] \.analytics-consent__copy\s*\{[^}]*display:\s*none;/s,
+  );
+  assert.match(
+    css,
+    /@media \(max-width: 760px\)[^]*body\[data-page="enterprise-workshop"\] \.analytics-consent__actions\s*\{[^}]*flex-direction:\s*row;/s,
+  );
+  assert.match(
+    css,
+    /@media \(max-width: 760px\)[^]*body\[data-page="enterprise-workshop"\] \.analytics-consent__button\s*\{[^}]*width:\s*auto;/s,
+  );
+});
