@@ -53,7 +53,7 @@ test("enterprise AI guide presents five sourced overseas adoption cases", () => 
   ];
 
   const start = html.indexOf('id="cases"');
-  const end = html.indexOf('id="method"');
+  const end = html.indexOf('id="fde"');
   const section = html.slice(start, end);
   assert.ok(start >= 0 && end > start);
 
@@ -76,7 +76,7 @@ test("enterprise AI guide presents five sourced overseas adoption cases", () => 
 test("enterprise AI guide explains the six-step FDE adoption loop in order", () => {
   const html = read(page);
   const start = html.indexOf('id="fde"');
-  const end = html.indexOf('id="method"');
+  const end = html.indexOf('id="solution"');
   const section = html.slice(start, end);
   const steps = ["診斷", "選題", "共創", "評估", "試行", "交接"];
   const positions = steps.map((step) => section.indexOf(`>${step}<`));
@@ -86,6 +86,25 @@ test("enterprise AI guide explains the six-step FDE adoption loop in order", () 
   assert.ok(positions.every((position) => position >= 0));
   assert.deepEqual([...positions].sort((a, b) => a - b), positions);
   assert.match(section, /正式系統整合、資安測試與維運需另案評估/);
+});
+
+test("enterprise AI offer connects 1 by 3 by 30 to workshop and sprint", () => {
+  const html = read(page);
+
+  for (const phrase of [
+    "1 × 3 × 30＋FDE 企業 AI 落地法",
+    "6 小時工作坊",
+    "30 天落地衝刺",
+    "七項成果包",
+    "正式系統整合需另案評估",
+  ]) {
+    assert.ok(html.includes(phrase), phrase);
+  }
+
+  const ids = ["solution", "curriculum", "deliverables", "sprint", "fit"];
+  const positions = ids.map((id) => html.indexOf(`id="${id}"`));
+  assert.ok(positions.every((position) => position >= 0));
+  assert.deepEqual([...positions].sort((a, b) => a - b), positions);
 });
 
 test("enterprise AI workshop exposes the approved promise and audience", () => {
