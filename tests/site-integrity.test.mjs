@@ -22,6 +22,7 @@ const indexedPages = new Map([
   ["https://blake.mba/courses/ai/", "courses/ai/index.html"],
   ["https://blake.mba/courses/career-transition/", "courses/career-transition/index.html"],
   ["https://blake.mba/courses/choice-over-effort/", "courses/choice-over-effort/index.html"],
+  ["https://blake.mba/courses/enterprise-ai-change/", "courses/enterprise-ai-change/index.html"],
   ["https://blake.mba/courses/entrepreneurship/", "courses/entrepreneurship/index.html"],
   ["https://blake.mba/courses/software-startup/", "courses/software-startup/index.html"],
   ["https://blake.mba/insights/", "insights/index.html"],
@@ -135,7 +136,7 @@ test("changed frontend assets use current cache keys", () => {
   );
   assert.match(
     read("ai-transform/index.html"),
-    /\/assets\/ai-transform\.css\?v=20260820contrast1/,
+    /\/assets\/ai-transform\.css\?v=20260905workshop1/,
   );
   assert.match(
     read("courses/choice-over-effort/index.html"),
