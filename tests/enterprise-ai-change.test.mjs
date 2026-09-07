@@ -4,6 +4,143 @@ import { attribute, read } from "./helpers/site-files.mjs";
 
 const page = "courses/enterprise-ai-change/index.html";
 
+test("enterprise AI guide presents the approved problem-first story in order", () => {
+  const html = read(page);
+  const ids = ["overview", "barriers", "failure-loop", "outcome"];
+  const positions = ids.map((id) => html.indexOf(`id="${id}"`));
+
+  assert.ok(positions.every((position) => position >= 0));
+  assert.deepEqual([...positions].sort((a, b) => a - b), positions);
+});
+
+test("enterprise AI hero gives HR the four decision facts and one primary action", () => {
+  const html = read(page);
+
+  for (const phrase of [
+    "上市櫃企業 HR",
+    "6 小時工作坊",
+    "30 天落地衝刺",
+    "FDE 式陪跑",
+    "預約企業 AI 落地診斷",
+  ]) {
+    assert.match(html, new RegExp(phrase));
+  }
+});
+
+test("enterprise AI guide presents five sourced overseas adoption cases", () => {
+  const html = read(page);
+  const cases = [
+    [
+      "OpenAI × Crete",
+      "https://openai.com/index/building-self-improving-tax-agents-with-codex/",
+    ],
+    [
+      "Palantir AIP Bootcamp",
+      "https://investors.palantir.com/files/2025%20FY%20PLTR%2010-K.pdf",
+    ],
+    [
+      "Palantir × Beyond Meat",
+      "https://www.palantir.com/assets/xrfr7uokpv1b/4rM2L8TANQGcPsLKOzdMJ0/6795f2b89327a87361743319836f0c42/AIPCon_Mar_-24_-_Bootcamp_One-Pager_-_Beyond_Meat.pdf",
+    ],
+    [
+      "Anthropic × ServiceNow",
+      "https://www.anthropic.com/news/servicenow-anthropic-claude",
+    ],
+    [
+      "Microsoft × KOHLER",
+      "https://www.microsoft.com/en/customers/story/26948-kohler-company-microsoft-365-copilot",
+    ],
+  ];
+
+  const start = html.indexOf('id="cases"');
+  const end = html.indexOf('id="fde"');
+  const section = html.slice(start, end);
+  assert.ok(start >= 0 && end > start);
+
+  for (const [name, href] of cases) {
+    assert.ok(section.includes(name), name);
+    const link = [...section.matchAll(/<a\b[^>]*>/gi)]
+      .map((match) => match[0])
+      .find((tag) => attribute(tag, "href") === href);
+    assert.ok(link, href);
+    assert.equal(attribute(link, "target"), "_blank");
+    assert.equal(attribute(link, "rel"), "noopener noreferrer");
+  }
+
+  assert.match(
+    section,
+    /外部案例公開成果[^<]*不代表 BLAKE 對個別企業的成果保證/,
+  );
+});
+
+test("enterprise AI guide explains the six-step FDE adoption loop in order", () => {
+  const html = read(page);
+  const start = html.indexOf('id="fde"');
+  const end = html.indexOf('id="solution"');
+  const section = html.slice(start, end);
+  const steps = ["診斷", "選題", "共創", "評估", "試行", "交接"];
+  const positions = steps.map((step) => section.indexOf(`>${step}<`));
+
+  assert.ok(start >= 0 && end > start);
+  assert.match(section, /Forward Deployed Engineer/);
+  assert.ok(positions.every((position) => position >= 0));
+  assert.deepEqual([...positions].sort((a, b) => a - b), positions);
+  assert.match(section, /正式系統整合、資安測試與維運需另案評估/);
+});
+
+test("enterprise AI offer connects 1 by 3 by 30 to workshop and sprint", () => {
+  const html = read(page);
+
+  for (const phrase of [
+    "1 × 3 × 30＋FDE 企業 AI 落地法",
+    "6 小時工作坊",
+    "30 天落地衝刺",
+    "七項成果包",
+    "正式系統整合需另案評估",
+  ]) {
+    assert.ok(html.includes(phrase), phrase);
+  }
+
+  const ids = ["solution", "curriculum", "deliverables", "sprint", "fit"];
+  const positions = ids.map((id) => html.indexOf(`id="${id}"`));
+  assert.ok(positions.every((position) => position >= 0));
+  assert.deepEqual([...positions].sort((a, b) => a - b), positions);
+});
+
+test("enterprise AI lazy-guide components stack safely on small screens", () => {
+  const css = read("assets/enterprise-ai-change.css");
+
+  for (const selector of [
+    ".failure-loop",
+    ".case-grid",
+    ".case-card",
+    ".fde-steps",
+    ".solution-grid",
+    ".sprint-timeline",
+  ]) {
+    assert.ok(css.includes(selector), selector);
+  }
+
+  assert.match(css, /@media \(max-width: 430px\)/);
+  assert.match(
+    css,
+    /@media \(max-width: 430px\)[^]*\.workshop-hero\s*\{[^}]*min-height:\s*auto;/s,
+  );
+  assert.match(
+    css,
+    /@media \(max-width: 430px\)[^]*\.fde-steps\s*\{[^}]*grid-template-columns:\s*1fr;/s,
+  );
+});
+
+test("enterprise AI in-page destinations clear the fixed site header", () => {
+  const css = read("assets/enterprise-ai-change.css");
+
+  assert.match(
+    css,
+    /\.enterprise-workshop-page > section\s*\{[^}]*scroll-margin-top:\s*88px;/s,
+  );
+});
+
 test("enterprise AI workshop exposes the approved promise and audience", () => {
   const html = read(page);
   assert.match(html, /AI 變革推動實戰班/);
