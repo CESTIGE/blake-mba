@@ -37,6 +37,7 @@ const indexedPages = new Map([
   ["https://blake.mba/articles/pattern-recognition-decision-making/", "articles/pattern-recognition-decision-making/index.html"],
   ["https://blake.mba/articles/taiwan-software-startup-ai-window/", "articles/taiwan-software-startup-ai-window/index.html"],
   ["https://blake.mba/articles/token-economy-ai-pricing/", "articles/token-economy-ai-pricing/index.html"],
+  ["https://blake.mba/chatgpt/", "chatgpt/index.html"],
 ]);
 
 function formBlock(html, page) {

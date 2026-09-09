@@ -1,0 +1,217 @@
+{
+  "gpt-5-1": {
+    "url": "/chatgpt/milestones/gpt-5-1.webp",
+    "source": "https://openai.com/index/gpt-5-1/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/2Ek1rUZQWAa5LVpHgeOgg6/3f950eae5ac318c97a8e467a7611c0d3/5-1_Blog_OpenGraph.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "better-language-models": {
+    "url": "/chatgpt/milestones/better-language-models.webp",
+    "source": "https://openai.com/index/better-language-models/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。 公告署名 Illustration: Ben Barry。",
+    "verification": "200 image/jpeg",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/8df9d1ca-5128-41d0-81527fd4752f/488482a9bebc41f8d72e1d0d423a5891/better-language-models.jpg?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "language-models-are-few-shot-learners": {
+    "url": "/chatgpt/milestones/language-models-are-few-shot-learners.webp",
+    "source": "https://openai.com/index/language-models-are-few-shot-learners/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/40660b0a-561d-412e-9adc992b9f69/9c841f18126a6af1e3b3d266988ab0e8/image_126.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "instruction-following": {
+    "url": "/chatgpt/milestones/instruction-following.webp",
+    "source": "https://openai.com/index/instruction-following/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/webp",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/5b1e6906-9f64-42b7-b5d87c29543b/25be46c3552b7af3af0a1c5a70381626/image-13.webp?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "chatgpt": {
+    "url": "/chatgpt/milestones/chatgpt.webp",
+    "source": "https://openai.com/index/chatgpt/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/jpeg",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/7f6c5b76-875f-455d-ebb8813e1022/c16e0d3c81f4b9bcc9d9c65ed69b203d/chatgpt-og.jpg?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "gpt-4-research": {
+    "url": "/chatgpt/milestones/gpt-4-research.webp",
+    "source": "https://openai.com/index/gpt-4-research/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/webp",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/243b509f-9d19-438e-4692c3b389a2/21ae8969e83c14dc33d559d77ce6bc46/image-21.webp?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "new-models-and-developer-products-announced-at-devday": {
+    "url": "/chatgpt/milestones/new-models-and-developer-products-announced-at-devday.webp",
+    "source": "https://openai.com/index/new-models-and-developer-products-announced-at-devday/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/1FVaZG4vS6BFFELX73pIK0/30e00892761875d1889169d6eb203ec0/40.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "introducing-chatgpt-team": {
+    "url": "/chatgpt/milestones/introducing-chatgpt-team.webp",
+    "source": "https://openai.com/index/introducing-chatgpt-team/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/2bgjTiQqz71Q8OAL8sOhNs/e15c3667aef162cda01b0f89c8f089ec/Introducing_ChatGPT_Team.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "hello-gpt-4o": {
+    "url": "/chatgpt/milestones/hello-gpt-4o.webp",
+    "source": "https://openai.com/index/hello-gpt-4o/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/4hxowKfhJ6Q3bVMqGsosjS/97103375a2334386e2f2e66bc648664a/GPT-4o.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "gpt-4o-mini-advancing-cost-efficient-intelligence": {
+    "url": "/chatgpt/milestones/gpt-4o-mini-advancing-cost-efficient-intelligence.webp",
+    "source": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/3vA8jsIso6CRsO8296SxLi/c6e5281aed1b5b372b837bd6d172dfb7/GPT-4o-mini.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "introducing-openai-o1-preview": {
+    "url": "/chatgpt/milestones/introducing-openai-o1-preview.webp",
+    "source": "https://openai.com/index/introducing-openai-o1-preview/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/3AqcHnbr83HdNA15e6Va2k/1edb01c8fc6ead20c09cdbe00b5ad8e9/o1-preview-general-blogcard-big.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "introducing-canvas": {
+    "url": "/chatgpt/milestones/introducing-canvas.webp",
+    "source": "https://openai.com/index/introducing-canvas/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/1w0Ux6FAOXV49hqCoaSjKA/0653fd58c6714a3437715484787c8508/Social_Preview_Asset.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "introducing-chatgpt-search": {
+    "url": "/chatgpt/milestones/introducing-chatgpt-search.webp",
+    "source": "https://openai.com/index/introducing-chatgpt-search/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/2iCzNYj459xhv0bpDuWCNh/e66a17dccacc2de8122ca848f46669a8/Social_Preview_Asset_Search.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "introducing-operator": {
+    "url": "/chatgpt/milestones/introducing-operator.webp",
+    "source": "https://openai.com/index/introducing-operator/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/2yyo0iUFDcHgrcST5qrYCS/f807341af1a961660b67e8418e3e445a/Product_Card.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "introducing-deep-research": {
+    "url": "/chatgpt/milestones/introducing-deep-research.webp",
+    "source": "https://openai.com/index/introducing-deep-research/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/3vFGiTldrRNI3dHPz2yJqg/4b5a8ceed80b19ec2fec4ebccae64518/OAI_deep_research_16.9.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "introducing-gpt-4-5": {
+    "url": "/chatgpt/milestones/introducing-gpt-4-5.webp",
+    "source": "https://openai.com/index/introducing-gpt-4-5/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/2Au3X2ZJrqfiuP0lJ0qg0T/03afeccdf5f6a424e36ca75b29df541c/GPT-4.5_16.9__1_.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "gpt-4-1": {
+    "url": "/chatgpt/milestones/gpt-4-1.webp",
+    "source": "https://openai.com/index/gpt-4-1/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/2C5yfJCw3N5tzKg8ZtBpw0/bcbc7022f43bca374a75dbc4a65937ef/API_GPT-4.1_Art_16.9.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "introducing-o3-and-o4-mini": {
+    "url": "/chatgpt/milestones/introducing-o3-and-o4-mini.webp",
+    "source": "https://openai.com/index/introducing-o3-and-o4-mini/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/4hwOw0gdB26Czan75DOKai/3d3978172f4104809aa522e7db87a0d9/o3_1__Animated_.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "introducing-gpt-5": {
+    "url": "/chatgpt/milestones/introducing-gpt-5.webp",
+    "source": "https://openai.com/index/introducing-gpt-5/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/6Dgf4Pz8NYQL3AXe5Y8Cq5/cd44291eaf82ef8b98afa58a3e336e34/GPT-5_ResearchBlog_ArtCard_16x9.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "introducing-gpt-5-2": {
+    "url": "/chatgpt/milestones/introducing-gpt-5-2.webp",
+    "source": "https://openai.com/index/introducing-gpt-5-2/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/rp3qd1SEWW0Slo5V4NiJz/1e6e391508cc0d85fa8458fd8c95608d/5.2-Blog-16x9.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "gpt-5-3-instant": {
+    "url": "/chatgpt/milestones/gpt-5-3-instant.webp",
+    "source": "https://openai.com/index/gpt-5-3-instant/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/l9JkI2hbnrr4QZb6LJJhT/85a843d06ba16a05e05e6450e20d762f/5.3_Instant_Hero___SEO__1_.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "introducing-gpt-5-4": {
+    "url": "/chatgpt/milestones/introducing-gpt-5-4.webp",
+    "source": "https://openai.com/index/introducing-gpt-5-4/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/261kYlzPT8cBKoynLi35ct/14e3cae5d20ab9349af93f6b034c2947/5.4_Thinking_Hero___SEO.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "introducing-gpt-5-5": {
+    "url": "/chatgpt/milestones/introducing-gpt-5-5.webp",
+    "source": "https://openai.com/index/introducing-gpt-5-5/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/jpeg",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/2Bh47W4cA48dvG5FbDtNQH/5897109fb0de6fc3125c0c35c4f60001/Hero_Art_Card_16x9.jpg?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "gpt-5-6": {
+    "url": "/chatgpt/milestones/gpt-5-6.webp",
+    "source": "https://openai.com/index/gpt-5-6/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/3T0kxQLJk1VcXVxMwXF97J/4345df401f2b08ed6a1eef88c9588d2e/OAI_ChatGPTWork_ModelBlog_OpenGraph_16x9_1200x630.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "gpt-6-astra": {
+    "url": "/chatgpt/milestones/gpt-6-astra.webp",
+    "source": "https://openai.com/index/gpt-6-astra/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/6ibCaqsoO7F6XCNCIO8zaZ/9475cdebc1f0af100414f1c85860fc4c/Hero_16x9.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "chatgpt-plugins": {
+    "url": "/chatgpt/milestones/chatgpt-plugins.webp",
+    "source": "https://openai.com/index/chatgpt-plugins/",
+    "note": "OpenAI 官方公告 og:image；版權歸原權利人，未推定再利用授權。",
+    "verification": "200 image/png",
+    "originalUrl": "https://images.ctfassets.net/kftzwdyauwt9/c51f2c96-3595-48ae-06cffdc7594f/db9160a17cc5114fa94095c34bb2bde5/chat-plugins.png?w=1600&h=900&fit=fill",
+    "label": "OpenAI 官方發布圖"
+  },
+  "language_understanding_paper.pdf": {
+    "url": "/chatgpt/milestones/gpt1-paper.jpg",
+    "source": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf",
+    "note": "GPT‑1 原始 PDF 無 OG 圖；未擷取首頁，標記缺圖。",
+    "originalUrl": null,
+    "label": "GPT‑1 原始論文首頁"
+  }
+}

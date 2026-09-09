@@ -1,0 +1,68 @@
+[
+  {
+    "year": "2026",
+    "users": "9 億",
+    "usersLabel": "每週使用者 · 2026.04.08 公布",
+    "userSource": "https://openai.com/index/next-phase-of-enterprise-ai/",
+    "userPublisher": "OpenAI 官方",
+    "downloads": "10 億次以上",
+    "downloadLabel": "Google Play 累計下載級距 · 2026.09.08 查核；僅 Android，非本年新增",
+    "downloadSource": "https://play.google.com/store/apps/details?id=com.openai.chatgpt",
+    "downloadPublisher": "Google Play 商店"
+  },
+  {
+    "year": "2025",
+    "users": "超過 8 億",
+    "usersLabel": "每週使用者 · 2025.12.08 公布",
+    "userSource": "https://openai.com/index/the-state-of-enterprise-ai-2025-report/",
+    "userPublisher": "OpenAI 官方",
+    "downloads": "約 4.7 億次",
+    "downloadLabel": "2025 上半年期間下載量 · 全球 iOS＋Google Play",
+    "downloadSource": "https://sensortower.com/blog/state-of-ai-apps-market-overview-2025",
+    "downloadPublisher": "Sensor Tower 估計"
+  },
+  {
+    "year": "2024",
+    "users": "超過 2.5 億",
+    "usersLabel": "每週使用者 · 2024.10.02 公布",
+    "userSource": "https://openai.com/index/scale-the-benefits-of-ai/",
+    "userPublisher": "OpenAI 官方",
+    "downloads": "超過 1.6 億次",
+    "downloadLabel": "2024 年 1–8 月期間下載量 · 全球行動 App",
+    "downloadSource": "https://sensortower.com/blog/state-of-ai-apps-2024",
+    "downloadPublisher": "Sensor Tower 估計"
+  },
+  {
+    "year": "2023",
+    "users": "約 1 億",
+    "usersLabel": "每週活躍使用者 · 2023.11 歷史節點",
+    "userSource": "https://cdn.openai.com/pdf/3c7f7e1b-36c4-446b-916c-11183e4266b7/chatgpt-usage-and-adoption-patterns-at-work.pdf",
+    "userPublisher": "OpenAI 歷史圖表",
+    "downloads": "超過 50 萬次",
+    "downloadLabel": "2023.05 上架前六天 · 僅美國 iOS；非全年總量",
+    "downloadSource": "https://techcrunch.com/2023/05/25/chatgpts-new-app-comes-out-of-the-gate-hot-tops-half-a-million-installs-in-first-6-days/",
+    "downloadPublisher": "data.ai 估計／TechCrunch 引述"
+  },
+  {
+    "year": "2022",
+    "users": "超過 100 萬",
+    "usersLabel": "推出後五天使用者 · 非週活躍口徑",
+    "userSource": "https://www.euronews.com/next/2022/12/14/chatgpt-why-the-human-like-ai-chatbot-suddenly-got-everyone-talking",
+    "userPublisher": "Euronews 引述創辦人公告",
+    "downloads": "尚無官方 App",
+    "downloadLabel": "當時以網頁使用；不以網站造訪量代替下載次數",
+    "downloadSource": "https://openai.com/index/introducing-the-chatgpt-app-for-ios/",
+    "downloadPublisher": "官方 iOS App 於 2023 年推出"
+  },
+  {
+    "year": "2018–2021",
+    "users": "不適用",
+    "usersLabel": "ChatGPT 尚未推出；模型研究與 API 使用不能當成 ChatGPT 人數",
+    "userSource": "https://openai.com/index/chatgpt/",
+    "userPublisher": "ChatGPT 發布時間",
+    "downloads": "不適用",
+    "downloadLabel": "沒有 ChatGPT App；論文或模型權重下載亦非使用人數",
+    "downloadSource": "https://openai.com/index/chatgpt/",
+    "downloadPublisher": "口徑說明"
+  }
+]
