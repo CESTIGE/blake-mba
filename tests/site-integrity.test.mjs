@@ -128,20 +128,24 @@ test("every HTML file uses the shipped favicon", () => {
 });
 
 test("changed frontend assets use current cache keys", () => {
-  const cardPages = new Set(["metabiz/index.html", "seedream/index.html", "tmarsbase/index.html"]);
-  for (const page of indexedPages.values()) {
-    if (cardPages.has(page)) continue;
-    assert.match(
-      read(page),
-      /<script src="\/assets\/analytics\.js\?v=20260820flow1"><\/script>/,
-      page,
-    );
+  const analyticsScript =
+    '<script src="/assets/analytics.js?v=20260901no-consent1"></script>';
+  for (const page of htmlFiles()) {
+    const html = read(page);
+    const analyticsReferences =
+      html.match(/<script src="\/assets\/analytics\.js\?v=[^"]+"><\/script>/g) ?? [];
+    if (html.includes("/assets/analytics.js")) {
+      assert.deepEqual(analyticsReferences, [analyticsScript], page);
+    }
+    assert.doesNotMatch(html, /analytics\.js\?v=20260820flow1/, page);
+    assert.doesNotMatch(html, /analytics\.css/, page);
   }
-
-  assert.match(
+  assert.doesNotMatch(
     read("assets/analytics.js"),
-    /\/assets\/analytics\.css\?v=20260820flow1/,
+    /analytics\.css/,
+    "analytics.js must not restore the removed consent UI stylesheet",
   );
+
   assert.match(
     read("ai-transform/index.html"),
     /\/assets\/ai-transform\.css\?v=20260905workshop1/,
@@ -183,10 +187,8 @@ test("local raster content images declare intrinsic dimensions", () => {
   }
 });
 
-test("mobile deck controls keep full touch regions and the consent banner clears the deck", () => {
+test("mobile deck controls keep full touch regions", () => {
   const deck = read("assets/paged-sections.css");
-  const analytics = read("assets/analytics.css");
   assert.match(deck, /\.page-deck-anchor\s*\{[^}]*width:\s*44px;[^}]*height:\s*44px;/s);
   assert.match(deck, /\.page-deck-button\s*\{[^}]*width:\s*44px;[^}]*height:\s*44px;/s);
-  assert.match(analytics, /\.has-page-deck \.analytics-consent\s*\{[^}]*bottom:\s*calc\(/s);
 });
