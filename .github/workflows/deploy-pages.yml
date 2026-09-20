@@ -46,6 +46,11 @@ jobs:
           fs.writeFileSync(path, source.replace(marker, `data-survey-endpoint="${endpoint}"`));
           NODE
 
+      - name: Apply page publication settings
+        run: |
+          node scripts/page-publication.mjs _site
+          rm -rf _site/config _site/scripts _site/tests _site/docs _site/tools/page-status
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
