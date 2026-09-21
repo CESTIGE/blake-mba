@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "requestId": "4aab9bf9-b555-4bea-a31b-1ff9eeb63c12",
+  "requestId": "a1801970-d2d4-466f-8669-4e7ef0c84170",
   "pages": {
-    "/about/": false
+    "/about/": true
   }
 }
