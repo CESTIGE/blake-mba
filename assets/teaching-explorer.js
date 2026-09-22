@@ -3,7 +3,7 @@
  const data=await fetch('/assets/teaching-explorer-data.json?v=3').then(r=>{if(!r.ok)throw Error('data');return r.json()});
  const stage=root.querySelector('.te-stage'),cards=[...root.querySelectorAll('.te-card')],detail=root.querySelector('.te-detail');
  const descriptions=['總覽與單門聚焦交替，放大後展示課程。','多排圖片以不同速度平移，形成視差。','拖曳平移畫布，按 ＋／− 縮放探索。','選中的課程原地展開，鄰近卡片讓出空間。','整齊總覽與錯落展示交替重組。','課程沿弧線前進，中央放大、兩側後退。','課程繞立體圓環旋轉，前方課程清晰呈現。','聚焦課程橫向展開，其餘縮成窄幅圖片。','三排課程以交錯方向持續流動。','照片卡與課程卡交錯分布於橫向橢圓，拖曳旋轉探索。'];
- let mode=6,index=0,zoom=1,panX=0,panY=0,phase=0,paused=matchMedia('(prefers-reduced-motion: reduce)').matches,last=performance.now(),elapsed=0,drag=null,moved=false;
+ let mode=9,index=0,zoom=1,panX=0,panY=0,phase=0,paused=matchMedia('(prefers-reduced-motion: reduce)').matches,last=performance.now(),elapsed=0,drag=null,moved=false;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  function select(i){index=(i+data.length)%data.length;const d=data[index];detail.replaceChildren();for(const [tag,text]of [['small',d.org+' · '+d.kind],['h3',d.title],['p',d.date+(d.note?' · '+d.note:'')]]){const e=document.createElement(tag);e.textContent=text;detail.append(e)}if(d.kind==='課堂照片'){const a=document.createElement('a');a.href=d.image;a.target='_blank';a.rel='noreferrer';a.textContent='開啟原圖 ↗';detail.append(a)}cards.forEach((c,j)=>c.setAttribute('aria-pressed',String(j===index)));}
  function playLabel(){const b=root.querySelector('[data-action=play]');b.textContent=paused?'▶':'Ⅱ';b.setAttribute('aria-label',paused?'播放展示':'暫停展示')}
@@ -34,5 +34,5 @@
  document.addEventListener('visibilitychange',()=>last=performance.now());
  new ResizeObserver(()=>{stageWidth=stage.clientWidth;stageHeight=stage.clientHeight;layout()}).observe(stage);
  function tick(now){const dt=Math.min((now-last)/1000,.1);last=now;if(!paused&&!drag&&!document.hidden&&inView){phase+=dt;elapsed+=dt;if(elapsed>4){select(index+1);elapsed=0}layout()}requestAnimationFrame(tick)}
- select(0);playLabel();root.querySelector('.te-mode-description').textContent=descriptions[6];root.classList.add('ready');layout();requestAnimationFrame(tick);
+ select(0);playLabel();root.querySelector('.te-mode-description').textContent=descriptions[9];root.classList.add('ready');layout();requestAnimationFrame(tick);
 })().catch(console.error);

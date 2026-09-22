@@ -18,7 +18,8 @@ test("homepage removes the BLAKE method chapter and keeps the remaining chapter 
   const html = read("index.html");
 
   assert.doesNotMatch(html, /id="method"|THE BLAKE METHOD|選擇、轉譯、驗證、落地/);
-  assert.match(sectionById(html, "proof"), /06 · PUBLIC EVIDENCE/);
+  assert.match(sectionById(html, "teaching-records"), /06 · TEACHING &amp; EXPERIENCE/);
+  assert.doesNotMatch(html, /<section[^>]*id="proof"/);
   assert.match(sectionById(html, "class-feedback"), /07 · YOUR TURN/);
   assert.match(sectionById(html, "connect"), /08 · STAY CONNECTED/);
   assert.ok(
