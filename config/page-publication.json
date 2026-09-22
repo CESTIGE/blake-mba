@@ -1,7 +1,8 @@
 {
   "schema": 1,
-  "requestId": "a1801970-d2d4-466f-8669-4e7ef0c84170",
+  "requestId": "992ee4e3-079c-48aa-9b18-5081a6cc3d77",
   "pages": {
-    "/about/": true
+    "/about/": true,
+    "/book/": false
   }
 }
