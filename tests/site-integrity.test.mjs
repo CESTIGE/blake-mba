@@ -131,6 +131,10 @@ test("every HTML file uses the shipped favicon", () => {
 test("changed frontend assets use current cache keys", () => {
   const cardPages = new Set(["metabiz/index.html", "seedream/index.html", "tmarsbase/index.html"]);
   for (const page of indexedPages.values()) {
+    if (page === "index.html") {
+      assert.doesNotMatch(read(page), /src="\/assets\/analytics\.js/);
+      continue;
+    }
     if (cardPages.has(page)) continue;
     assert.match(
       read(page),

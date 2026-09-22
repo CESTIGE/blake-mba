@@ -1,0 +1,312 @@
+[
+  {
+    "org": "基隆就業中心",
+    "title": "AI 創新與產業連結",
+    "date": "2025/01/21、2025/08/14、2025/11/06、2026/06/15",
+    "image": "/assets/teaching-organizations/wda.png",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 0,
+    "cardType": "course"
+  },
+  {
+    "org": "基隆就業中心",
+    "title": "AI 創新與產業連結",
+    "date": "2025/01/21、2025/08/14、2025/11/06、2026/06/15",
+    "image": "/assets/teaching-gallery/keelung-ai-class.jpg",
+    "kind": "課堂照片",
+    "note": "",
+    "courseId": 0,
+    "cardType": "photo"
+  },
+  {
+    "org": "南投縣汽車商業同業公會",
+    "title": "打造你的 AI 銷售分身：汽車文案生成 × 影音行銷實戰",
+    "date": "2026/08/12",
+    "image": "/assets/visual-enterprise-training.svg",
+    "kind": "課程示意圖",
+    "note": "",
+    "courseId": 1,
+    "cardType": "course"
+  },
+  {
+    "org": "南投縣汽車商業同業公會",
+    "title": "打造你的 AI 銷售分身：汽車文案生成 × 影音行銷實戰",
+    "date": "2026/08/12",
+    "image": "/assets/teaching-gallery/nantou-auto-ai-20260812.jpg",
+    "kind": "課堂照片",
+    "note": "",
+    "courseId": 1,
+    "cardType": "photo"
+  },
+  {
+    "org": "勞動部相關課程",
+    "title": "AI 應用課程",
+    "date": "授課現場紀錄",
+    "image": "/assets/teaching-organizations/wda.png",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 2,
+    "cardType": "course"
+  },
+  {
+    "org": "勞動部相關課程",
+    "title": "AI 應用課程",
+    "date": "授課現場紀錄",
+    "image": "/assets/teaching-gallery/labor-ai-class.jpg",
+    "kind": "課堂照片",
+    "note": "",
+    "courseId": 2,
+    "cardType": "photo"
+  },
+  {
+    "org": "新北永平高中",
+    "title": "影片剪輯課程",
+    "date": "授課現場紀錄",
+    "image": "/assets/visual-enterprise-training.svg",
+    "kind": "課程示意圖",
+    "note": "",
+    "courseId": 3,
+    "cardType": "course"
+  },
+  {
+    "org": "新北永平高中",
+    "title": "影片剪輯課程",
+    "date": "授課現場紀錄",
+    "image": "/assets/teaching-gallery/yongping-video-class.jpg",
+    "kind": "課堂照片",
+    "note": "",
+    "courseId": 3,
+    "cardType": "photo"
+  },
+  {
+    "org": "高雄高工",
+    "title": "AI 課程",
+    "date": "授課現場紀錄",
+    "image": "/assets/visual-enterprise-training.svg",
+    "kind": "課程示意圖",
+    "note": "",
+    "courseId": 4,
+    "cardType": "course"
+  },
+  {
+    "org": "高雄高工",
+    "title": "AI 課程",
+    "date": "授課現場紀錄",
+    "image": "/assets/teaching-gallery/kaohsiung-ai-class.jpg",
+    "kind": "課堂照片",
+    "note": "",
+    "courseId": 4,
+    "cardType": "photo"
+  },
+  {
+    "org": "台積電慈善基金會",
+    "title": "速效技職培力執行計畫",
+    "date": "2025/05/26",
+    "image": "/assets/teaching-organizations/tsmc.png",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 5,
+    "cardType": "course"
+  },
+  {
+    "org": "全國創新創業總會",
+    "title": "ChatGPT 工具深度應用",
+    "date": "2026/08/25",
+    "image": "/assets/teaching-organizations/niea.png",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 6,
+    "cardType": "course"
+  },
+  {
+    "org": "全國創新創業總會",
+    "title": "生活服務業 AI 廣告投放與精準行銷",
+    "date": "2026/05/06、2026/05/13、2026/05/20、2026/05/22",
+    "image": "/assets/teaching-organizations/niea.png",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 7,
+    "cardType": "course"
+  },
+  {
+    "org": "全國創新創業總會",
+    "title": "零售業 AI 導購或購物助理－智慧商業模式轉型實務",
+    "date": "2026/06/05、2026/06/12、2026/06/16、2026/06/26",
+    "image": "/assets/teaching-organizations/niea.png",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 8,
+    "cardType": "course"
+  },
+  {
+    "org": "全國創新創業總會",
+    "title": "餐飲體驗分析與優化",
+    "date": "2026/07/31、2026/08/07、2026/08/14、2026/08/21",
+    "image": "/assets/teaching-organizations/niea.png",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 9,
+    "cardType": "course"
+  },
+  {
+    "org": "全國創新創業總會",
+    "title": "智慧點餐與訂位服務",
+    "date": "2026/08/28、2026/09/04、2026/09/11、2026/09/18 · 進行中",
+    "image": "/assets/teaching-organizations/niea.png",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 10,
+    "cardType": "course"
+  },
+  {
+    "org": "彰化職訓課程",
+    "title": "Google 雲端協同作業管理",
+    "date": "2026/05/27、2026/05/28",
+    "image": "/assets/visual-enterprise-training.svg",
+    "kind": "課程示意圖",
+    "note": "授課場地：建國科技大學",
+    "courseId": 11,
+    "cardType": "course"
+  },
+  {
+    "org": "彰化職訓課程",
+    "title": "SEO 入門與實務操作",
+    "date": "2026/05/28、2026/06/10、2026/06/11",
+    "image": "/assets/visual-enterprise-training.svg",
+    "kind": "課程示意圖",
+    "note": "授課場地：建國科技大學",
+    "courseId": 12,
+    "cardType": "course"
+  },
+  {
+    "org": "彰化職訓課程",
+    "title": "網站架設實務",
+    "date": "2026/06/17、2026/06/18、2026/06/23",
+    "image": "/assets/visual-enterprise-training.svg",
+    "kind": "課程示意圖",
+    "note": "授課場地：建國科技大學",
+    "courseId": 13,
+    "cardType": "course"
+  },
+  {
+    "org": "彰化職訓課程",
+    "title": "Google Analytics 4 網站行銷分析技巧",
+    "date": "2026/06/24、2026/07/08、2026/07/09、2026/07/22",
+    "image": "/assets/visual-enterprise-training.svg",
+    "kind": "課程示意圖",
+    "note": "授課場地：建國科技大學",
+    "courseId": 14,
+    "cardType": "course"
+  },
+  {
+    "org": "彰化職訓課程",
+    "title": "影音平台操作經營",
+    "date": "2026/07/23",
+    "image": "/assets/visual-enterprise-training.svg",
+    "kind": "課程示意圖",
+    "note": "授課場地：建國科技大學",
+    "courseId": 15,
+    "cardType": "course"
+  },
+  {
+    "org": "輔仁大學跨領域學院",
+    "title": "AI 創新與產業鏈結",
+    "date": "2024/11/9",
+    "image": "/assets/teaching-organizations/fju.jpg",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 16,
+    "cardType": "course"
+  },
+  {
+    "org": "政治大學創聯會",
+    "title": "2026 政大創客松－創業思維課",
+    "date": "2026/05/01",
+    "image": "/assets/teaching-organizations/nccu.png",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 17,
+    "cardType": "course"
+  },
+  {
+    "org": "國立臺北商業大學",
+    "title": "AI 學習應用規劃",
+    "date": "2024/11/28",
+    "image": "/assets/teaching-organizations/ntub-current.jpg",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 18,
+    "cardType": "course"
+  },
+  {
+    "org": "基隆就業中心",
+    "title": "E職發展的個人佈局",
+    "date": "2026/08/11",
+    "image": "/assets/teaching-organizations/wda.png",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 19,
+    "cardType": "course"
+  },
+  {
+    "org": "羅東就業中心",
+    "title": "AI 創新與產業連結",
+    "date": "2025/05/15、2025/10/28",
+    "image": "/assets/teaching-organizations/wda.png",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 20,
+    "cardType": "course"
+  },
+  {
+    "org": "金門就業中心",
+    "title": "AI 創新與產業連結",
+    "date": "2026/02/10",
+    "image": "/assets/teaching-organizations/wda.png",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 21,
+    "cardType": "course"
+  },
+  {
+    "org": "林口社區大學",
+    "title": "跨界 AI，提升職場生產力（115年秋季班）",
+    "date": "2026/09/05～2027/01/16 · 進行中",
+    "image": "/assets/teaching-organizations/lcc.png",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 22,
+    "cardType": "course"
+  },
+  {
+    "org": "南光扶輪社",
+    "title": "醫療與 AI",
+    "date": "2026/02/04",
+    "image": "/assets/teaching-organizations/rotary.png",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 23,
+    "cardType": "course"
+  },
+  {
+    "org": "詠欣有限公司",
+    "title": "AI 多工軍火庫：從知識庫建立、多平台文案到影音生成",
+    "date": "2026/08/10",
+    "image": "/assets/teaching-organizations/ysc.png",
+    "kind": "單位 Logo",
+    "note": "",
+    "courseId": 24,
+    "cardType": "course"
+  },
+  {
+    "org": "希均股份有限公司",
+    "title": "AI工作應用",
+    "date": "2024/4/2",
+    "image": "/assets/visual-enterprise-training.svg",
+    "kind": "課程示意圖",
+    "note": "",
+    "courseId": 25,
+    "cardType": "course"
+  }
+]

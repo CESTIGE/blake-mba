@@ -64,20 +64,11 @@ test("course comparison copy and AI workflow visual explain how to choose", () =
   assert.match(visual, />從問題到可驗證成果</);
 });
 
-test("home page links to current Linkou course information above the fold", () => {
+test("home page preserves Linkou course in consolidated teaching records", () => {
   const html = read("index.html");
-  const heroEnd = html.indexOf("</section>");
-  const hero = html.slice(0, heroEnd);
-
-  assert.match(hero, /class="home-course-alert"/);
-  assert.match(hero, /林口社大 16 週 AI 實作課/);
-  assert.match(hero, /課程資料 · 2026\/09\/05 開課/);
-  assert.doesNotMatch(hero, /目前開放報名|線上報名至 2026\/08\/25/);
-  assert.match(hero, /href="\/courses\/ai-work-productivity\/"/);
-  assert.ok(
-    hero.indexOf('class="home-course-alert"') < hero.indexOf('class="hero-actions"'),
-    "the open course entry must appear before secondary hero actions",
-  );
+  assert.match(html, /林口社區大學/);
+  assert.match(html, /跨界 AI/);
+  assert.doesNotMatch(html, /class="home-course-alert"/);
   assert.match(html, /<body data-page="home">/);
 });
 
