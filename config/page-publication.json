@@ -1,8 +1,9 @@
 {
   "schema": 1,
-  "requestId": "992ee4e3-079c-48aa-9b18-5081a6cc3d77",
+  "requestId": "8c861f93-6b20-4cb6-afd0-cad420140c3a",
   "pages": {
     "/about/": true,
-    "/book/": false
+    "/book/": false,
+    "/ai-action-lab/": false
   }
 }
