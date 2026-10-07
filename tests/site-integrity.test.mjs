@@ -38,6 +38,13 @@ const indexedPages = new Map([
   ["https://blake.mba/articles/taiwan-software-startup-ai-window/", "articles/taiwan-software-startup-ai-window/index.html"],
   ["https://blake.mba/articles/token-economy-ai-pricing/", "articles/token-economy-ai-pricing/index.html"],
   ["https://blake.mba/chatgpt/", "chatgpt/index.html"],
+  ["https://blake.mba/courses/ai-auto-sales/", "courses/ai-auto-sales/index.html"],
+  ["https://blake.mba/courses/ai-content-production/", "courses/ai-content-production/index.html"],
+  ["https://blake.mba/courses/ai-industry-career/", "courses/ai-industry-career/index.html"],
+  ["https://blake.mba/courses/ai-job-search/", "courses/ai-job-search/index.html"],
+  ["https://blake.mba/courses/chatgpt-marketing-content/", "courses/chatgpt-marketing-content/index.html"],
+  ["https://blake.mba/courses/restaurant-experience/", "courses/restaurant-experience/index.html"],
+  ["https://blake.mba/courses/smart-ordering-reservation/", "courses/smart-ordering-reservation/index.html"],
 ]);
 
 function formBlock(html, page) {

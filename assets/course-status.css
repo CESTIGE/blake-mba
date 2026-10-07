@@ -1,0 +1,43 @@
+/* Shared course availability notice. Kept legible on both light and dark heroes. */
+.course-status-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 18px 0;
+  padding: 12px 15px;
+  border: 1px solid #bfd4df;
+  border-radius: 10px;
+  background: #f1f7fa;
+  color: #203b4b;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: left;
+}
+.course-status-note > strong {
+  color: #143e51;
+  font-size: 14px;
+  font-weight: 750;
+}
+.course-status-note > span {
+  color: #334f5d;
+  font-size: 14px;
+  font-weight: 400;
+}
+.course-status-note[data-course-status="planned"] {
+  border-color: #e0d2ad;
+  background: #fff7e6;
+}
+@media (max-width: 600px) {
+  .course-status-note {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 13px;
+  }
+}

@@ -1,6 +1,6 @@
 (async () => {
  const root=document.querySelector('.te-explorer'); if(!root)return;
- const data=await fetch('/assets/teaching-explorer-data.json?v=3').then(r=>{if(!r.ok)throw Error('data');return r.json()});
+ const data=await fetch('/assets/teaching-explorer-data.json?v=20261005facts1').then(r=>{if(!r.ok)throw Error('data');return r.json()});
  const stage=root.querySelector('.te-stage'),cards=[...root.querySelectorAll('.te-card')],detail=root.querySelector('.te-detail');
  const descriptions=['總覽與單門聚焦交替，放大後展示課程。','多排圖片以不同速度平移，形成視差。','拖曳平移畫布，按 ＋／− 縮放探索。','選中的課程原地展開，鄰近卡片讓出空間。','整齊總覽與錯落展示交替重組。','課程沿弧線前進，中央放大、兩側後退。','課程繞立體圓環旋轉，前方課程清晰呈現。','聚焦課程橫向展開，其餘縮成窄幅圖片。','三排課程以交錯方向持續流動。','照片卡與課程卡交錯分布於橫向橢圓，拖曳旋轉探索。'];
  let mode=9,index=0,zoom=1,panX=0,panY=0,phase=0,paused=matchMedia('(prefers-reduced-motion: reduce)').matches,last=performance.now(),elapsed=0,drag=null,moved=false;
