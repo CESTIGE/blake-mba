@@ -151,3 +151,18 @@ body[data-page="courses"] .site-header { top:var(--course-notice-height); }
 }
 /* Native anchors also stay below the header when scripting is unavailable. */
 body[data-page="courses"] main>section[id] { scroll-margin-top:calc(90px + var(--course-notice-height)); }
+
+/* Photographs stay attached to their verified course, including when filtered. */
+.course-directory-row[data-course-photo] {grid-template-columns:28px minmax(0,1fr) 190px 32px;align-items:center;}
+.course-row-photo {margin:0;min-width:0;}
+.course-row-photo img {display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border-radius:8px;}
+.course-row-photo figcaption {font-size:12px;line-height:1.65;color:#546873;margin-top:7px;}
+@media(max-width:1000px) and (min-width:601px){.course-directory-row[data-course-photo]{grid-template-columns:22px minmax(0,1fr) 140px 28px;gap:12px;}}
+@media(max-width:600px){
+ .course-directory-row[data-course-photo] {grid-template-columns:minmax(0,1fr) 25px;align-items:start;}
+ [data-course-photo] .course-row-content {grid-column:1;grid-row:1;}
+ [data-course-photo] .course-open {grid-column:2;grid-row:1;}
+ .course-row-photo {grid-column:1/-1;grid-row:2;margin-top:6px;}
+ .course-row-photo img {aspect-ratio:16/9;max-height:220px;}
+ .course-row-photo figcaption {font-size:12px;}
+}
