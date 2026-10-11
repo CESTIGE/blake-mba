@@ -166,3 +166,5 @@ body[data-page="courses"] main>section[id] { scroll-margin-top:calc(90px + var(-
  .course-row-photo img {aspect-ratio:16/9;max-height:220px;}
  .course-row-photo figcaption {font-size:12px;}
 }
+
+.course-row-photo img{object-position:center 35%}
