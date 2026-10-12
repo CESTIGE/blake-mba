@@ -1,10 +1,29 @@
 [
   {
+    "title": "為什麼企業 AI 訓練，要從一項工作開始？",
+    "slug": "enterprise-ai-work-first",
+    "url": "/articles/enterprise-ai-work-first/",
+    "category": "AI 工作流",
+    "topics": [
+      "AI 工作流"
+    ],
+    "date": "2026-10-12",
+    "readingTime": "3 分鐘",
+    "excerpt": "從一份報告、客戶研究或新人 SOP 出發，讓企業 AI 內訓留下可驗證、可交接的成果。",
+    "image": "/og.png",
+    "alt": "BLAKE.MBA 企業 AI 學習與實作",
+    "featured": false,
+    "status": "published"
+  },
+  {
     "title": "Token 不是報價單：我開始看懂 AI 時代的成本與價值",
     "slug": "token-economy-ai-pricing",
     "url": "/articles/token-economy-ai-pricing/",
     "category": "AI 工作流",
-    "topics": ["AI 工作流", "創業實戰"],
+    "topics": [
+      "AI 工作流",
+      "創業實戰"
+    ],
     "date": "2026-08-24",
     "readingTime": "6 分鐘",
     "excerpt": "Token 能衡量 AI 的底層成本，但客戶真正購買的是任務與成果。這也是 SaaS 從單一訂閱制走向混合計價的關鍵。",
@@ -18,7 +37,10 @@
     "slug": "books-grow-old-dreams-dont-rust",
     "url": "/articles/books-grow-old-dreams-dont-rust/",
     "category": "創業實戰",
-    "topics": ["創業實戰", "選擇重於努力"],
+    "topics": [
+      "創業實戰",
+      "選擇重於努力"
+    ],
     "date": "2026-08-20",
     "readingTime": "6 分鐘",
     "excerpt": "當年讀這本書的我，正在想像創業；現在重讀的我，已經走了很久。前人的精神可以學習，但自己的方法必須回到現實。",
@@ -32,7 +54,10 @@
     "slug": "taiwan-software-startup-ai-window",
     "url": "/articles/taiwan-software-startup-ai-window/",
     "category": "AI 工作流",
-    "topics": ["AI 工作流", "創業實戰"],
+    "topics": [
+      "AI 工作流",
+      "創業實戰"
+    ],
     "date": "2026-08-18",
     "readingTime": "9 分鐘",
     "excerpt": "AI 正在降低軟體開發門檻；真正的差距，會回到客戶理解、價值傳遞、信任與 AI 管理能力。",
@@ -46,7 +71,10 @@
     "slug": "first-principles-idiot-index",
     "url": "/articles/first-principles-idiot-index/",
     "category": "創業實戰",
-    "topics": ["創業實戰", "AI 工作流"],
+    "topics": [
+      "創業實戰",
+      "AI 工作流"
+    ],
     "date": "2026-06-21",
     "readingTime": "9 分鐘",
     "excerpt": "拆開產品售價、材料成本與流程限制，找出真正值得重新設計的地方。",
@@ -60,7 +88,9 @@
     "slug": "execution-driven-team-building",
     "url": "/articles/execution-driven-team-building/",
     "category": "創業實戰",
-    "topics": ["創業實戰"],
+    "topics": [
+      "創業實戰"
+    ],
     "date": "2026-06-20",
     "readingTime": "8 分鐘",
     "excerpt": "從人才選擇、任務設計、知識資產到留才，建立真正能交付的團隊。",
@@ -74,7 +104,9 @@
     "slug": "pattern-recognition-decision-making",
     "url": "/articles/pattern-recognition-decision-making/",
     "category": "OGSM 人生策略",
-    "topics": ["OGSM 人生策略"],
+    "topics": [
+      "OGSM 人生策略"
+    ],
     "date": "2026-06-19",
     "readingTime": "11 分鐘",
     "excerpt": "理解經驗如何形成模式識別，並用決策日誌與 AI 建立可以檢查、傳承的判斷方法。",
@@ -88,7 +120,11 @@
     "slug": "ai-career-positioning",
     "url": "/articles/ai-career-positioning/",
     "category": "AI 職涯定位",
-    "topics": ["AI 職涯定位", "選擇重於努力", "OGSM 人生策略"],
+    "topics": [
+      "AI 職涯定位",
+      "選擇重於努力",
+      "OGSM 人生策略"
+    ],
     "date": "2026-06-19",
     "readingTime": "8 分鐘",
     "excerpt": "用四維度定位、小實驗與 90 天 OGSM，把 AI 變成職涯選擇的驗證夥伴。",
