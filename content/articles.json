@@ -1,21 +1,5 @@
 [
   {
-    "title": "為什麼企業 AI 訓練，要從一項工作開始？",
-    "slug": "enterprise-ai-work-first",
-    "url": "/articles/enterprise-ai-work-first/",
-    "category": "AI 工作流",
-    "topics": [
-      "AI 工作流"
-    ],
-    "date": "2026-10-12",
-    "readingTime": "3 分鐘",
-    "excerpt": "從一份報告、客戶研究或新人 SOP 出發，讓企業 AI 內訓留下可驗證、可交接的成果。",
-    "image": "/og.png",
-    "alt": "BLAKE.MBA 企業 AI 學習與實作",
-    "featured": false,
-    "status": "published"
-  },
-  {
     "title": "Token 不是報價單：我開始看懂 AI 時代的成本與價值",
     "slug": "token-economy-ai-pricing",
     "url": "/articles/token-economy-ai-pricing/",
