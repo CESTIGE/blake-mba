@@ -1,0 +1,17 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-19",
+  "purpose": "課程主題示意，非實際授課紀錄，不重建原照片人物或身份",
+  "brief": "Use case: stylized-concept. Create a premium editorial 3D clay illustration for a Traditional Chinese professional course website. Wide landscape 3:2 composition with the complete main arrangement centered inside 70% safe area so it works in 16:10 and mobile crops. Warm ivory seamless background, matte teal and forest green objects, restrained burnt orange accents, tactile ceramic materials, soft daylight, elegant museum-quality isometric diorama, detailed but uncluttered. NO people, NO human faces, NO portraits, NO hands, NO recognizable identities, NO photographic classroom, NO readable words, NO lettering, NO logos, NO watermark. This must be clearly conceptual illustrated educational imagery, not evidence of a real event. Subject: ",
+  "subjects": {
+    "career": "Career choices and recruitment: a compass at a branching path, blank resume document cards, small connected skill tiles and a magnifying glass. Convey comparing options with evidence.",
+    "industry": "AI and industry careers: miniature interconnected industry buildings, skill blocks and an ascending bridge, a small glowing AI node linking work tasks to opportunities.",
+    "productivity": "AI work productivity: an elegant laptop with abstract document shapes, a tidy library of source cards, presentation panels and connected workflow blocks completing a loop.",
+    "restaurant": "Restaurant customer experience analysis: a miniature stylish restaurant table with plate and cup, curved customer journey route, review speech bubbles without text and a compact dashboard with chart blocks.",
+    "ordering": "Smart restaurant ordering and reservations: a tablet with illustrated menu tiles, a phone with abstract calendar grid, miniature restaurant tables linked by a smooth service flow. No people.",
+    "marketing": "AI marketing content: smartphone with abstract social content cards, speech bubbles, a tiny globe for multilingual rewriting, and three storyboard frames with play symbols.",
+    "production": "AI content production toolkit: a laptop, a product information cube, an elegant brochure spread and film storyboard frames, linked by a flowing orange ribbon. Show facts becoming marketing and video deliverables.",
+    "sales": "AI car sales: a beautiful generic unbranded compact car on a raised platform, vehicle fact cards, smartphone social post mockup and a video storyboard, all linked in a coherent workflow.",
+    "startup": "Entrepreneurship validation: a small prototype product on a platform, blank interview cards, a magnifying glass over a hypothesis cube and a branching test track ending at a check symbol. A coherent miniature validation laboratory."
+  }
+}
