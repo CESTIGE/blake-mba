@@ -161,6 +161,19 @@ if (inquirySelect) {
     inquirySelect.value = inquiryValue;
   }
 }
+// Preserve the selected AI Agent course route when visitors open the contact form.
+const courseParams = new URLSearchParams(window.location.search);
+if (courseParams.get("course") === "ai-agent") {
+  const routeNames = { sales: "業務行銷", operations: "營運", hr: "HR" };
+  const routeName = Object.hasOwn(routeNames, courseParams.get("track"))
+    ? routeNames[courseParams.get("track")]
+    : "業務行銷／營運／HR";
+  const sourceField = document.querySelector('[name="名單來源"]');
+  const challengeField = document.querySelector('#challenge');
+  if (sourceField) sourceField.value = `AI Agent 企業工作實作課程頁｜${routeName}`;
+  if (challengeField) challengeField.placeholder = `想安排的路線：${routeName}。請提供參訓人數、希望改善的工作、預計時數及時間。`;
+}
+
 document.querySelectorAll("[data-inquiry-type]").forEach((trigger) => {
   trigger.addEventListener("click", () => {
     const inquiryType = trigger.dataset.inquiryType;
