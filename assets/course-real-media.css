@@ -1,0 +1,10 @@
+/* 課程照片保留完整構圖；圖說與場次分開呈現。 */
+img[data-course-media]{display:block;width:100%;height:auto!important;object-fit:contain!important;object-position:center!important;max-height:520px;background:#eceee8;border-radius:12px}
+.course-row-photo img[data-course-media]{height:150px!important;max-height:150px;object-fit:contain!important}
+.course-row-photo figcaption{font-size:11px;line-height:1.6;margin-top:8px}
+.course-photo-collection{box-sizing:border-box;width:min(1120px,calc(100% - 40px));margin:64px auto;font-family:system-ui,sans-serif;color:#183d43}
+.course-photo-collection h2{font-size:clamp(24px,4vw,36px);line-height:1.5}
+.course-photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start}
+.course-photo-grid figure{margin:0;min-width:0}.course-photo-grid a{display:block;color:#234b46;text-decoration:none}.course-photo-grid img{height:340px!important;max-height:340px}.course-photo-grid figcaption{font-size:13px;line-height:1.8;padding:10px 0}.photo-enlarge{display:block;padding:8px 0;font-size:13px;text-decoration:underline}
+@media(max-width:760px){.course-photo-grid{grid-template-columns:1fr 1fr;gap:16px}.course-photo-grid img{height:250px!important;max-height:250px}.course-row-photo img[data-course-media]{height:auto!important;max-height:240px}.course-photo-collection{margin:40px auto}}
+@media(max-width:480px){.course-photo-grid{grid-template-columns:1fr}.course-photo-grid img{height:auto!important;max-height:420px}}
